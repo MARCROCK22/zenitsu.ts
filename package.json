@@ -1,0 +1,16 @@
+{
+  "name": "zenitsu.ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@9.10.0",
+  "devDependencies": {
+    "turbo": "^2.1.2"
+  }
+}
