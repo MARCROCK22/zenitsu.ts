@@ -7,16 +7,118 @@ settings:
 importers:
 
   .:
-    devDependencies:
+    dependencies:
       turbo:
         specifier: ^2.1.2
         version: 2.1.2
+    devDependencies:
+      '@biomejs/biome':
+        specifier: 1.9.0
+        version: 1.9.0
 
-  apps/app1: {}
+  apps/bot:
+    dependencies:
+      '@types/node':
+        specifier: ^22.5.5
+        version: 22.5.5
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      seyfert:
+        specifier: github:tiramisulabs/seyfert
+        version: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/d8bf40b60c00f59d5dcaf17e038cd47a3fce4daa
 
-  apps/app2: {}
+  apps/ws:
+    dependencies:
+      '@types/node':
+        specifier: ^22.5.5
+        version: 22.5.5
+      bufferutil:
+        specifier: ^4.0.1
+        version: 4.0.8
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      seyfert:
+        specifier: github:tiramisulabs/seyfert
+        version: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/d8bf40b60c00f59d5dcaf17e038cd47a3fce4daa
+      utf-8-validate:
+        specifier: ^5.0.2
+        version: 5.0.10
 
 packages:
+
+  '@biomejs/biome@1.9.0':
+    resolution: {integrity: sha512-NlWh2F1wbxB3O/wE+aohGL0BziTS6e+6+dyFvpdeqLsbQZY7EsiklFb9W5Xs41U4vEmY7ANgdNp+oVDij6sQdA==}
+    engines: {node: '>=14.21.3'}
+    hasBin: true
+
+  '@biomejs/cli-darwin-arm64@1.9.0':
+    resolution: {integrity: sha512-2w9v/NRtYSmodx5QWQ49OGcyGKSECdWKbzc7n532Iq5sBhkKk996fd19icT6BuL54f01KFKRCRibAW+A2rg1Kw==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@biomejs/cli-darwin-x64@1.9.0':
+    resolution: {integrity: sha512-fBVt8jJQi0zX0SJ1C+tdzUbRpuX/07sgtBXEhunWRkPjdi6W/2S1sYHQ1wKn4OKiRAKfHM2Cf2FNO7hQvY61dA==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@biomejs/cli-linux-arm64-musl@1.9.0':
+    resolution: {integrity: sha512-Jy84mZ4vcppdmWMgQWOCfd8qIVC/vHmlaS5gy7GXkdWlBKSQ56YxEXTU58MHTbZ16LwJQpK2IulqRCC/rqWLBA==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@biomejs/cli-linux-arm64@1.9.0':
+    resolution: {integrity: sha512-l8U2lcqsl9yKPP5WUdIrKH//C1pWyM2cSUfcTBn6GSvXmsSjBNEdGSdM4Wfne777Oe/9ONaD1Ga53U2HksHHLw==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@biomejs/cli-linux-x64-musl@1.9.0':
+    resolution: {integrity: sha512-N3enoFoIrkB6qJWyYfTiYmFdB1R/Mrij1dd1xBHqxxCKZY9GRkEswRX3F1Uqzo5T+9Iu8nAQobDqI/ygicYy/Q==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
+    os: [linux]
+
+  '@biomejs/cli-linux-x64@1.9.0':
+    resolution: {integrity: sha512-8jAzjrrJTj510pwq4aVs7ZKkOvEy1D+nzl9DKvrPh4TOyUw5Ie+0EDwXGE2RAkCKHkGNOQBZ78WtIdsATgz5sA==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
+    os: [linux]
+
+  '@biomejs/cli-win32-arm64@1.9.0':
+    resolution: {integrity: sha512-AIjwJTGfdWGMRluSQ9pDB29nzce077dfHh0/HMqzztKzgD3spyuo2R9VoaFpbR0hLHPWEH6g6OxxDO7hfkXNkQ==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@biomejs/cli-win32-x64@1.9.0':
+    resolution: {integrity: sha512-4/4wTjNSoyNkm1SzcUaStDx46baX1VJRXtUoeEHjX9LfedR5N3qwZz5KfrRUnCd2fl5bmXK1CwMqKBkoF6zEiA==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
+    os: [win32]
+
+  '@types/node@22.5.5':
+    resolution: {integrity: sha512-Xjs4y5UPO/CLdzpgR6GirZJx36yScjh73+2NlLlkFRSoQN8B0DpfXPdZGnvVmLRLOsqDpOfTNv7D9trgGhmOIA==}
+
+  bufferutil@4.0.8:
+    resolution: {integrity: sha512-4T53u4PdgsXqKaIctwF8ifXlRTTmEPJ8iEPWFdGZvcf7sbwYo6FKFEX9eNNAnzFZ7EzJAQ3CJeOtCRA4rDp7Pw==}
+    engines: {node: '>=6.14.2'}
+
+  dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+    engines: {node: '>=12'}
+
+  node-gyp-build@4.8.2:
+    resolution: {integrity: sha512-IRUxE4BVsHWXkV/SFOut4qTlagw2aM8T5/vnTsmrHJvVoKueJHRc/JaFND7QDDc61kLYUJ6qlZM3sqTSyx2dTw==}
+    hasBin: true
+
+  seyfert@https://codeload.github.com/tiramisulabs/seyfert/tar.gz/d8bf40b60c00f59d5dcaf17e038cd47a3fce4daa:
+    resolution: {tarball: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/d8bf40b60c00f59d5dcaf17e038cd47a3fce4daa}
+    version: 2.1.0
 
   turbo-darwin-64@2.1.2:
     resolution: {integrity: sha512-3TEBxHWh99h2yIzkuIigMEOXt/ItYQp0aPiJjPd1xN4oDcsKK5AxiFKPH9pdtfIBzYsY59kQhZiFj0ELnSP7Bw==}
@@ -52,7 +154,63 @@ packages:
     resolution: {integrity: sha512-Jb0rbU4iHEVQ18An/YfakdIv9rKnd3zUfSE117EngrfWXFHo3RndVH96US3GsT8VHpwTncPePDBT2t06PaFLrw==}
     hasBin: true
 
+  undici-types@6.19.8:
+    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
+
+  utf-8-validate@5.0.10:
+    resolution: {integrity: sha512-Z6czzLq4u8fPOyx7TU6X3dvUZVvoJmxSQ+IcrlmagKhilxlhZgxPK6C5Jqbkw1IDUmFTM+cz9QDnnLTwDz/2gQ==}
+    engines: {node: '>=6.14.2'}
+
 snapshots:
+
+  '@biomejs/biome@1.9.0':
+    optionalDependencies:
+      '@biomejs/cli-darwin-arm64': 1.9.0
+      '@biomejs/cli-darwin-x64': 1.9.0
+      '@biomejs/cli-linux-arm64': 1.9.0
+      '@biomejs/cli-linux-arm64-musl': 1.9.0
+      '@biomejs/cli-linux-x64': 1.9.0
+      '@biomejs/cli-linux-x64-musl': 1.9.0
+      '@biomejs/cli-win32-arm64': 1.9.0
+      '@biomejs/cli-win32-x64': 1.9.0
+
+  '@biomejs/cli-darwin-arm64@1.9.0':
+    optional: true
+
+  '@biomejs/cli-darwin-x64@1.9.0':
+    optional: true
+
+  '@biomejs/cli-linux-arm64-musl@1.9.0':
+    optional: true
+
+  '@biomejs/cli-linux-arm64@1.9.0':
+    optional: true
+
+  '@biomejs/cli-linux-x64-musl@1.9.0':
+    optional: true
+
+  '@biomejs/cli-linux-x64@1.9.0':
+    optional: true
+
+  '@biomejs/cli-win32-arm64@1.9.0':
+    optional: true
+
+  '@biomejs/cli-win32-x64@1.9.0':
+    optional: true
+
+  '@types/node@22.5.5':
+    dependencies:
+      undici-types: 6.19.8
+
+  bufferutil@4.0.8:
+    dependencies:
+      node-gyp-build: 4.8.2
+
+  dotenv@16.4.5: {}
+
+  node-gyp-build@4.8.2: {}
+
+  seyfert@https://codeload.github.com/tiramisulabs/seyfert/tar.gz/d8bf40b60c00f59d5dcaf17e038cd47a3fce4daa: {}
 
   turbo-darwin-64@2.1.2:
     optional: true
@@ -80,3 +238,9 @@ snapshots:
       turbo-linux-arm64: 2.1.2
       turbo-windows-64: 2.1.2
       turbo-windows-arm64: 2.1.2
+
+  undici-types@6.19.8: {}
+
+  utf-8-validate@5.0.10:
+    dependencies:
+      node-gyp-build: 4.8.2

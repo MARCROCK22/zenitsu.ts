@@ -1,16 +1,21 @@
 {
-  "name": "zenitsu.ts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "turbo dev"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@9.10.0",
-  "devDependencies": {
-    "turbo": "^2.1.2"
-  }
+    "name": "zenitsu.ts",
+    "version": "0.0.1",
+    "description": "",
+    "scripts": {
+        "build": "turbo build",
+        "dev": "turbo dev",
+        "lint": "turbo lint",
+        "format": "turbo format"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "packageManager": "pnpm@9.10.0",
+    "dependencies": {
+        "turbo": "^2.1.2"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "1.9.0"
+    }
 }
