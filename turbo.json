@@ -3,8 +3,12 @@
     "ui": "tui",
     "tasks": {
         "build": {
-            "dependsOn": ["^build"],
-            "outputs": ["lib/**"]
+            "dependsOn": [
+                "^build"
+            ],
+            "outputs": [
+                "lib/**"
+            ]
         },
         "lint": {
             "cache": false,
@@ -15,13 +19,19 @@
             "persistent": true
         },
         "test": {
-            "dependsOn": ["^test"]
+            "dependsOn": [
+                "^test"
+            ]
         },
         "dev": {
             "cache": false,
             "persistent": true
         },
         "dev:start": {
+            "cache": false,
+            "persistent": true
+        },
+        "check": {
             "cache": false,
             "persistent": true
         }

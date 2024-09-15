@@ -1,23 +1,25 @@
 {
-  "name": "@repo/db",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
-  "type": "module",
-  "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc",
-    "lint": "biome lint --write ./src",
-    "format": "biome format --write ./src"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "tsc-watch": "^6.2.0"
-  },
-  "dependencies": {
-    "mongodb": "^6.9.0",
-    "papr": "^15.2.2"
-  }
+    "name": "@repo/db",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "tsc --watch",
+        "build": "tsc",
+        "lint": "biome lint --write ./src",
+        "format": "biome format --write ./src",
+        "check": "biome check --write --no-errors-on-unmatched ./src"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "tsc-watch": "^6.2.0"
+    },
+    "dependencies": {
+        "mongodb": "^6.9.0",
+        "papr": "^15.2.2",
+        "typescript": "^5.6.2"
+    }
 }

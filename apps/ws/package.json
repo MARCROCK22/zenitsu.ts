@@ -9,7 +9,8 @@
         "dev:start": "tsc-watch --onSuccess \"node .\"",
         "build": "tsc",
         "lint": "biome lint --write ./src",
-        "format": "biome format --write ./src"
+        "format": "biome format --write ./src",
+        "check": "biome check --write --no-errors-on-unmatched ./src"
     },
     "keywords": [],
     "author": "",
@@ -19,7 +20,8 @@
         "@types/node": "^22.5.5",
         "dotenv": "^16.4.5",
         "hono": "^4.6.1",
-        "seyfert": "github:tiramisulabs/seyfert"
+        "seyfert": "github:tiramisulabs/seyfert",
+        "typescript": "^5.6.2"
     },
     "devDependencies": {
         "tsc-watch": "^6.2.0"
