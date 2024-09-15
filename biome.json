@@ -29,7 +29,8 @@
                 "noNodejsModules": "off"
             },
             "style": {
-                "noDefaultExport": "off"
+                "noDefaultExport": "off",
+                "useNamingConvention": "off"
             }
         }
     },

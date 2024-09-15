@@ -13,6 +13,7 @@ export default config.bot({
     locations: {
         base: 'src',
         output: 'dist',
+        commands: 'commands',
     },
     token: TOKEN,
     debug: true,

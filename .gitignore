@@ -130,3 +130,4 @@ dist
 .pnp.*
 
 .turbo
+_seyfert_cache.json
