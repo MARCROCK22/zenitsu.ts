@@ -5,9 +5,19 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "build": "tsc"
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "lint": "biome lint --write ./src",
+    "format": "biome format --write ./src"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "tsc-watch": "^6.2.0"
+  },
+  "dependencies": {
+    "mongodb": "^6.9.0",
+    "papr": "^15.2.2"
+  }
 }

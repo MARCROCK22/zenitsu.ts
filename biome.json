@@ -3,7 +3,8 @@
     "vcs": {
         "enabled": true,
         "clientKind": "git",
-        "useIgnoreFile": true
+        "useIgnoreFile": true,
+        "defaultBranch": "main"
     },
     "files": {
         "ignoreUnknown": false,
@@ -12,7 +13,8 @@
     "formatter": {
         "enabled": true,
         "indentStyle": "space",
-        "indentWidth": 4
+        "indentWidth": 4,
+        "useEditorconfig": true
     },
     "organizeImports": {
         "enabled": true
@@ -23,7 +25,11 @@
             "recommended": false,
             "all": true,
             "correctness": {
-                "noUndeclaredDependencies": "off"
+                "noUndeclaredDependencies": "off",
+                "noNodejsModules": "off"
+            },
+            "style": {
+                "noDefaultExport": "off"
             }
         }
     },

@@ -1,13 +1,12 @@
 import { ApiHandler, Router, ShardManager } from 'seyfert';
-import 'dotenv/config';
 import {
     BaseClient,
     type InternalRuntimeConfig,
-} from 'seyfert/lib/client/base';
+} from 'seyfert/lib/client/base.js';
 import type { DeepPartial } from 'seyfert/lib/common';
 
 const rc = (await BaseClient.prototype.getRC.call(
-    undefined,
+    {},
 )) as unknown as DeepPartial<InternalRuntimeConfig>;
 
 const TOKEN = rc.token;
@@ -34,6 +33,7 @@ const ws = new ShardManager({
     },
     token: TOKEN,
     intents: INTENTS,
+    debug: rc.debug,
 });
 
 await ws.spawnShards();

@@ -2,10 +2,11 @@
     "name": "ws",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "./dist/index.js",
     "type": "module",
     "scripts": {
         "dev": "tsc --watch",
+        "dev:start": "tsc-watch --onSuccess \"node .\"",
         "build": "tsc",
         "lint": "biome lint --write ./src",
         "format": "biome format --write ./src"
@@ -16,6 +17,10 @@
     "dependencies": {
         "@types/node": "^22.5.5",
         "dotenv": "^16.4.5",
+        "hono": "^4.6.1",
         "seyfert": "github:tiramisulabs/seyfert"
+    },
+    "devDependencies": {
+        "tsc-watch": "^6.2.0"
     }
 }

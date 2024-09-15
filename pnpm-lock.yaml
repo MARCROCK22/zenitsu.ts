@@ -27,9 +27,16 @@ importers:
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
+      hono:
+        specifier: ^4.6.1
+        version: 4.6.1
       seyfert:
         specifier: github:tiramisulabs/seyfert
         version: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/d8bf40b60c00f59d5dcaf17e038cd47a3fce4daa
+    devDependencies:
+      tsc-watch:
+        specifier: ^6.2.0
+        version: 6.2.0(typescript@5.6.2)
 
   apps/ws:
     dependencies:
@@ -42,14 +49,32 @@ importers:
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
+      hono:
+        specifier: ^4.6.1
+        version: 4.6.1
       seyfert:
         specifier: github:tiramisulabs/seyfert
         version: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/d8bf40b60c00f59d5dcaf17e038cd47a3fce4daa
       utf-8-validate:
         specifier: ^5.0.2
         version: 5.0.10
+    devDependencies:
+      tsc-watch:
+        specifier: ^6.2.0
+        version: 6.2.0(typescript@5.6.2)
 
-  packages/db: {}
+  packages/db:
+    dependencies:
+      mongodb:
+        specifier: ^6.9.0
+        version: 6.9.0
+      papr:
+        specifier: ^15.2.2
+        version: 15.2.2(mongodb@6.9.0)
+    devDependencies:
+      tsc-watch:
+        specifier: ^6.2.0
+        version: 6.2.0(typescript@5.6.2)
 
 packages:
 
@@ -106,24 +131,153 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@mongodb-js/saslprep@1.1.9':
+    resolution: {integrity: sha512-tVkljjeEaAhCqTzajSdgbQ6gE6f3oneVwa3iXR6csiEwXXOFsiC6Uh9iAjAhXPtqa/XMDHWjjeNH/77m/Yq2dw==}
+
   '@types/node@22.5.5':
     resolution: {integrity: sha512-Xjs4y5UPO/CLdzpgR6GirZJx36yScjh73+2NlLlkFRSoQN8B0DpfXPdZGnvVmLRLOsqDpOfTNv7D9trgGhmOIA==}
+
+  '@types/webidl-conversions@7.0.3':
+    resolution: {integrity: sha512-CiJJvcRtIgzadHCYXw7dqEnMNRjhGZlYK05Mj9OyktqV8uVT8fD2BFOB7S1uwBE3Kj2Z+4UyPmFw/Ixgw/LAlA==}
+
+  '@types/whatwg-url@11.0.5':
+    resolution: {integrity: sha512-coYR071JRaHa+xoEvvYqvnIHaVqaYrLPbsufM9BF63HkwI5Lgmy2QR8Q5K/lYDYo5AK82wOvSOS0UsLTpTG7uQ==}
+
+  bson@6.8.0:
+    resolution: {integrity: sha512-iOJg8pr7wq2tg/zSlCCHMi3hMm5JTOxLTagf3zxhcenHsFp+c6uOs6K7W5UE7A4QIJGtqh/ZovFNMP4mOPJynQ==}
+    engines: {node: '>=16.20.1'}
 
   bufferutil@4.0.8:
     resolution: {integrity: sha512-4T53u4PdgsXqKaIctwF8ifXlRTTmEPJ8iEPWFdGZvcf7sbwYo6FKFEX9eNNAnzFZ7EzJAQ3CJeOtCRA4rDp7Pw==}
     engines: {node: '>=6.14.2'}
 
+  cross-spawn@7.0.3:
+    resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
+    engines: {node: '>= 8'}
+
   dotenv@16.4.5:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
+
+  duplexer@0.1.2:
+    resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
+
+  event-stream@3.3.4:
+    resolution: {integrity: sha512-QHpkERcGsR0T7Qm3HNJSyXKEEj8AHNxkY3PK8TS2KJvQ7NiSHe3DDpwVKKtoYprL/AreyzFBeIkBIWChAqn60g==}
+
+  from@0.1.7:
+    resolution: {integrity: sha512-twe20eF1OxVxp/ML/kq2p1uc6KvFK/+vs8WjEbeKmV2He22MKm7YF2ANIt+EOqhJ5L3K/SuuPhk0hWQDjOM23g==}
+
+  hono@4.6.1:
+    resolution: {integrity: sha512-6NGwvttY1+HAFii08VYiEKI6ETPAFbpLntpm2M/MogEsAFWdZV74UNT+2M4bmqX90cIQhjlpBSP+tO+CfB0uww==}
+    engines: {node: '>=16.0.0'}
+
+  isexe@2.0.0:
+    resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+
+  map-stream@0.1.0:
+    resolution: {integrity: sha512-CkYQrPYZfWnu/DAmVCpTSX/xHpKZ80eKh2lAkyA6AJTef6bW+6JpbQZN5rofum7da+SyN1bi5ctTm+lTfcCW3g==}
+
+  memory-pager@1.5.0:
+    resolution: {integrity: sha512-ZS4Bp4r/Zoeq6+NLJpP+0Zzm0pR8whtGPf1XExKLJBAczGMnSi3It14OiNCStjQjM6NU1okjQGSxgEZN8eBYKg==}
+
+  mongodb-connection-string-url@3.0.1:
+    resolution: {integrity: sha512-XqMGwRX0Lgn05TDB4PyG2h2kKO/FfWJyCzYQbIhXUxz7ETt0I/FqHjUeqj37irJ+Dl1ZtU82uYyj14u2XsZKfg==}
+
+  mongodb@6.9.0:
+    resolution: {integrity: sha512-UMopBVx1LmEUbW/QE0Hw18u583PEDVQmUmVzzBRH0o/xtE9DBRA5ZYLOjpLIa03i8FXjzvQECJcqoMvCXftTUA==}
+    engines: {node: '>=16.20.1'}
+    peerDependencies:
+      '@aws-sdk/credential-providers': ^3.188.0
+      '@mongodb-js/zstd': ^1.1.0
+      gcp-metadata: ^5.2.0
+      kerberos: ^2.0.1
+      mongodb-client-encryption: '>=6.0.0 <7'
+      snappy: ^7.2.2
+      socks: ^2.7.1
+    peerDependenciesMeta:
+      '@aws-sdk/credential-providers':
+        optional: true
+      '@mongodb-js/zstd':
+        optional: true
+      gcp-metadata:
+        optional: true
+      kerberos:
+        optional: true
+      mongodb-client-encryption:
+        optional: true
+      snappy:
+        optional: true
+      socks:
+        optional: true
+
+  node-cleanup@2.1.2:
+    resolution: {integrity: sha512-qN8v/s2PAJwGUtr1/hYTpNKlD6Y9rc4p8KSmJXyGdYGZsDGKXrGThikLFP9OCHFeLeEpQzPwiAtdIvBLqm//Hw==}
 
   node-gyp-build@4.8.2:
     resolution: {integrity: sha512-IRUxE4BVsHWXkV/SFOut4qTlagw2aM8T5/vnTsmrHJvVoKueJHRc/JaFND7QDDc61kLYUJ6qlZM3sqTSyx2dTw==}
     hasBin: true
 
+  papr@15.2.2:
+    resolution: {integrity: sha512-2DqfOiMGEMikKhE3gEyptqgtgdfIzdGBLlhIk4i3gh+TIWzNY6Yqc3lJ3bAkJRrSdqAdgjvmbGSgN9LV6/8ShQ==}
+    engines: {node: '>=16.20.1'}
+    peerDependencies:
+      mongodb: ^6.0.0
+
+  path-key@3.1.1:
+    resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
+    engines: {node: '>=8'}
+
+  pause-stream@0.0.11:
+    resolution: {integrity: sha512-e3FBlXLmN/D1S+zHzanP4E/4Z60oFAa3O051qt1pxa7DEJWKAyil6upYVXCWadEnuoqa4Pkc9oUx9zsxYeRv8A==}
+
+  ps-tree@1.2.0:
+    resolution: {integrity: sha512-0VnamPPYHl4uaU/nSFeZZpR21QAWRz+sRv4iW9+v/GS/J5U5iZB5BNN6J0RMoOvdx2gWM2+ZFMIm58q24e4UYA==}
+    engines: {node: '>= 0.10'}
+    hasBin: true
+
+  punycode@2.3.1:
+    resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
+    engines: {node: '>=6'}
+
   seyfert@https://codeload.github.com/tiramisulabs/seyfert/tar.gz/d8bf40b60c00f59d5dcaf17e038cd47a3fce4daa:
     resolution: {tarball: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/d8bf40b60c00f59d5dcaf17e038cd47a3fce4daa}
     version: 2.1.0
+
+  shebang-command@2.0.0:
+    resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
+    engines: {node: '>=8'}
+
+  shebang-regex@3.0.0:
+    resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
+    engines: {node: '>=8'}
+
+  sparse-bitfield@3.0.3:
+    resolution: {integrity: sha512-kvzhi7vqKTfkh0PZU+2D2PIllw2ymqJKujUcyPMd9Y75Nv4nPbGJZXNhxsgdQab2BmlDct1YnfQCguEvHr7VsQ==}
+
+  split@0.3.3:
+    resolution: {integrity: sha512-wD2AeVmxXRBoX44wAycgjVpMhvbwdI2aZjCkvfNcH1YqHQvJVa1duWc73OyVGJUc05fhFaTZeQ/PYsrmyH0JVA==}
+
+  stream-combiner@0.0.4:
+    resolution: {integrity: sha512-rT00SPnTVyRsaSz5zgSPma/aHSOic5U1prhYdRy5HS2kTZviFpmDgzilbtsJsxiroqACmayynDN/9VzIbX5DOw==}
+
+  string-argv@0.3.2:
+    resolution: {integrity: sha512-aqD2Q0144Z+/RqG52NeHEkZauTAUWJO8c6yTftGJKO3Tja5tUgIfmIl6kExvhtxSDP7fXB6DvzkfMpCd/F3G+Q==}
+    engines: {node: '>=0.6.19'}
+
+  through@2.3.8:
+    resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
+
+  tr46@4.1.1:
+    resolution: {integrity: sha512-2lv/66T7e5yNyhAAC4NaKe5nVavzuGJQVVtRYLyQ2OI8tsJ61PMLlelehb0wi2Hx6+hT/OJUWZcw8MjlSRnxvw==}
+    engines: {node: '>=14'}
+
+  tsc-watch@6.2.0:
+    resolution: {integrity: sha512-2LBhf9kjKXnz7KQ/puLHlozMzzUNHAdYBNMkg3eksQJ9GBAgMg8czznM83T5PmsoUvDnXzfIeQn2lNcIYDr8LA==}
+    engines: {node: '>=12.12.0'}
+    hasBin: true
+    peerDependencies:
+      typescript: '*'
 
   turbo-darwin-64@2.1.2:
     resolution: {integrity: sha512-3TEBxHWh99h2yIzkuIigMEOXt/ItYQp0aPiJjPd1xN4oDcsKK5AxiFKPH9pdtfIBzYsY59kQhZiFj0ELnSP7Bw==}
@@ -159,12 +313,30 @@ packages:
     resolution: {integrity: sha512-Jb0rbU4iHEVQ18An/YfakdIv9rKnd3zUfSE117EngrfWXFHo3RndVH96US3GsT8VHpwTncPePDBT2t06PaFLrw==}
     hasBin: true
 
+  typescript@5.6.2:
+    resolution: {integrity: sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   undici-types@6.19.8:
     resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
   utf-8-validate@5.0.10:
     resolution: {integrity: sha512-Z6czzLq4u8fPOyx7TU6X3dvUZVvoJmxSQ+IcrlmagKhilxlhZgxPK6C5Jqbkw1IDUmFTM+cz9QDnnLTwDz/2gQ==}
     engines: {node: '>=6.14.2'}
+
+  webidl-conversions@7.0.0:
+    resolution: {integrity: sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==}
+    engines: {node: '>=12'}
+
+  whatwg-url@13.0.0:
+    resolution: {integrity: sha512-9WWbymnqj57+XEuqADHrCJ2eSXzn8WXIW/YSGaZtb2WKAInQ6CHfaUUcTyyver0p8BDg5StLQq8h1vtZuwmOig==}
+    engines: {node: '>=16'}
+
+  which@2.0.2:
+    resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
+    engines: {node: '>= 8'}
+    hasBin: true
 
 snapshots:
 
@@ -203,19 +375,122 @@ snapshots:
   '@biomejs/cli-win32-x64@1.9.0':
     optional: true
 
+  '@mongodb-js/saslprep@1.1.9':
+    dependencies:
+      sparse-bitfield: 3.0.3
+
   '@types/node@22.5.5':
     dependencies:
       undici-types: 6.19.8
+
+  '@types/webidl-conversions@7.0.3': {}
+
+  '@types/whatwg-url@11.0.5':
+    dependencies:
+      '@types/webidl-conversions': 7.0.3
+
+  bson@6.8.0: {}
 
   bufferutil@4.0.8:
     dependencies:
       node-gyp-build: 4.8.2
 
+  cross-spawn@7.0.3:
+    dependencies:
+      path-key: 3.1.1
+      shebang-command: 2.0.0
+      which: 2.0.2
+
   dotenv@16.4.5: {}
+
+  duplexer@0.1.2: {}
+
+  event-stream@3.3.4:
+    dependencies:
+      duplexer: 0.1.2
+      from: 0.1.7
+      map-stream: 0.1.0
+      pause-stream: 0.0.11
+      split: 0.3.3
+      stream-combiner: 0.0.4
+      through: 2.3.8
+
+  from@0.1.7: {}
+
+  hono@4.6.1: {}
+
+  isexe@2.0.0: {}
+
+  map-stream@0.1.0: {}
+
+  memory-pager@1.5.0: {}
+
+  mongodb-connection-string-url@3.0.1:
+    dependencies:
+      '@types/whatwg-url': 11.0.5
+      whatwg-url: 13.0.0
+
+  mongodb@6.9.0:
+    dependencies:
+      '@mongodb-js/saslprep': 1.1.9
+      bson: 6.8.0
+      mongodb-connection-string-url: 3.0.1
+
+  node-cleanup@2.1.2: {}
 
   node-gyp-build@4.8.2: {}
 
+  papr@15.2.2(mongodb@6.9.0):
+    dependencies:
+      mongodb: 6.9.0
+
+  path-key@3.1.1: {}
+
+  pause-stream@0.0.11:
+    dependencies:
+      through: 2.3.8
+
+  ps-tree@1.2.0:
+    dependencies:
+      event-stream: 3.3.4
+
+  punycode@2.3.1: {}
+
   seyfert@https://codeload.github.com/tiramisulabs/seyfert/tar.gz/d8bf40b60c00f59d5dcaf17e038cd47a3fce4daa: {}
+
+  shebang-command@2.0.0:
+    dependencies:
+      shebang-regex: 3.0.0
+
+  shebang-regex@3.0.0: {}
+
+  sparse-bitfield@3.0.3:
+    dependencies:
+      memory-pager: 1.5.0
+
+  split@0.3.3:
+    dependencies:
+      through: 2.3.8
+
+  stream-combiner@0.0.4:
+    dependencies:
+      duplexer: 0.1.2
+
+  string-argv@0.3.2: {}
+
+  through@2.3.8: {}
+
+  tr46@4.1.1:
+    dependencies:
+      punycode: 2.3.1
+
+  tsc-watch@6.2.0(typescript@5.6.2):
+    dependencies:
+      cross-spawn: 7.0.3
+      node-cleanup: 2.1.2
+      ps-tree: 1.2.0
+      string-argv: 0.3.2
+      typescript: 5.6.2
 
   turbo-darwin-64@2.1.2:
     optional: true
@@ -244,8 +519,21 @@ snapshots:
       turbo-windows-64: 2.1.2
       turbo-windows-arm64: 2.1.2
 
+  typescript@5.6.2: {}
+
   undici-types@6.19.8: {}
 
   utf-8-validate@5.0.10:
     dependencies:
       node-gyp-build: 4.8.2
+
+  webidl-conversions@7.0.0: {}
+
+  whatwg-url@13.0.0:
+    dependencies:
+      tr46: 4.1.1
+      webidl-conversions: 7.0.0
+
+  which@2.0.2:
+    dependencies:
+      isexe: 2.0.0
