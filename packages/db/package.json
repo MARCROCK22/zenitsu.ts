@@ -15,11 +15,11 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "tsc-watch": "^6.2.0"
+        "tsc-watch": "^6.2.0",
+        "typescript": "^5.6.2"
     },
     "dependencies": {
         "mongodb": "^6.9.0",
-        "papr": "^15.2.2",
-        "typescript": "^5.6.2"
+        "papr": "^15.2.2"
     }
 }
