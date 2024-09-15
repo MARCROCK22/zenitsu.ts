@@ -20,7 +20,7 @@
         "@repo/db": "workspace:*",
         "@types/node": "^22.5.5",
         "hono": "^4.6.1",
-        "seyfert": "github:tiramisulabs/seyfert"
+        "seyfert": "https://pkg.pr.new/tiramisulabs/seyfert@ee135a2"
     },
     "devDependencies": {
         "tsc-watch": "^6.2.0",
