@@ -1,9 +1,7 @@
-import { config as configDotEnv } from 'dotenv';
 import { join } from 'node:path';
-configDotEnv({
-    path: join(process.cwd(), '..', '..', '.env'),
-});
 import { config } from 'seyfert';
+
+process.loadEnvFile(join(process.cwd(), '..', '..', '.env'));
 
 const TOKEN = process.env.TOKEN;
 
