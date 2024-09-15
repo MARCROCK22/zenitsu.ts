@@ -28,8 +28,18 @@ const router = new Router(rest);
 
 const ws = new ShardManager({
     info: await router.createProxy().gateway.bot.get(),
-    handlePayload(shardId, packet) {
-        return { shardId, packet };
+    async handlePayload(shardId, packet) {
+        await fetch('http://localhost:2807/packet', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                packet,
+                shardId,
+                authorization: TOKEN,
+            }),
+        });
     },
     token: TOKEN,
     intents: INTENTS,

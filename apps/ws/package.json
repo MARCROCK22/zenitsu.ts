@@ -15,6 +15,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@hono/node-server": "^1.12.2",
         "@types/node": "^22.5.5",
         "dotenv": "^16.4.5",
         "hono": "^4.6.1",
