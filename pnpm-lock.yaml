@@ -18,6 +18,9 @@ importers:
 
   apps/bot:
     dependencies:
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@types/node':
         specifier: ^22.5.5
         version: 22.5.5
@@ -45,6 +48,8 @@ importers:
       utf-8-validate:
         specifier: ^5.0.2
         version: 5.0.10
+
+  packages/db: {}
 
 packages:
 

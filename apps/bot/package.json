@@ -16,6 +16,7 @@
     "dependencies": {
         "@types/node": "^22.5.5",
         "dotenv": "^16.4.5",
-        "seyfert": "github:tiramisulabs/seyfert"
+        "seyfert": "github:tiramisulabs/seyfert",
+        "@repo/db": "workspace:*"
     }
 }
