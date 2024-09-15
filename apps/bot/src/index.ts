@@ -7,6 +7,12 @@ const client = new Client();
 
 await client.start({}, false);
 
+const BOT_PORT = Number(process.env.BOT_PORT);
+
+if (!BOT_PORT) {
+    throw new Error('Cannot start process without BOT_PORT');
+}
+
 const app = new Hono();
 
 app.post('/packet', async (c) => {
@@ -24,5 +30,5 @@ app.post('/packet', async (c) => {
 
 serve({
     fetch: app.fetch,
-    port: 2807,
+    port: BOT_PORT,
 });
