@@ -1,5 +1,5 @@
 {
-    "name": "@repo/db",
+    "name": "@repo/config",
     "version": "1.0.0",
     "description": "",
     "main": "dist/index.js",
@@ -20,7 +20,7 @@
         "typescript": "^5.6.2"
     },
     "dependencies": {
-        "mongodb": "^6.9.0",
-        "papr": "^15.2.2"
+        "@types/node": "^22.7.4",
+        "seyfert": "https://pkg.pr.new/tiramisulabs/seyfert@5926b4d"
     }
 }

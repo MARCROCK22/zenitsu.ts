@@ -1,76 +1,41 @@
 import { serve } from '@hono/node-server';
+import { createClient } from '@redis/client';
+import { config } from '@repo/config';
 import { Hono } from 'hono';
-import { ApiHandler, Logger, Router, ShardManager } from 'seyfert';
-import {
-    BaseClient,
-    type InternalRuntimeConfig,
-} from 'seyfert/lib/client/base.js';
-import type { DeepPartial } from 'seyfert/lib/common';
-
-const rc = (await BaseClient.prototype.getRC.call(
-    {},
-)) as unknown as DeepPartial<InternalRuntimeConfig>;
-
-const TOKEN = rc.token;
-const INTENTS = rc.intents;
-const BOT_PORT = Number(process.env.BOT_PORT);
-const WS_PORT = Number(process.env.WS_PORT);
-
-if (!TOKEN) {
-    throw new Error('Cannot start process without token');
-}
-
-if (!INTENTS && INTENTS !== 0) {
-    throw new Error('Cannot start process without intents');
-}
-
-if (!BOT_PORT) {
-    throw new Error('Cannot start process without BOT_PORT');
-}
-
-if (!WS_PORT) {
-    throw new Error('Cannot start process without WS_PORT');
-}
+import { ApiHandler, Logger, ShardManager } from 'seyfert';
 
 const rest = new ApiHandler({
-    token: TOKEN,
+    token: config.rc.token,
 });
 
-const router = new Router(rest);
-
+const redisClient = createClient();
+await redisClient.connect();
 const ws = new ShardManager({
-    info: await router.createProxy().gateway.bot.get(),
-    async handlePayload(shardId, packet) {
-        await fetch(`http://localhost:${BOT_PORT}/packet`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                packet,
-                shardId,
-                authorization: TOKEN,
+    info: await rest.proxy.gateway.bot.get(),
+    handlePayload(s, p) {
+        return redisClient.publish(
+            'gateway',
+            JSON.stringify({
+                s,
+                p,
             }),
-        }).catch(() => {
-            // likely a network error
-        });
+        );
     },
-    token: TOKEN,
-    intents: INTENTS,
-    debug: rc.debug,
+    token: config.rc.token,
+    intents: config.rc.intents,
+    debug: config.rc.debug,
 });
 
 await ws.spawnShards();
-
 const logger = new Logger({
-    name: '[ShardManager]',
+    name: '[APIWebSocket]',
 });
 
 const app = new Hono();
 
 app.get('/info', async (c) => {
     if (c.req.header('authorization') !== ws.options.token) {
-        logger.fatal('Invalid authorization');
+        logger.warn('Invalid auth', c.req.header('authorization'));
         c.status(418);
         return c.text('Invalid authorization');
     }
@@ -91,7 +56,9 @@ app.get('/info', async (c) => {
     });
 });
 
+app.get('/uptime', (c) => c.text(process.uptime().toString()));
+
 serve({
     fetch: app.fetch,
-    port: WS_PORT,
+    port: config.wsPort,
 });

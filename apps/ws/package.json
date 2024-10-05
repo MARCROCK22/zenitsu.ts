@@ -16,10 +16,12 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@hono/node-server": "^1.12.2",
-        "@types/node": "^22.5.5",
-        "hono": "^4.6.1",
-        "seyfert": "https://pkg.pr.new/tiramisulabs/seyfert@ee135a2"
+        "@hono/node-server": "^1.13.1",
+        "@redis/client": "^1.6.0",
+        "@repo/config": "workspace:*",
+        "@types/node": "^22.7.4",
+        "hono": "^4.6.3",
+        "seyfert": "https://pkg.pr.new/tiramisulabs/seyfert@5926b4d"
     },
     "devDependencies": {
         "tsc-watch": "^6.2.0",

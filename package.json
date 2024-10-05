@@ -8,16 +8,17 @@
         "dev:start": "turbo dev:start",
         "lint": "turbo lint",
         "format": "turbo format",
-        "check": "turbo check"
+        "check": "turbo check",
+        "redis:restart": "sudo service redis-server restart"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "packageManager": "pnpm@9.10.0",
     "dependencies": {
-        "turbo": "^2.1.2"
+        "turbo": "^2.1.3"
     },
     "devDependencies": {
-        "@biomejs/biome": "1.9.1"
+        "@biomejs/biome": "1.9.3"
     }
 }
