@@ -22,6 +22,7 @@
         "@repo/config": "workspace:*",
         "@repo/db": "workspace:*",
         "@types/node": "^22.7.4",
+        "ajv-ts": "^0.9.0",
         "hono": "^4.6.3",
         "seyfert": "https://pkg.pr.new/tiramisulabs/seyfert@5926b4d"
     },

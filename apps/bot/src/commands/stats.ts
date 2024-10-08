@@ -1,7 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import ms from '@fabricio-191/ms';
-import { config } from '@repo/config';
 import { Command, type CommandContext, Declare } from 'seyfert';
 const {
     dependencies: { seyfert: seyfertVersion },
@@ -17,9 +16,7 @@ export default class StatsCommand extends Command {
     async run(ctx: CommandContext) {
         await ctx.deferReply();
 
-        const wsUptime: number = await fetch(
-            `http://localhost:${config.wsPort}/uptime`,
-        ).then((x) => x.json());
+        const wsUptime = await ctx.client.wsApi.uptime();
 
         const data: Record<string, string> = {};
         const memoryUsage = process.memoryUsage();

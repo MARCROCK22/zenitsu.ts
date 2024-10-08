@@ -1,14 +1,37 @@
 import { join } from 'node:path';
 import { createClient } from '@redis/client';
 import { config } from '@repo/config';
-import { Client, type ParseClient } from 'seyfert';
+import { Client, type ParseClient, type UsingClient } from 'seyfert';
 import type { GatewayDispatchPayload } from 'seyfert/lib/types';
+import { WsApiManager } from './api/wsManager.js';
 
 const client = new Client({
     getRC() {
         return config.rc;
     },
-});
+    commands: {
+        defaults: {
+            onRunError(ctx, error) {
+                client.logger.error(
+                    ctx.author.id,
+                    ctx.author.username,
+                    ctx.fullCommandName,
+                    error,
+                );
+                const content = `\`\`\`${
+                    error instanceof Error
+                        ? (error.stack ?? error.message)
+                        : `${error ?? 'Unknown error'}`
+                }\`\`\``;
+
+                return ctx.editOrReply({
+                    content,
+                });
+            },
+        },
+    },
+}) as unknown as UsingClient & Client;
+client.wsApi = new WsApiManager();
 
 await client.start({}, false);
 await client.uploadCommands({
@@ -27,5 +50,7 @@ redisClient.subscribe('gateway', (message) => {
 });
 
 declare module 'seyfert' {
-    interface UsingClient extends ParseClient<Client<true>> {}
+    interface UsingClient extends ParseClient<Client<true>> {
+        wsApi: WsApiManager;
+    }
 }
