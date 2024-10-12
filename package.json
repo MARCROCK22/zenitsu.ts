@@ -9,7 +9,8 @@
         "lint": "turbo lint",
         "format": "turbo format",
         "check": "turbo check",
-        "redis:restart": "sudo service redis-server restart"
+        "redis:restart": "sudo service redis-server restart",
+        "update_seyfert": "pnpm remove seyfert -r && pnpm add https://github.com/tiramisulabs/seyfert -r && cd packages/db && pnpm remove seyfert"
     },
     "keywords": [],
     "author": "",

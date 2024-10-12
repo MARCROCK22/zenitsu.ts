@@ -22,8 +22,8 @@ importers:
         specifier: ^1.5.1
         version: 1.5.1
       '@hono/node-server':
-        specifier: ^1.13.1
-        version: 1.13.1(hono@4.6.3)
+        specifier: ^1.13.2
+        version: 1.13.2(hono@4.6.4)
       '@redis/client':
         specifier: ^1.6.0
         version: 1.6.0
@@ -34,30 +34,30 @@ importers:
         specifier: workspace:*
         version: link:../../packages/db
       '@types/node':
-        specifier: ^22.7.4
-        version: 22.7.4
+        specifier: ^22.7.5
+        version: 22.7.5
       ajv-ts:
         specifier: ^0.9.0
-        version: 0.9.0(typescript@5.6.2)
+        version: 0.9.0(typescript@5.6.3)
       hono:
-        specifier: ^4.6.3
-        version: 4.6.3
+        specifier: ^4.6.4
+        version: 4.6.4
       seyfert:
-        specifier: https://pkg.pr.new/tiramisulabs/seyfert@5926b4d
-        version: https://pkg.pr.new/tiramisulabs/seyfert@5926b4d
+        specifier: github:tiramisulabs/seyfert
+        version: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/4a0a9ae1304ef159ffa2358da2eddd41779301c8
     devDependencies:
       tsc-watch:
         specifier: ^6.2.0
-        version: 6.2.0(typescript@5.6.2)
+        version: 6.2.0(typescript@5.6.3)
       typescript:
-        specifier: ^5.6.2
-        version: 5.6.2
+        specifier: ^5.6.3
+        version: 5.6.3
 
   apps/ws:
     dependencies:
       '@hono/node-server':
-        specifier: ^1.13.1
-        version: 1.13.1(hono@4.6.3)
+        specifier: ^1.13.2
+        version: 1.13.2(hono@4.6.4)
       '@redis/client':
         specifier: ^1.6.0
         version: 1.6.0
@@ -65,43 +65,43 @@ importers:
         specifier: workspace:*
         version: link:../../packages/config
       '@types/node':
-        specifier: ^22.7.4
-        version: 22.7.4
+        specifier: ^22.7.5
+        version: 22.7.5
       bufferutil:
         specifier: ^4.0.1
         version: 4.0.8
       hono:
-        specifier: ^4.6.3
-        version: 4.6.3
+        specifier: ^4.6.4
+        version: 4.6.4
       seyfert:
-        specifier: https://pkg.pr.new/tiramisulabs/seyfert@5926b4d
-        version: https://pkg.pr.new/tiramisulabs/seyfert@5926b4d
+        specifier: github:tiramisulabs/seyfert
+        version: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/4a0a9ae1304ef159ffa2358da2eddd41779301c8
       utf-8-validate:
         specifier: ^5.0.2
         version: 5.0.10
     devDependencies:
       tsc-watch:
         specifier: ^6.2.0
-        version: 6.2.0(typescript@5.6.2)
+        version: 6.2.0(typescript@5.6.3)
       typescript:
-        specifier: ^5.6.2
-        version: 5.6.2
+        specifier: ^5.6.3
+        version: 5.6.3
 
   packages/config:
     dependencies:
       '@types/node':
-        specifier: ^22.7.4
-        version: 22.7.4
+        specifier: ^22.7.5
+        version: 22.7.5
       seyfert:
-        specifier: https://pkg.pr.new/tiramisulabs/seyfert@5926b4d
-        version: https://pkg.pr.new/tiramisulabs/seyfert@5926b4d
+        specifier: github:tiramisulabs/seyfert
+        version: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/4a0a9ae1304ef159ffa2358da2eddd41779301c8
     devDependencies:
       tsc-watch:
         specifier: ^6.2.0
-        version: 6.2.0(typescript@5.6.2)
+        version: 6.2.0(typescript@5.6.3)
       typescript:
-        specifier: ^5.6.2
-        version: 5.6.2
+        specifier: ^5.6.3
+        version: 5.6.3
 
   packages/db:
     dependencies:
@@ -114,10 +114,10 @@ importers:
     devDependencies:
       tsc-watch:
         specifier: ^6.2.0
-        version: 6.2.0(typescript@5.6.2)
+        version: 6.2.0(typescript@5.6.3)
       typescript:
-        specifier: ^5.6.2
-        version: 5.6.2
+        specifier: ^5.6.3
+        version: 5.6.3
 
 packages:
 
@@ -177,8 +177,8 @@ packages:
   '@fabricio-191/ms@1.5.1':
     resolution: {integrity: sha512-rjDJ3JM8wVB3270Am+sF3v94zhdAWTAIKXZtrJQTtBs5vr2j6ZjX4dQ0pOuH2t1BtpHBVlBnNoDzYjWYS8oPQQ==}
 
-  '@hono/node-server@1.13.1':
-    resolution: {integrity: sha512-TSxE6cT5RHnawbjnveexVN7H2Dpn1YaLxQrCOLCUwD+hFbqbFsnJBgdWcYtASqtWVjA+Qgi8uqFug39GsHjo5A==}
+  '@hono/node-server@1.13.2':
+    resolution: {integrity: sha512-0w8nEmAyx0Ul0CQp8BL2VtAG4YVdpzXd/mvvM+l0G5Oq22pUyHS+KeFFPSY+czLOF5NAiV3MUNPD1n14Ol5svg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
@@ -190,8 +190,8 @@ packages:
     resolution: {integrity: sha512-aR0uffYI700OEEH4gYnitAnv3vzVGXCFvYfdpu/CJKvk4pHfLPEy/JSZyrpQ+15WhXe1yJRXLtfQ84s4mEXnPg==}
     engines: {node: '>=14'}
 
-  '@types/node@22.7.4':
-    resolution: {integrity: sha512-y+NPi1rFzDs1NdQHHToqeiX2TIS79SWEAw9GYhkkx8bD0ChpfqC+n2j5OXOCpzfojBEBt6DnEnnG9MY0zk1XLg==}
+  '@types/node@22.7.5':
+    resolution: {integrity: sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ==}
 
   '@types/webidl-conversions@7.0.3':
     resolution: {integrity: sha512-CiJJvcRtIgzadHCYXw7dqEnMNRjhGZlYK05Mj9OyktqV8uVT8fD2BFOB7S1uwBE3Kj2Z+4UyPmFw/Ixgw/LAlA==}
@@ -252,8 +252,8 @@ packages:
     resolution: {integrity: sha512-hymDOu5B53XvN4QT9dBmZxPX4CWhBPPLguTZ9MMFeFa/Kg0xWVfylOVNlJji/E7yTZWFd/q9GO5TxDLq156D7g==}
     engines: {node: '>= 4'}
 
-  hono@4.6.3:
-    resolution: {integrity: sha512-0LeEuBNFeSHGqZ9sNVVgZjB1V5fmhkBSB0hZrpqStSMLOWgfLy0dHOvrjbJh0H2khsjet6rbHfWTHY0kpYThKQ==}
+  hono@4.6.4:
+    resolution: {integrity: sha512-T5WqBkTOcIQblqBKB5mpzaH/A+dSpvVe938xZJCHOmOuYfF7DSwE/9/10+BMvwSPq9N/f6LiQ38HxrZSQOsXKw==}
     engines: {node: '>=16.9.0'}
 
   isexe@2.0.0:
@@ -331,8 +331,8 @@ packages:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
 
-  seyfert@https://pkg.pr.new/tiramisulabs/seyfert@5926b4d:
-    resolution: {tarball: https://pkg.pr.new/tiramisulabs/seyfert@5926b4d}
+  seyfert@https://codeload.github.com/tiramisulabs/seyfert/tar.gz/4a0a9ae1304ef159ffa2358da2eddd41779301c8:
+    resolution: {tarball: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/4a0a9ae1304ef159ffa2358da2eddd41779301c8}
     version: 2.1.0
 
   shebang-command@2.0.0:
@@ -408,8 +408,8 @@ packages:
     resolution: {integrity: sha512-OduNjVJsFbifKb57UqZ2EMP1i4u64Xwow3NYXUtBbD4vIwJdQd4+xl8YDou1dlm4DVrtwT/7Ky8z8WyCULVfxw==}
     engines: {node: '>=16'}
 
-  typescript@5.6.2:
-    resolution: {integrity: sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==}
+  typescript@5.6.3:
+    resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -478,9 +478,9 @@ snapshots:
 
   '@fabricio-191/ms@1.5.1': {}
 
-  '@hono/node-server@1.13.1(hono@4.6.3)':
+  '@hono/node-server@1.13.2(hono@4.6.4)':
     dependencies:
-      hono: 4.6.3
+      hono: 4.6.4
 
   '@mongodb-js/saslprep@1.1.9':
     dependencies:
@@ -492,7 +492,7 @@ snapshots:
       generic-pool: 3.9.0
       yallist: 4.0.0
 
-  '@types/node@22.7.4':
+  '@types/node@22.7.5':
     dependencies:
       undici-types: 6.19.8
 
@@ -510,13 +510,13 @@ snapshots:
     optionalDependencies:
       ajv: 8.16.0
 
-  ajv-ts@0.9.0(typescript@5.6.2):
+  ajv-ts@0.9.0(typescript@5.6.3):
     dependencies:
       ajv: 8.16.0
       ajv-errors: 3.0.0(ajv@8.16.0)
       ajv-formats: 3.0.1(ajv@8.16.0)
       type-fest: 4.26.0
-      typescript: 5.6.2
+      typescript: 5.6.3
 
   ajv@8.16.0:
     dependencies:
@@ -557,7 +557,7 @@ snapshots:
 
   generic-pool@3.9.0: {}
 
-  hono@4.6.3: {}
+  hono@4.6.4: {}
 
   isexe@2.0.0: {}
 
@@ -600,7 +600,7 @@ snapshots:
 
   require-from-string@2.0.2: {}
 
-  seyfert@https://pkg.pr.new/tiramisulabs/seyfert@5926b4d: {}
+  seyfert@https://codeload.github.com/tiramisulabs/seyfert/tar.gz/4a0a9ae1304ef159ffa2358da2eddd41779301c8: {}
 
   shebang-command@2.0.0:
     dependencies:
@@ -628,13 +628,13 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  tsc-watch@6.2.0(typescript@5.6.2):
+  tsc-watch@6.2.0(typescript@5.6.3):
     dependencies:
       cross-spawn: 7.0.3
       node-cleanup: 2.1.2
       ps-tree: 1.2.0
       string-argv: 0.3.2
-      typescript: 5.6.2
+      typescript: 5.6.3
 
   turbo-darwin-64@2.1.3:
     optional: true
@@ -665,7 +665,7 @@ snapshots:
 
   type-fest@4.26.0: {}
 
-  typescript@5.6.2: {}
+  typescript@5.6.3: {}
 
   undici-types@6.19.8: {}
 

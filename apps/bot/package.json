@@ -17,17 +17,17 @@
     "license": "ISC",
     "dependencies": {
         "@fabricio-191/ms": "^1.5.1",
-        "@hono/node-server": "^1.13.1",
+        "@hono/node-server": "^1.13.2",
         "@redis/client": "^1.6.0",
         "@repo/config": "workspace:*",
         "@repo/db": "workspace:*",
-        "@types/node": "^22.7.4",
+        "@types/node": "^22.7.5",
         "ajv-ts": "^0.9.0",
-        "hono": "^4.6.3",
-        "seyfert": "https://pkg.pr.new/tiramisulabs/seyfert@5926b4d"
+        "hono": "^4.6.4",
+        "seyfert": "github:tiramisulabs/seyfert"
     },
     "devDependencies": {
         "tsc-watch": "^6.2.0",
-        "typescript": "^5.6.2"
+        "typescript": "^5.6.3"
     }
 }
