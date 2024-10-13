@@ -1,5 +1,6 @@
 import { config } from '@repo/config';
 import s from 'ajv-ts';
+import { statsResult } from './_.js';
 
 const shardsInfoResult = s.object({
     latency: s.number(),
@@ -22,9 +23,7 @@ const shardsInfoResult = s.object({
     ),
 });
 
-const uptimeResult = s.number();
-
-export class WsApiManager {
+export class WsManager {
     private baseURL = `http://localhost:${config.wsPort}`;
 
     async shardsInfo() {
@@ -37,13 +36,13 @@ export class WsApiManager {
         return shardsInfoResult.parse(result);
     }
 
-    async uptime() {
-        const response = await fetch(`${this.baseURL}/uptime`, {
+    async stats() {
+        const response = await fetch(`${this.baseURL}/stats`, {
             headers: {
                 authorization: config.rc.token,
             },
         });
         const result = await response.json();
-        return uptimeResult.parse(result);
+        return statsResult.parse(result);
     }
 }

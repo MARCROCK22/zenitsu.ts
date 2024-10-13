@@ -3,7 +3,8 @@ import { createClient } from '@redis/client';
 import { config } from '@repo/config';
 import { Client, type ParseClient, type UsingClient } from 'seyfert';
 import type { GatewayDispatchPayload } from 'seyfert/lib/types';
-import { WsApiManager } from './api/wsManager.js';
+import { ApiManager } from './api/apiManager.js';
+import { WsManager } from './api/wsManager.js';
 
 const client = new Client({
     getRC() {
@@ -31,7 +32,8 @@ const client = new Client({
         },
     },
 }) as unknown as UsingClient & Client;
-client.wsApi = new WsApiManager();
+client.ws = new WsManager();
+client.api = new ApiManager();
 
 await client.start({}, false);
 await client.uploadCommands({
@@ -51,6 +53,7 @@ redisClient.subscribe('gateway', (message) => {
 
 declare module 'seyfert' {
     interface UsingClient extends ParseClient<Client<true>> {
-        wsApi: WsApiManager;
+        ws: WsManager;
+        api: ApiManager;
     }
 }

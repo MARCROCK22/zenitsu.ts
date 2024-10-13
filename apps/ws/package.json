@@ -21,7 +21,7 @@
         "@repo/config": "workspace:*",
         "@types/node": "^22.7.5",
         "hono": "^4.6.4",
-        "seyfert": "github:tiramisulabs/seyfert"
+        "seyfert": "2.1.1-dev-11317878487.0"
     },
     "devDependencies": {
         "tsc-watch": "^6.2.0",

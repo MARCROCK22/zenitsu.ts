@@ -21,6 +21,6 @@
     },
     "dependencies": {
         "@types/node": "^22.7.5",
-        "seyfert": "github:tiramisulabs/seyfert"
+        "seyfert": "2.1.1-dev-11317878487.0"
     }
 }

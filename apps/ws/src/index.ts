@@ -56,9 +56,20 @@ app.get('/info', async (c) => {
     });
 });
 
-app.get('/uptime', (c) => c.text(process.uptime().toString()));
+app.get('/stats', (c) =>
+    c.json({
+        memoryUsage: process.memoryUsage(),
+        uptime: process.uptime(),
+    }),
+);
 
-serve({
-    fetch: app.fetch,
-    port: config.wsPort,
-});
+serve(
+    {
+        fetch: app.fetch,
+        port: config.wsPort,
+    },
+    (address) => {
+        // biome-ignore lint/suspicious/noConsole: <explanation>
+        console.log(`Listening to ${address.port}`);
+    },
+);

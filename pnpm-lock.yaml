@@ -16,14 +16,42 @@ importers:
         specifier: 1.9.3
         version: 1.9.3
 
+  apps/api:
+    dependencies:
+      '@hono/node-server':
+        specifier: ^1.13.2
+        version: 1.13.2(hono@4.6.4)
+      '@repo/config':
+        specifier: workspace:*
+        version: link:../../packages/config
+      '@types/node':
+        specifier: ^22.7.5
+        version: 22.7.5
+      ajv-ts:
+        specifier: ^0.9.0
+        version: 0.9.0(typescript@5.6.3)
+      hono:
+        specifier: ^4.6.4
+        version: 4.6.4
+      imagescript:
+        specifier: github:matmen/imagescript
+        version: https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b
+      seyfert:
+        specifier: 2.1.1-dev-11317878487.0
+        version: 2.1.1-dev-11317878487.0
+    devDependencies:
+      tsc-watch:
+        specifier: ^6.2.0
+        version: 6.2.0(typescript@5.6.3)
+      typescript:
+        specifier: ^5.6.3
+        version: 5.6.3
+
   apps/bot:
     dependencies:
       '@fabricio-191/ms':
         specifier: ^1.5.1
         version: 1.5.1
-      '@hono/node-server':
-        specifier: ^1.13.2
-        version: 1.13.2(hono@4.6.4)
       '@redis/client':
         specifier: ^1.6.0
         version: 1.6.0
@@ -39,12 +67,9 @@ importers:
       ajv-ts:
         specifier: ^0.9.0
         version: 0.9.0(typescript@5.6.3)
-      hono:
-        specifier: ^4.6.4
-        version: 4.6.4
       seyfert:
-        specifier: github:tiramisulabs/seyfert
-        version: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/4a0a9ae1304ef159ffa2358da2eddd41779301c8
+        specifier: 2.1.1-dev-11317878487.0
+        version: 2.1.1-dev-11317878487.0
     devDependencies:
       tsc-watch:
         specifier: ^6.2.0
@@ -74,8 +99,8 @@ importers:
         specifier: ^4.6.4
         version: 4.6.4
       seyfert:
-        specifier: github:tiramisulabs/seyfert
-        version: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/4a0a9ae1304ef159ffa2358da2eddd41779301c8
+        specifier: 2.1.1-dev-11317878487.0
+        version: 2.1.1-dev-11317878487.0
       utf-8-validate:
         specifier: ^5.0.2
         version: 5.0.10
@@ -93,8 +118,8 @@ importers:
         specifier: ^22.7.5
         version: 22.7.5
       seyfert:
-        specifier: github:tiramisulabs/seyfert
-        version: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/4a0a9ae1304ef159ffa2358da2eddd41779301c8
+        specifier: 2.1.1-dev-11317878487.0
+        version: 2.1.1-dev-11317878487.0
     devDependencies:
       tsc-watch:
         specifier: ^6.2.0
@@ -111,6 +136,9 @@ importers:
       papr:
         specifier: ^15.2.2
         version: 15.2.2(mongodb@6.9.0)
+      seyfert:
+        specifier: 2.1.1-dev-11317878487.0
+        version: 2.1.1-dev-11317878487.0
     devDependencies:
       tsc-watch:
         specifier: ^6.2.0
@@ -256,6 +284,11 @@ packages:
     resolution: {integrity: sha512-T5WqBkTOcIQblqBKB5mpzaH/A+dSpvVe938xZJCHOmOuYfF7DSwE/9/10+BMvwSPq9N/f6LiQ38HxrZSQOsXKw==}
     engines: {node: '>=16.9.0'}
 
+  imagescript@https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b:
+    resolution: {tarball: https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b}
+    version: 1.3.0
+    engines: {node: '>=14.0.0'}
+
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
@@ -331,9 +364,8 @@ packages:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
 
-  seyfert@https://codeload.github.com/tiramisulabs/seyfert/tar.gz/4a0a9ae1304ef159ffa2358da2eddd41779301c8:
-    resolution: {tarball: https://codeload.github.com/tiramisulabs/seyfert/tar.gz/4a0a9ae1304ef159ffa2358da2eddd41779301c8}
-    version: 2.1.0
+  seyfert@2.1.1-dev-11317878487.0:
+    resolution: {integrity: sha512-cp/Oyqps8ic65Y5e2ueoQLMLF8oGLTc7yHSEBI7VVKQUqDWRT4xWSi5YR/MCyUiHf8QXe6VXs86EOq9S6lGX7w==}
 
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -559,6 +591,8 @@ snapshots:
 
   hono@4.6.4: {}
 
+  imagescript@https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b: {}
+
   isexe@2.0.0: {}
 
   json-schema-traverse@1.0.0: {}
@@ -600,7 +634,7 @@ snapshots:
 
   require-from-string@2.0.2: {}
 
-  seyfert@https://codeload.github.com/tiramisulabs/seyfert/tar.gz/4a0a9ae1304ef159ffa2358da2eddd41779301c8: {}
+  seyfert@2.1.1-dev-11317878487.0: {}
 
   shebang-command@2.0.0:
     dependencies:

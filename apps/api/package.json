@@ -1,5 +1,5 @@
 {
-    "name": "bot",
+    "name": "api",
     "version": "1.0.0",
     "description": "",
     "main": "./dist/index.js",
@@ -16,12 +16,12 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@fabricio-191/ms": "^1.5.1",
-        "@redis/client": "^1.6.0",
+        "@hono/node-server": "^1.13.2",
         "@repo/config": "workspace:*",
-        "@repo/db": "workspace:*",
         "@types/node": "^22.7.5",
         "ajv-ts": "^0.9.0",
+        "hono": "^4.6.4",
+        "imagescript": "github:matmen/imagescript",
         "seyfert": "2.1.1-dev-11317878487.0"
     },
     "devDependencies": {
