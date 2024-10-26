@@ -19,11 +19,13 @@
         "@hono/node-server": "^1.13.2",
         "@redis/client": "^1.6.0",
         "@repo/config": "workspace:*",
-        "@types/node": "^22.7.5",
-        "hono": "^4.6.4",
-        "seyfert": "2.1.1-dev-11317878487.0"
+        "bufferutil": "^4.0.8",
+        "hono": "^4.6.7",
+        "seyfert": "2.1.1-dev-11527301551.0",
+        "utf-8-validate": "^6.0.4"
     },
     "devDependencies": {
+        "@types/node": "^22.8.1",
         "tsc-watch": "^6.2.0",
         "typescript": "^5.6.3"
     }
