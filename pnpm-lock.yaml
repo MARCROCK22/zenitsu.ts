@@ -89,18 +89,12 @@ importers:
       '@repo/config':
         specifier: workspace:*
         version: link:../../packages/config
-      bufferutil:
-        specifier: ^4.0.8
-        version: 4.0.8
       hono:
         specifier: ^4.6.7
         version: 4.6.7
       seyfert:
         specifier: 2.1.1-dev-11527301551.0
         version: 2.1.1-dev-11527301551.0
-      utf-8-validate:
-        specifier: ^6.0.4
-        version: 6.0.4
     devDependencies:
       '@types/node':
         specifier: ^22.8.1
@@ -255,10 +249,6 @@ packages:
     resolution: {integrity: sha512-X9hJeyeM0//Fus+0pc5dSUMhhrrmWwQUtdavaQeF3Ta6m69matZkGWV/MrBcnwUeLC8W9kwwc2hfkZgUuCX3Ig==}
     engines: {node: '>=16.20.1'}
 
-  bufferutil@4.0.8:
-    resolution: {integrity: sha512-4T53u4PdgsXqKaIctwF8ifXlRTTmEPJ8iEPWFdGZvcf7sbwYo6FKFEX9eNNAnzFZ7EzJAQ3CJeOtCRA4rDp7Pw==}
-    engines: {node: '>=6.14.2'}
-
   cluster-key-slot@1.1.2:
     resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
     engines: {node: '>=0.10.0'}
@@ -336,10 +326,6 @@ packages:
 
   node-cleanup@2.1.2:
     resolution: {integrity: sha512-qN8v/s2PAJwGUtr1/hYTpNKlD6Y9rc4p8KSmJXyGdYGZsDGKXrGThikLFP9OCHFeLeEpQzPwiAtdIvBLqm//Hw==}
-
-  node-gyp-build@4.8.2:
-    resolution: {integrity: sha512-IRUxE4BVsHWXkV/SFOut4qTlagw2aM8T5/vnTsmrHJvVoKueJHRc/JaFND7QDDc61kLYUJ6qlZM3sqTSyx2dTw==}
-    hasBin: true
 
   papr@15.2.2:
     resolution: {integrity: sha512-2DqfOiMGEMikKhE3gEyptqgtgdfIzdGBLlhIk4i3gh+TIWzNY6Yqc3lJ3bAkJRrSdqAdgjvmbGSgN9LV6/8ShQ==}
@@ -454,10 +440,6 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
-  utf-8-validate@6.0.4:
-    resolution: {integrity: sha512-xu9GQDeFp+eZ6LnCywXN/zBancWvOpUMzgjLPSjy4BRHSmTelvn2E0DG0o1sTiw5hkCKBHo8rwSKncfRfv2EEQ==}
-    engines: {node: '>=6.14.2'}
-
   webidl-conversions@7.0.0:
     resolution: {integrity: sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==}
     engines: {node: '>=12'}
@@ -562,10 +544,6 @@ snapshots:
 
   bson@6.9.0: {}
 
-  bufferutil@4.0.8:
-    dependencies:
-      node-gyp-build: 4.8.2
-
   cluster-key-slot@1.1.2: {}
 
   cross-spawn@7.0.3:
@@ -616,8 +594,6 @@ snapshots:
       mongodb-connection-string-url: 3.0.1
 
   node-cleanup@2.1.2: {}
-
-  node-gyp-build@4.8.2: {}
 
   papr@15.2.2(mongodb@6.10.0):
     dependencies:
@@ -709,10 +685,6 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
-
-  utf-8-validate@6.0.4:
-    dependencies:
-      node-gyp-build: 4.8.2
 
   webidl-conversions@7.0.0: {}
 
