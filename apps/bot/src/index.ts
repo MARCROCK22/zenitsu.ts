@@ -43,7 +43,7 @@ await client.uploadCommands({
 const redisClient = createClient();
 
 await redisClient.connect();
-redisClient.subscribe('gateway', (message) => {
+redisClient.pSubscribe('shard.*', (message) => {
     const body = JSON.parse(message) as {
         s: number;
         p: GatewayDispatchPayload;

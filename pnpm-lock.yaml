@@ -9,43 +9,46 @@ importers:
   .:
     dependencies:
       turbo:
-        specifier: ^2.2.3
-        version: 2.2.3
+        specifier: ^2.3.3
+        version: 2.3.3
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.4
         version: 1.9.4
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
 
   apps/api:
     dependencies:
       '@hono/node-server':
-        specifier: ^1.13.2
-        version: 1.13.2(hono@4.6.7)
+        specifier: ^1.13.7
+        version: 1.13.7(hono@4.6.12)
       '@repo/config':
         specifier: workspace:*
         version: link:../../packages/config
       ajv-ts:
         specifier: ^0.9.0
-        version: 0.9.0(typescript@5.6.3)
+        version: 0.9.0(typescript@5.7.2)
       hono:
-        specifier: ^4.6.7
-        version: 4.6.7
+        specifier: ^4.6.12
+        version: 4.6.12
       imagescript:
         specifier: github:matmen/imagescript
         version: https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b
       seyfert:
-        specifier: 2.1.1-dev-11527301551.0
-        version: 2.1.1-dev-11527301551.0
+        specifier: 2.1.1-dev-12031800933.0
+        version: 2.1.1-dev-12031800933.0
     devDependencies:
       '@types/node':
-        specifier: ^22.8.1
-        version: 22.8.1
+        specifier: ^22.10.1
+        version: 22.10.1
       tsc-watch:
-        specifier: ^6.2.0
-        version: 6.2.0(typescript@5.6.3)
+        specifier: ^6.2.1
+        version: 6.2.1(typescript@5.7.2)
       typescript:
-        specifier: ^5.6.3
-        version: 5.6.3
+        specifier: ^5.7.2
+        version: 5.7.2
 
   apps/bot:
     dependencies:
@@ -63,86 +66,92 @@ importers:
         version: link:../../packages/db
       ajv-ts:
         specifier: ^0.9.0
-        version: 0.9.0(typescript@5.6.3)
+        version: 0.9.0(typescript@5.7.2)
       seyfert:
-        specifier: 2.1.1-dev-11527301551.0
-        version: 2.1.1-dev-11527301551.0
+        specifier: 2.1.1-dev-12031800933.0
+        version: 2.1.1-dev-12031800933.0
     devDependencies:
       '@types/node':
-        specifier: ^22.8.1
-        version: 22.8.1
+        specifier: ^22.10.1
+        version: 22.10.1
       tsc-watch:
-        specifier: ^6.2.0
-        version: 6.2.0(typescript@5.6.3)
+        specifier: ^6.2.1
+        version: 6.2.1(typescript@5.7.2)
       typescript:
-        specifier: ^5.6.3
-        version: 5.6.3
+        specifier: ^5.7.2
+        version: 5.7.2
 
   apps/ws:
     dependencies:
       '@hono/node-server':
-        specifier: ^1.13.2
-        version: 1.13.2(hono@4.6.7)
+        specifier: ^1.13.7
+        version: 1.13.7(hono@4.6.12)
       '@redis/client':
         specifier: ^1.6.0
         version: 1.6.0
       '@repo/config':
         specifier: workspace:*
         version: link:../../packages/config
+      bufferutil:
+        specifier: ^4.0.1
+        version: 4.0.8
       hono:
-        specifier: ^4.6.7
-        version: 4.6.7
+        specifier: ^4.6.12
+        version: 4.6.12
       seyfert:
-        specifier: 2.1.1-dev-11527301551.0
-        version: 2.1.1-dev-11527301551.0
+        specifier: 2.1.1-dev-12031800933.0
+        version: 2.1.1-dev-12031800933.0
+      utf-8-validate:
+        specifier: ^5.0.2
+        version: 5.0.10
     devDependencies:
       '@types/node':
-        specifier: ^22.8.1
-        version: 22.8.1
+        specifier: ^22.10.1
+        version: 22.10.1
       tsc-watch:
-        specifier: ^6.2.0
-        version: 6.2.0(typescript@5.6.3)
+        specifier: ^6.2.1
+        version: 6.2.1(typescript@5.7.2)
       typescript:
-        specifier: ^5.6.3
-        version: 5.6.3
+        specifier: ^5.7.2
+        version: 5.7.2
 
   packages/config:
     dependencies:
       seyfert:
-        specifier: 2.1.1-dev-11527301551.0
-        version: 2.1.1-dev-11527301551.0
+        specifier: 2.1.1-dev-12031800933.0
+        version: 2.1.1-dev-12031800933.0
     devDependencies:
       '@types/node':
-        specifier: ^22.8.1
-        version: 22.8.1
+        specifier: ^22.10.1
+        version: 22.10.1
       tsc-watch:
-        specifier: ^6.2.0
-        version: 6.2.0(typescript@5.6.3)
+        specifier: ^6.2.1
+        version: 6.2.1(typescript@5.7.2)
       typescript:
-        specifier: ^5.6.3
-        version: 5.6.3
+        specifier: ^5.7.2
+        version: 5.7.2
 
   packages/db:
     dependencies:
       mongodb:
-        specifier: ^6.10.0
-        version: 6.10.0
+        specifier: ^6.11.0
+        version: 6.11.0
       papr:
         specifier: ^15.2.2
-        version: 15.2.2(mongodb@6.10.0)
+        version: 15.2.2(mongodb@6.11.0)
       seyfert:
-        specifier: 2.1.1-dev-11527301551.0
-        version: 2.1.1-dev-11527301551.0
+        specifier: 2.1.1-dev-12031800933.0
+        version: 2.1.1-dev-12031800933.0
     devDependencies:
       '@types/node':
-        specifier: ^22.8.1
-        version: 22.8.1
+        specifier: ^22.10.1
+        version: 22.10.1
       tsc-watch:
-        specifier: ^6.2.0
-        version: 6.2.0(typescript@5.6.3)
+        specifier: ^6.2.1
+        version: 6.2.1(typescript@5.7.2)
       typescript:
-        specifier: ^5.6.3
-        version: 5.6.3
+        specifier: ^5.7.2
+        version: 5.7.2
 
 packages:
 
@@ -202,8 +211,8 @@ packages:
   '@fabricio-191/ms@1.5.1':
     resolution: {integrity: sha512-rjDJ3JM8wVB3270Am+sF3v94zhdAWTAIKXZtrJQTtBs5vr2j6ZjX4dQ0pOuH2t1BtpHBVlBnNoDzYjWYS8oPQQ==}
 
-  '@hono/node-server@1.13.2':
-    resolution: {integrity: sha512-0w8nEmAyx0Ul0CQp8BL2VtAG4YVdpzXd/mvvM+l0G5Oq22pUyHS+KeFFPSY+czLOF5NAiV3MUNPD1n14Ol5svg==}
+  '@hono/node-server@1.13.7':
+    resolution: {integrity: sha512-kTfUMsoloVKtRA2fLiGSd9qBddmru9KadNyhJCwgKBxTiNkaAJEwkVN9KV/rS4HtmmNRtUh6P+YpmjRMl0d9vQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
@@ -215,8 +224,8 @@ packages:
     resolution: {integrity: sha512-aR0uffYI700OEEH4gYnitAnv3vzVGXCFvYfdpu/CJKvk4pHfLPEy/JSZyrpQ+15WhXe1yJRXLtfQ84s4mEXnPg==}
     engines: {node: '>=14'}
 
-  '@types/node@22.8.1':
-    resolution: {integrity: sha512-k6Gi8Yyo8EtrNtkHXutUu2corfDf9su95VYVP10aGYMMROM6SAItZi0w1XszA6RtWTHSVp5OeFof37w0IEqCQg==}
+  '@types/node@22.10.1':
+    resolution: {integrity: sha512-qKgsUwfHZV2WCWLAnVP1JqnpE6Im6h3Y0+fYgMTasNQ7V++CBX5OT1as0g0f+OyubbFqhf6XVNIsmN4IIhEgGQ==}
 
   '@types/webidl-conversions@7.0.3':
     resolution: {integrity: sha512-CiJJvcRtIgzadHCYXw7dqEnMNRjhGZlYK05Mj9OyktqV8uVT8fD2BFOB7S1uwBE3Kj2Z+4UyPmFw/Ixgw/LAlA==}
@@ -245,16 +254,20 @@ packages:
   ajv@8.16.0:
     resolution: {integrity: sha512-F0twR8U1ZU67JIEtekUcLkXkoO5mMMmgGD8sK/xUFzJ805jxHQl92hImFAqqXMyMYjSPOyUPAwHYhB72g5sTXw==}
 
-  bson@6.9.0:
-    resolution: {integrity: sha512-X9hJeyeM0//Fus+0pc5dSUMhhrrmWwQUtdavaQeF3Ta6m69matZkGWV/MrBcnwUeLC8W9kwwc2hfkZgUuCX3Ig==}
+  bson@6.10.0:
+    resolution: {integrity: sha512-ROchNosXMJD2cbQGm84KoP7vOGPO6/bOAW0veMMbzhXLqoZptcaYRVLitwvuhwhjjpU1qP4YZRWLhgETdgqUQw==}
     engines: {node: '>=16.20.1'}
+
+  bufferutil@4.0.8:
+    resolution: {integrity: sha512-4T53u4PdgsXqKaIctwF8ifXlRTTmEPJ8iEPWFdGZvcf7sbwYo6FKFEX9eNNAnzFZ7EzJAQ3CJeOtCRA4rDp7Pw==}
+    engines: {node: '>=6.14.2'}
 
   cluster-key-slot@1.1.2:
     resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
     engines: {node: '>=0.10.0'}
 
-  cross-spawn@7.0.3:
-    resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
+  cross-spawn@7.0.6:
+    resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
   duplexer@0.1.2:
@@ -273,8 +286,8 @@ packages:
     resolution: {integrity: sha512-hymDOu5B53XvN4QT9dBmZxPX4CWhBPPLguTZ9MMFeFa/Kg0xWVfylOVNlJji/E7yTZWFd/q9GO5TxDLq156D7g==}
     engines: {node: '>= 4'}
 
-  hono@4.6.7:
-    resolution: {integrity: sha512-wX4ZbOnzfNO61hUjuQbJ7OPGs1fWXXVVJ8VTPDb2Ls/x9HjCbVTm80Je6VTHMz5n5RGDtBgV9d9ZFZxBqx56ng==}
+  hono@4.6.12:
+    resolution: {integrity: sha512-eHtf4kSDNw6VVrdbd5IQi16r22m3s7mWPLd7xOMhg1a/Yyb1A0qpUFq8xYMX4FMuDe1nTKeMX5rTx7Nmw+a+Ag==}
     engines: {node: '>=16.9.0'}
 
   imagescript@https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b:
@@ -297,8 +310,8 @@ packages:
   mongodb-connection-string-url@3.0.1:
     resolution: {integrity: sha512-XqMGwRX0Lgn05TDB4PyG2h2kKO/FfWJyCzYQbIhXUxz7ETt0I/FqHjUeqj37irJ+Dl1ZtU82uYyj14u2XsZKfg==}
 
-  mongodb@6.10.0:
-    resolution: {integrity: sha512-gP9vduuYWb9ZkDM546M+MP2qKVk5ZG2wPF63OvSRuUbqCR+11ZCAE1mOfllhlAG0wcoJY5yDL/rV3OmYEwXIzg==}
+  mongodb@6.11.0:
+    resolution: {integrity: sha512-yVbPw0qT268YKhG241vAMLaDQAPbRyTgo++odSgGc9kXnzOujQI60Iyj23B9sQQFPSvmNPvMZ3dsFz0aN55KgA==}
     engines: {node: '>=16.20.1'}
     peerDependencies:
       '@aws-sdk/credential-providers': ^3.188.0
@@ -327,6 +340,10 @@ packages:
   node-cleanup@2.1.2:
     resolution: {integrity: sha512-qN8v/s2PAJwGUtr1/hYTpNKlD6Y9rc4p8KSmJXyGdYGZsDGKXrGThikLFP9OCHFeLeEpQzPwiAtdIvBLqm//Hw==}
 
+  node-gyp-build@4.8.4:
+    resolution: {integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==}
+    hasBin: true
+
   papr@15.2.2:
     resolution: {integrity: sha512-2DqfOiMGEMikKhE3gEyptqgtgdfIzdGBLlhIk4i3gh+TIWzNY6Yqc3lJ3bAkJRrSdqAdgjvmbGSgN9LV6/8ShQ==}
     engines: {node: '>=16.20.1'}
@@ -353,8 +370,8 @@ packages:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
 
-  seyfert@2.1.1-dev-11527301551.0:
-    resolution: {integrity: sha512-CmKeryPUkRkU5JmUubUQH188sVOZgo0VE2fu/SvQLBPBoELBnv/dPlCJlNZWEWcuFGYB1wknTMO586SiUCYfhg==}
+  seyfert@2.1.1-dev-12031800933.0:
+    resolution: {integrity: sha512-BKOrs8sgs4EG8ncW/EvLgWzHM70ZdjkSXYGEWUAi1WUbJwKtuXMK0DuuEdLTULus7bqAuS6kOvKPcUX3xDopeg==}
 
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -384,61 +401,65 @@ packages:
     resolution: {integrity: sha512-2lv/66T7e5yNyhAAC4NaKe5nVavzuGJQVVtRYLyQ2OI8tsJ61PMLlelehb0wi2Hx6+hT/OJUWZcw8MjlSRnxvw==}
     engines: {node: '>=14'}
 
-  tsc-watch@6.2.0:
-    resolution: {integrity: sha512-2LBhf9kjKXnz7KQ/puLHlozMzzUNHAdYBNMkg3eksQJ9GBAgMg8czznM83T5PmsoUvDnXzfIeQn2lNcIYDr8LA==}
+  tsc-watch@6.2.1:
+    resolution: {integrity: sha512-GLwdz5Dy9K3sVm3RzgkLcyDpl5cvU9HEcE1A3gf5rqEwlUe7gDLxNCgcuNEw3zoKOiegMo3LnbF1t6HLqxhrSA==}
     engines: {node: '>=12.12.0'}
     hasBin: true
     peerDependencies:
       typescript: '*'
 
-  turbo-darwin-64@2.2.3:
-    resolution: {integrity: sha512-Rcm10CuMKQGcdIBS3R/9PMeuYnv6beYIHqfZFeKWVYEWH69sauj4INs83zKMTUiZJ3/hWGZ4jet9AOwhsssLyg==}
+  turbo-darwin-64@2.3.3:
+    resolution: {integrity: sha512-bxX82xe6du/3rPmm4aCC5RdEilIN99VUld4HkFQuw+mvFg6darNBuQxyWSHZTtc25XgYjQrjsV05888w1grpaA==}
     cpu: [x64]
     os: [darwin]
 
-  turbo-darwin-arm64@2.2.3:
-    resolution: {integrity: sha512-+EIMHkuLFqUdJYsA3roj66t9+9IciCajgj+DVek+QezEdOJKcRxlvDOS2BUaeN8kEzVSsNiAGnoysFWYw4K0HA==}
+  turbo-darwin-arm64@2.3.3:
+    resolution: {integrity: sha512-DYbQwa3NsAuWkCUYVzfOUBbSUBVQzH5HWUFy2Kgi3fGjIWVZOFk86ss+xsWu//rlEAfYwEmopigsPYSmW4X15A==}
     cpu: [arm64]
     os: [darwin]
 
-  turbo-linux-64@2.2.3:
-    resolution: {integrity: sha512-UBhJCYnqtaeOBQLmLo8BAisWbc9v9daL9G8upLR+XGj6vuN/Nz6qUAhverN4Pyej1g4Nt1BhROnj6GLOPYyqxQ==}
+  turbo-linux-64@2.3.3:
+    resolution: {integrity: sha512-eHj9OIB0dFaP6BxB88jSuaCLsOQSYWBgmhy2ErCu6D2GG6xW3b6e2UWHl/1Ho9FsTg4uVgo4DB9wGsKa5erjUA==}
     cpu: [x64]
     os: [linux]
 
-  turbo-linux-arm64@2.2.3:
-    resolution: {integrity: sha512-hJYT9dN06XCQ3jBka/EWvvAETnHRs3xuO/rb5bESmDfG+d9yQjeTMlhRXKrr4eyIMt6cLDt1LBfyi+6CQ+VAwQ==}
+  turbo-linux-arm64@2.3.3:
+    resolution: {integrity: sha512-NmDE/NjZoDj1UWBhMtOPmqFLEBKhzGS61KObfrDEbXvU3lekwHeoPvAMfcovzswzch+kN2DrtbNIlz+/rp8OCg==}
     cpu: [arm64]
     os: [linux]
 
-  turbo-windows-64@2.2.3:
-    resolution: {integrity: sha512-NPrjacrZypMBF31b4HE4ROg4P3nhMBPHKS5WTpMwf7wydZ8uvdEHpESVNMOtqhlp857zbnKYgP+yJF30H3N2dQ==}
+  turbo-windows-64@2.3.3:
+    resolution: {integrity: sha512-O2+BS4QqjK3dOERscXqv7N2GXNcqHr9hXumkMxDj/oGx9oCatIwnnwx34UmzodloSnJpgSqjl8iRWiY65SmYoQ==}
     cpu: [x64]
     os: [win32]
 
-  turbo-windows-arm64@2.2.3:
-    resolution: {integrity: sha512-fnNrYBCqn6zgKPKLHu4sOkihBI/+0oYFr075duRxqUZ+1aLWTAGfHZLgjVeLh3zR37CVzuerGIPWAEkNhkWEIw==}
+  turbo-windows-arm64@2.3.3:
+    resolution: {integrity: sha512-dW4ZK1r6XLPNYLIKjC4o87HxYidtRRcBeo/hZ9Wng2XM/MqqYkAyzJXJGgRMsc0MMEN9z4+ZIfnSNBrA0b08ag==}
     cpu: [arm64]
     os: [win32]
 
-  turbo@2.2.3:
-    resolution: {integrity: sha512-5lDvSqIxCYJ/BAd6rQGK/AzFRhBkbu4JHVMLmGh/hCb7U3CqSnr5Tjwfy9vc+/5wG2DJ6wttgAaA7MoCgvBKZQ==}
+  turbo@2.3.3:
+    resolution: {integrity: sha512-DUHWQAcC8BTiUZDRzAYGvpSpGLiaOQPfYXlCieQbwUvmml/LRGIe3raKdrOPOoiX0DYlzxs2nH6BoWJoZrj8hA==}
     hasBin: true
 
   type-fest@4.26.0:
     resolution: {integrity: sha512-OduNjVJsFbifKb57UqZ2EMP1i4u64Xwow3NYXUtBbD4vIwJdQd4+xl8YDou1dlm4DVrtwT/7Ky8z8WyCULVfxw==}
     engines: {node: '>=16'}
 
-  typescript@5.6.3:
-    resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
+  typescript@5.7.2:
+    resolution: {integrity: sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==}
     engines: {node: '>=14.17'}
     hasBin: true
 
-  undici-types@6.19.8:
-    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
+  undici-types@6.20.0:
+    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
+
+  utf-8-validate@5.0.10:
+    resolution: {integrity: sha512-Z6czzLq4u8fPOyx7TU6X3dvUZVvoJmxSQ+IcrlmagKhilxlhZgxPK6C5Jqbkw1IDUmFTM+cz9QDnnLTwDz/2gQ==}
+    engines: {node: '>=6.14.2'}
 
   webidl-conversions@7.0.0:
     resolution: {integrity: sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==}
@@ -495,9 +516,9 @@ snapshots:
 
   '@fabricio-191/ms@1.5.1': {}
 
-  '@hono/node-server@1.13.2(hono@4.6.7)':
+  '@hono/node-server@1.13.7(hono@4.6.12)':
     dependencies:
-      hono: 4.6.7
+      hono: 4.6.12
 
   '@mongodb-js/saslprep@1.1.9':
     dependencies:
@@ -509,9 +530,9 @@ snapshots:
       generic-pool: 3.9.0
       yallist: 4.0.0
 
-  '@types/node@22.8.1':
+  '@types/node@22.10.1':
     dependencies:
-      undici-types: 6.19.8
+      undici-types: 6.20.0
 
   '@types/webidl-conversions@7.0.3': {}
 
@@ -527,13 +548,13 @@ snapshots:
     optionalDependencies:
       ajv: 8.16.0
 
-  ajv-ts@0.9.0(typescript@5.6.3):
+  ajv-ts@0.9.0(typescript@5.7.2):
     dependencies:
       ajv: 8.16.0
       ajv-errors: 3.0.0(ajv@8.16.0)
       ajv-formats: 3.0.1(ajv@8.16.0)
       type-fest: 4.26.0
-      typescript: 5.6.3
+      typescript: 5.7.2
 
   ajv@8.16.0:
     dependencies:
@@ -542,11 +563,15 @@ snapshots:
       require-from-string: 2.0.2
       uri-js: 4.4.1
 
-  bson@6.9.0: {}
+  bson@6.10.0: {}
+
+  bufferutil@4.0.8:
+    dependencies:
+      node-gyp-build: 4.8.4
 
   cluster-key-slot@1.1.2: {}
 
-  cross-spawn@7.0.3:
+  cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
       shebang-command: 2.0.0
@@ -570,7 +595,7 @@ snapshots:
 
   generic-pool@3.9.0: {}
 
-  hono@4.6.7: {}
+  hono@4.6.12: {}
 
   imagescript@https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b: {}
 
@@ -587,17 +612,19 @@ snapshots:
       '@types/whatwg-url': 11.0.5
       whatwg-url: 13.0.0
 
-  mongodb@6.10.0:
+  mongodb@6.11.0:
     dependencies:
       '@mongodb-js/saslprep': 1.1.9
-      bson: 6.9.0
+      bson: 6.10.0
       mongodb-connection-string-url: 3.0.1
 
   node-cleanup@2.1.2: {}
 
-  papr@15.2.2(mongodb@6.10.0):
+  node-gyp-build@4.8.4: {}
+
+  papr@15.2.2(mongodb@6.11.0):
     dependencies:
-      mongodb: 6.10.0
+      mongodb: 6.11.0
 
   path-key@3.1.1: {}
 
@@ -613,7 +640,7 @@ snapshots:
 
   require-from-string@2.0.2: {}
 
-  seyfert@2.1.1-dev-11527301551.0: {}
+  seyfert@2.1.1-dev-12031800933.0: {}
 
   shebang-command@2.0.0:
     dependencies:
@@ -641,50 +668,54 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  tsc-watch@6.2.0(typescript@5.6.3):
+  tsc-watch@6.2.1(typescript@5.7.2):
     dependencies:
-      cross-spawn: 7.0.3
+      cross-spawn: 7.0.6
       node-cleanup: 2.1.2
       ps-tree: 1.2.0
       string-argv: 0.3.2
-      typescript: 5.6.3
+      typescript: 5.7.2
 
-  turbo-darwin-64@2.2.3:
+  turbo-darwin-64@2.3.3:
     optional: true
 
-  turbo-darwin-arm64@2.2.3:
+  turbo-darwin-arm64@2.3.3:
     optional: true
 
-  turbo-linux-64@2.2.3:
+  turbo-linux-64@2.3.3:
     optional: true
 
-  turbo-linux-arm64@2.2.3:
+  turbo-linux-arm64@2.3.3:
     optional: true
 
-  turbo-windows-64@2.2.3:
+  turbo-windows-64@2.3.3:
     optional: true
 
-  turbo-windows-arm64@2.2.3:
+  turbo-windows-arm64@2.3.3:
     optional: true
 
-  turbo@2.2.3:
+  turbo@2.3.3:
     optionalDependencies:
-      turbo-darwin-64: 2.2.3
-      turbo-darwin-arm64: 2.2.3
-      turbo-linux-64: 2.2.3
-      turbo-linux-arm64: 2.2.3
-      turbo-windows-64: 2.2.3
-      turbo-windows-arm64: 2.2.3
+      turbo-darwin-64: 2.3.3
+      turbo-darwin-arm64: 2.3.3
+      turbo-linux-64: 2.3.3
+      turbo-linux-arm64: 2.3.3
+      turbo-windows-64: 2.3.3
+      turbo-windows-arm64: 2.3.3
 
   type-fest@4.26.0: {}
 
-  typescript@5.6.3: {}
+  typescript@5.7.2: {}
 
-  undici-types@6.19.8: {}
+  undici-types@6.20.0: {}
 
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  utf-8-validate@5.0.10:
+    dependencies:
+      node-gyp-build: 4.8.4
 
   webidl-conversions@7.0.0: {}
 

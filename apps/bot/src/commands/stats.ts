@@ -72,7 +72,7 @@ export default class StatsCommand extends Command {
             'external',
             'arrayBuffers',
         ] as const) {
-            data[i] = `${(stats.memoryUsage.rss / 1024 ** 2).toFixed(3)} mb`;
+            data[i] = `${(stats.memoryUsage[i] / 1024 ** 2).toFixed(3)} mb`;
         }
 
         data.uptime = ms(stats.uptime * 1e3, {

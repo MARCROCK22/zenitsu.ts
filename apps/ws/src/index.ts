@@ -14,7 +14,7 @@ const ws = new ShardManager({
     info: await rest.proxy.gateway.bot.get(),
     handlePayload(s, p) {
         return redisClient.publish(
-            'gateway',
+            `shard.${s}`,
             JSON.stringify({
                 s,
                 p,

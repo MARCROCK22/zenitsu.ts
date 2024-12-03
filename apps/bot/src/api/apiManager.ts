@@ -13,9 +13,4 @@ export class ApiManager {
         const result = await response.json();
         return statsResult.parse(result);
     }
-
-    async test() {
-        const response = await fetch(`${this.baseURL}/test`);
-        return response.arrayBuffer();
-    }
 }
