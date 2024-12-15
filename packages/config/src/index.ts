@@ -26,9 +26,11 @@ if (!API_PORT) {
 
 const config = {
     rc: runtimeConfig,
-    wsPort: WS_PORT,
-    botPort: BOT_PORT,
-    apiPort: API_PORT,
+    port: {
+        bot: BOT_PORT,
+        ws: WS_PORT,
+        api: API_PORT,
+    },
     auth: {
         ws: WS_AUTH,
     },

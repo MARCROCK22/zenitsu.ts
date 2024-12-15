@@ -24,7 +24,7 @@ const shardsInfoResult = s.object({
 });
 
 export class WsManager {
-    private baseURL = `http://localhost:${config.wsPort}`;
+    private baseURL = `http://localhost:${config.port.ws}`;
 
     async shardsInfo() {
         const response = await fetch(`${this.baseURL}/info`, {

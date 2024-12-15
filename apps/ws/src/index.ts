@@ -12,7 +12,7 @@ const socket = new PotoSocket(
     new Logger({
         name: '[WS_0]',
     }),
-    config.botPort,
+    config.port.bot,
 );
 
 const ws = new ShardManager({
@@ -67,7 +67,7 @@ app.get('/stats', (c) =>
 serve(
     {
         fetch: app.fetch,
-        port: config.wsPort,
+        port: config.port.ws,
     },
     (address) => {
         logger.info(`Listening to ${address.port}`);

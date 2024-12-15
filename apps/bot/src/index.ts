@@ -41,7 +41,7 @@ await client.uploadCommands({
 });
 
 const server = new WebSocketServer({
-    port: config.botPort,
+    port: config.port.bot,
 });
 
 server.on('connection', (socket) => {

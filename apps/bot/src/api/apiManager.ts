@@ -2,7 +2,7 @@ import { config } from '@repo/config';
 import { statsResult } from './_.js';
 
 export class ApiManager {
-    private baseURL = `http://localhost:${config.apiPort}`;
+    private baseURL = `http://localhost:${config.port.api}`;
 
     async stats() {
         const response = await fetch(`${this.baseURL}/stats`, {

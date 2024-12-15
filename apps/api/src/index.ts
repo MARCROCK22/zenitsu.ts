@@ -1,8 +1,12 @@
 import { serve } from '@hono/node-server';
 import { config } from '@repo/config';
 import { Hono } from 'hono';
+import { Logger } from 'seyfert';
 
 const app = new Hono();
+const logger = new Logger({
+    name: '[Z_API]',
+});
 
 app.get('/stats', (c) =>
     c.json({
@@ -14,10 +18,9 @@ app.get('/stats', (c) =>
 serve(
     {
         fetch: app.fetch,
-        port: config.apiPort,
+        port: config.port.api,
     },
     (address) => {
-        // biome-ignore lint/suspicious/noConsole: <explanation>
-        console.log(`Listening to ${address.port}`);
+        logger.info(`Listening to ${address.port}`);
     },
 );
