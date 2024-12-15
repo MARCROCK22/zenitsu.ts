@@ -23,7 +23,7 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: ^1.13.7
-        version: 1.13.7(hono@4.6.12)
+        version: 1.13.7(hono@4.6.14)
       '@repo/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -31,18 +31,18 @@ importers:
         specifier: ^0.9.0
         version: 0.9.0(typescript@5.7.2)
       hono:
-        specifier: ^4.6.12
-        version: 4.6.12
+        specifier: ^4.6.14
+        version: 4.6.14
       imagescript:
         specifier: github:matmen/imagescript
         version: https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b
       seyfert:
-        specifier: 2.1.1-dev-12031800933.0
-        version: 2.1.1-dev-12031800933.0
+        specifier: 2.1.1-dev-12334128354.0
+        version: 2.1.1-dev-12334128354.0
     devDependencies:
       '@types/node':
-        specifier: ^22.10.1
-        version: 22.10.1
+        specifier: ^22.10.2
+        version: 22.10.2
       tsc-watch:
         specifier: ^6.2.1
         version: 6.2.1(typescript@5.7.2)
@@ -55,9 +55,6 @@ importers:
       '@fabricio-191/ms':
         specifier: ^1.5.1
         version: 1.5.1
-      '@redis/client':
-        specifier: ^1.6.0
-        version: 1.6.0
       '@repo/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -68,12 +65,18 @@ importers:
         specifier: ^0.9.0
         version: 0.9.0(typescript@5.7.2)
       seyfert:
-        specifier: 2.1.1-dev-12031800933.0
-        version: 2.1.1-dev-12031800933.0
+        specifier: 2.1.1-dev-12334128354.0
+        version: 2.1.1-dev-12334128354.0
+      ws:
+        specifier: ^8.18.0
+        version: 8.18.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
     devDependencies:
       '@types/node':
-        specifier: ^22.10.1
-        version: 22.10.1
+        specifier: ^22.10.2
+        version: 22.10.2
+      '@types/ws':
+        specifier: ^8.5.13
+        version: 8.5.13
       tsc-watch:
         specifier: ^6.2.1
         version: 6.2.1(typescript@5.7.2)
@@ -85,10 +88,7 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: ^1.13.7
-        version: 1.13.7(hono@4.6.12)
-      '@redis/client':
-        specifier: ^1.6.0
-        version: 1.6.0
+        version: 1.13.7(hono@4.6.14)
       '@repo/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -96,18 +96,24 @@ importers:
         specifier: ^4.0.1
         version: 4.0.8
       hono:
-        specifier: ^4.6.12
-        version: 4.6.12
+        specifier: ^4.6.14
+        version: 4.6.14
       seyfert:
-        specifier: 2.1.1-dev-12031800933.0
-        version: 2.1.1-dev-12031800933.0
+        specifier: 2.1.1-dev-12334128354.0
+        version: 2.1.1-dev-12334128354.0
       utf-8-validate:
         specifier: ^5.0.2
         version: 5.0.10
+      ws:
+        specifier: ^8.18.0
+        version: 8.18.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
     devDependencies:
       '@types/node':
-        specifier: ^22.10.1
-        version: 22.10.1
+        specifier: ^22.10.2
+        version: 22.10.2
+      '@types/ws':
+        specifier: ^8.5.13
+        version: 8.5.13
       tsc-watch:
         specifier: ^6.2.1
         version: 6.2.1(typescript@5.7.2)
@@ -118,12 +124,12 @@ importers:
   packages/config:
     dependencies:
       seyfert:
-        specifier: 2.1.1-dev-12031800933.0
-        version: 2.1.1-dev-12031800933.0
+        specifier: 2.1.1-dev-12334128354.0
+        version: 2.1.1-dev-12334128354.0
     devDependencies:
       '@types/node':
-        specifier: ^22.10.1
-        version: 22.10.1
+        specifier: ^22.10.2
+        version: 22.10.2
       tsc-watch:
         specifier: ^6.2.1
         version: 6.2.1(typescript@5.7.2)
@@ -134,18 +140,18 @@ importers:
   packages/db:
     dependencies:
       mongodb:
-        specifier: ^6.11.0
-        version: 6.11.0
+        specifier: ^6.12.0
+        version: 6.12.0
       papr:
         specifier: ^15.2.2
-        version: 15.2.2(mongodb@6.11.0)
+        version: 15.2.2(mongodb@6.12.0)
       seyfert:
-        specifier: 2.1.1-dev-12031800933.0
-        version: 2.1.1-dev-12031800933.0
+        specifier: 2.1.1-dev-12334128354.0
+        version: 2.1.1-dev-12334128354.0
     devDependencies:
       '@types/node':
-        specifier: ^22.10.1
-        version: 22.10.1
+        specifier: ^22.10.2
+        version: 22.10.2
       tsc-watch:
         specifier: ^6.2.1
         version: 6.2.1(typescript@5.7.2)
@@ -220,18 +226,17 @@ packages:
   '@mongodb-js/saslprep@1.1.9':
     resolution: {integrity: sha512-tVkljjeEaAhCqTzajSdgbQ6gE6f3oneVwa3iXR6csiEwXXOFsiC6Uh9iAjAhXPtqa/XMDHWjjeNH/77m/Yq2dw==}
 
-  '@redis/client@1.6.0':
-    resolution: {integrity: sha512-aR0uffYI700OEEH4gYnitAnv3vzVGXCFvYfdpu/CJKvk4pHfLPEy/JSZyrpQ+15WhXe1yJRXLtfQ84s4mEXnPg==}
-    engines: {node: '>=14'}
-
-  '@types/node@22.10.1':
-    resolution: {integrity: sha512-qKgsUwfHZV2WCWLAnVP1JqnpE6Im6h3Y0+fYgMTasNQ7V++CBX5OT1as0g0f+OyubbFqhf6XVNIsmN4IIhEgGQ==}
+  '@types/node@22.10.2':
+    resolution: {integrity: sha512-Xxr6BBRCAOQixvonOye19wnzyDiUtTeqldOOmj3CkeblonbccA12PFwlufvRdrpjXxqnmUaeiU5EOA+7s5diUQ==}
 
   '@types/webidl-conversions@7.0.3':
     resolution: {integrity: sha512-CiJJvcRtIgzadHCYXw7dqEnMNRjhGZlYK05Mj9OyktqV8uVT8fD2BFOB7S1uwBE3Kj2Z+4UyPmFw/Ixgw/LAlA==}
 
   '@types/whatwg-url@11.0.5':
     resolution: {integrity: sha512-coYR071JRaHa+xoEvvYqvnIHaVqaYrLPbsufM9BF63HkwI5Lgmy2QR8Q5K/lYDYo5AK82wOvSOS0UsLTpTG7uQ==}
+
+  '@types/ws@8.5.13':
+    resolution: {integrity: sha512-osM/gWBTPKgHV8XkTunnegTRIsvF6owmf5w+JtAfOw472dptdm0dlGv4xCt6GwQRcC2XVOvvRE/0bAoQcL2QkA==}
 
   ajv-errors@3.0.0:
     resolution: {integrity: sha512-V3wD15YHfHz6y0KdhYFjyy9vWtEVALT9UrxfN3zqlI6dMioHnJrqOYfyPKol3oqrnCM9uwkcdCwkJ0WUcbLMTQ==}
@@ -254,17 +259,13 @@ packages:
   ajv@8.16.0:
     resolution: {integrity: sha512-F0twR8U1ZU67JIEtekUcLkXkoO5mMMmgGD8sK/xUFzJ805jxHQl92hImFAqqXMyMYjSPOyUPAwHYhB72g5sTXw==}
 
-  bson@6.10.0:
-    resolution: {integrity: sha512-ROchNosXMJD2cbQGm84KoP7vOGPO6/bOAW0veMMbzhXLqoZptcaYRVLitwvuhwhjjpU1qP4YZRWLhgETdgqUQw==}
+  bson@6.10.1:
+    resolution: {integrity: sha512-P92xmHDQjSKPLHqFxefqMxASNq/aWJMEZugpCjf+AF/pgcUpMMQCg7t7+ewko0/u8AapvF3luf/FoehddEK+sA==}
     engines: {node: '>=16.20.1'}
 
   bufferutil@4.0.8:
     resolution: {integrity: sha512-4T53u4PdgsXqKaIctwF8ifXlRTTmEPJ8iEPWFdGZvcf7sbwYo6FKFEX9eNNAnzFZ7EzJAQ3CJeOtCRA4rDp7Pw==}
     engines: {node: '>=6.14.2'}
-
-  cluster-key-slot@1.1.2:
-    resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
-    engines: {node: '>=0.10.0'}
 
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -282,12 +283,8 @@ packages:
   from@0.1.7:
     resolution: {integrity: sha512-twe20eF1OxVxp/ML/kq2p1uc6KvFK/+vs8WjEbeKmV2He22MKm7YF2ANIt+EOqhJ5L3K/SuuPhk0hWQDjOM23g==}
 
-  generic-pool@3.9.0:
-    resolution: {integrity: sha512-hymDOu5B53XvN4QT9dBmZxPX4CWhBPPLguTZ9MMFeFa/Kg0xWVfylOVNlJji/E7yTZWFd/q9GO5TxDLq156D7g==}
-    engines: {node: '>= 4'}
-
-  hono@4.6.12:
-    resolution: {integrity: sha512-eHtf4kSDNw6VVrdbd5IQi16r22m3s7mWPLd7xOMhg1a/Yyb1A0qpUFq8xYMX4FMuDe1nTKeMX5rTx7Nmw+a+Ag==}
+  hono@4.6.14:
+    resolution: {integrity: sha512-j4VkyUp2xazGJ8eCCLN1Vm/bxdvm/j5ZuU9AIjLu9vapn2M44p9L3Ktr9Vnb2RN2QtcR/wVjZVMlT5k7GJQgPw==}
     engines: {node: '>=16.9.0'}
 
   imagescript@https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b:
@@ -310,12 +307,12 @@ packages:
   mongodb-connection-string-url@3.0.1:
     resolution: {integrity: sha512-XqMGwRX0Lgn05TDB4PyG2h2kKO/FfWJyCzYQbIhXUxz7ETt0I/FqHjUeqj37irJ+Dl1ZtU82uYyj14u2XsZKfg==}
 
-  mongodb@6.11.0:
-    resolution: {integrity: sha512-yVbPw0qT268YKhG241vAMLaDQAPbRyTgo++odSgGc9kXnzOujQI60Iyj23B9sQQFPSvmNPvMZ3dsFz0aN55KgA==}
+  mongodb@6.12.0:
+    resolution: {integrity: sha512-RM7AHlvYfS7jv7+BXund/kR64DryVI+cHbVAy9P61fnb1RcWZqOW1/Wj2YhqMCx+MuYhqTRGv7AwHBzmsCKBfA==}
     engines: {node: '>=16.20.1'}
     peerDependencies:
       '@aws-sdk/credential-providers': ^3.188.0
-      '@mongodb-js/zstd': ^1.1.0
+      '@mongodb-js/zstd': ^1.1.0 || ^2.0.0
       gcp-metadata: ^5.2.0
       kerberos: ^2.0.1
       mongodb-client-encryption: '>=6.0.0 <7'
@@ -370,8 +367,8 @@ packages:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
 
-  seyfert@2.1.1-dev-12031800933.0:
-    resolution: {integrity: sha512-BKOrs8sgs4EG8ncW/EvLgWzHM70ZdjkSXYGEWUAi1WUbJwKtuXMK0DuuEdLTULus7bqAuS6kOvKPcUX3xDopeg==}
+  seyfert@2.1.1-dev-12334128354.0:
+    resolution: {integrity: sha512-cyQgP3gEpLEpErP8sMi4C/piD7W3HCLk36o5KM97Qd42WnzxjMsL2VX3xYLDGxcjiy0jW7U+KTyUOHbokkpcmw==}
 
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -474,8 +471,17 @@ packages:
     engines: {node: '>= 8'}
     hasBin: true
 
-  yallist@4.0.0:
-    resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+  ws@8.18.0:
+    resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
 
 snapshots:
 
@@ -516,21 +522,15 @@ snapshots:
 
   '@fabricio-191/ms@1.5.1': {}
 
-  '@hono/node-server@1.13.7(hono@4.6.12)':
+  '@hono/node-server@1.13.7(hono@4.6.14)':
     dependencies:
-      hono: 4.6.12
+      hono: 4.6.14
 
   '@mongodb-js/saslprep@1.1.9':
     dependencies:
       sparse-bitfield: 3.0.3
 
-  '@redis/client@1.6.0':
-    dependencies:
-      cluster-key-slot: 1.1.2
-      generic-pool: 3.9.0
-      yallist: 4.0.0
-
-  '@types/node@22.10.1':
+  '@types/node@22.10.2':
     dependencies:
       undici-types: 6.20.0
 
@@ -539,6 +539,10 @@ snapshots:
   '@types/whatwg-url@11.0.5':
     dependencies:
       '@types/webidl-conversions': 7.0.3
+
+  '@types/ws@8.5.13':
+    dependencies:
+      '@types/node': 22.10.2
 
   ajv-errors@3.0.0(ajv@8.16.0):
     dependencies:
@@ -563,13 +567,11 @@ snapshots:
       require-from-string: 2.0.2
       uri-js: 4.4.1
 
-  bson@6.10.0: {}
+  bson@6.10.1: {}
 
   bufferutil@4.0.8:
     dependencies:
       node-gyp-build: 4.8.4
-
-  cluster-key-slot@1.1.2: {}
 
   cross-spawn@7.0.6:
     dependencies:
@@ -593,9 +595,7 @@ snapshots:
 
   from@0.1.7: {}
 
-  generic-pool@3.9.0: {}
-
-  hono@4.6.12: {}
+  hono@4.6.14: {}
 
   imagescript@https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b: {}
 
@@ -612,19 +612,19 @@ snapshots:
       '@types/whatwg-url': 11.0.5
       whatwg-url: 13.0.0
 
-  mongodb@6.11.0:
+  mongodb@6.12.0:
     dependencies:
       '@mongodb-js/saslprep': 1.1.9
-      bson: 6.10.0
+      bson: 6.10.1
       mongodb-connection-string-url: 3.0.1
 
   node-cleanup@2.1.2: {}
 
   node-gyp-build@4.8.4: {}
 
-  papr@15.2.2(mongodb@6.11.0):
+  papr@15.2.2(mongodb@6.12.0):
     dependencies:
-      mongodb: 6.11.0
+      mongodb: 6.12.0
 
   path-key@3.1.1: {}
 
@@ -640,7 +640,7 @@ snapshots:
 
   require-from-string@2.0.2: {}
 
-  seyfert@2.1.1-dev-12031800933.0: {}
+  seyfert@2.1.1-dev-12334128354.0: {}
 
   shebang-command@2.0.0:
     dependencies:
@@ -728,4 +728,7 @@ snapshots:
     dependencies:
       isexe: 2.0.0
 
-  yallist@4.0.0: {}
+  ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@5.0.10):
+    optionalDependencies:
+      bufferutil: 4.0.8
+      utf-8-validate: 5.0.10

@@ -6,6 +6,18 @@ if (!WS_PORT) {
     throw new Error('Cannot start process without WS_PORT');
 }
 
+const BOT_PORT = Number(process.env.BOT_PORT);
+
+if (!BOT_PORT) {
+    throw new Error('Cannot start process without BOT_PORT');
+}
+
+const WS_AUTH = process.env.WS_AUTH;
+
+if (!WS_AUTH) {
+    throw new Error('Cannot start process without WS_AUTH');
+}
+
 const API_PORT = Number(process.env.API_PORT);
 
 if (!API_PORT) {
@@ -15,7 +27,11 @@ if (!API_PORT) {
 const config = {
     rc: runtimeConfig,
     wsPort: WS_PORT,
+    botPort: BOT_PORT,
     apiPort: API_PORT,
+    auth: {
+        ws: WS_AUTH,
+    },
 } as const;
 
 export { config };

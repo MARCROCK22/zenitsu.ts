@@ -16,13 +16,13 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@types/node": "^22.10.1",
+        "@types/node": "^22.10.2",
         "tsc-watch": "^6.2.1",
         "typescript": "^5.7.2"
     },
     "dependencies": {
-        "mongodb": "^6.11.0",
+        "mongodb": "^6.12.0",
         "papr": "^15.2.2",
-        "seyfert": "2.1.1-dev-12031800933.0"
+        "seyfert": "2.1.1-dev-12334128354.0"
     }
 }

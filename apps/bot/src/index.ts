@@ -1,8 +1,8 @@
 import { join } from 'node:path';
-import { createClient } from '@redis/client';
 import { config } from '@repo/config';
 import { Client, type ParseClient, type UsingClient } from 'seyfert';
-import type { GatewayDispatchPayload } from 'seyfert/lib/types';
+import type { GatewayDispatchPayload } from 'seyfert/lib/types/index.js';
+import { WebSocketServer } from 'ws';
 import { ApiManager } from './api/apiManager.js';
 import { WsManager } from './api/wsManager.js';
 
@@ -40,15 +40,24 @@ await client.uploadCommands({
     cachePath: join(process.cwd(), '_seyfert_cache.json'),
 });
 
-const redisClient = createClient();
+const server = new WebSocketServer({
+    port: config.botPort,
+});
 
-await redisClient.connect();
-redisClient.pSubscribe('shard.*', (message) => {
-    const body = JSON.parse(message) as {
-        s: number;
-        p: GatewayDispatchPayload;
-    };
-    return client.gateway.options.handlePayload(body.s, body.p);
+server.on('connection', (socket) => {
+    socket.on('message', (raw) => {
+        const { shardId, packet, key } = JSON.parse(raw.toString()) as {
+            shardId: number;
+            packet: GatewayDispatchPayload;
+            key: string;
+        };
+        if (key !== config.auth.ws) {
+            // xd?
+            return socket.close();
+        }
+
+        return client.gateway.options.handlePayload(shardId, packet);
+    });
 });
 
 declare module 'seyfert' {

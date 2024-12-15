@@ -17,14 +17,15 @@
     "license": "ISC",
     "dependencies": {
         "@fabricio-191/ms": "^1.5.1",
-        "@redis/client": "^1.6.0",
         "@repo/config": "workspace:*",
         "@repo/db": "workspace:*",
         "ajv-ts": "^0.9.0",
-        "seyfert": "2.1.1-dev-12031800933.0"
+        "seyfert": "2.1.1-dev-12334128354.0",
+        "ws": "^8.18.0"
     },
     "devDependencies": {
-        "@types/node": "^22.10.1",
+        "@types/node": "^22.10.2",
+        "@types/ws": "^8.5.13",
         "tsc-watch": "^6.2.1",
         "typescript": "^5.7.2"
     }

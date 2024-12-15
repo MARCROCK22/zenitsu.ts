@@ -17,13 +17,14 @@
     "license": "ISC",
     "dependencies": {
         "@hono/node-server": "^1.13.7",
-        "@redis/client": "^1.6.0",
         "@repo/config": "workspace:*",
-        "hono": "^4.6.12",
-        "seyfert": "2.1.1-dev-12031800933.0"
+        "hono": "^4.6.14",
+        "seyfert": "2.1.1-dev-12334128354.0",
+        "ws": "^8.18.0"
     },
     "devDependencies": {
-        "@types/node": "^22.10.1",
+        "@types/node": "^22.10.2",
+        "@types/ws": "^8.5.13",
         "tsc-watch": "^6.2.1",
         "typescript": "^5.7.2"
     }

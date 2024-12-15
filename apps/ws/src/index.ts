@@ -1,32 +1,33 @@
 import { serve } from '@hono/node-server';
-import { createClient } from '@redis/client';
 import { config } from '@repo/config';
 import { Hono } from 'hono';
 import { ApiHandler, Logger, ShardManager } from 'seyfert';
+import { PotoSocket } from './socket.js';
 
 const rest = new ApiHandler({
     token: config.rc.token,
 });
 
-const redisClient = createClient();
-await redisClient.connect();
+const socket = new PotoSocket(
+    new Logger({
+        name: '[WS_0]',
+    }),
+    config.botPort,
+);
+
 const ws = new ShardManager({
     info: await rest.proxy.gateway.bot.get(),
-    handlePayload(s, p) {
-        return redisClient.publish(
-            `shard.${s}`,
-            JSON.stringify({
-                s,
-                p,
-            }),
-        );
+    handlePayload(shardId, packet) {
+        return socket.send(shardId, packet);
     },
     token: config.rc.token,
     intents: config.rc.intents,
     debug: config.rc.debug,
 });
 
+socket.connect();
 await ws.spawnShards();
+
 const logger = new Logger({
     name: '[APIWebSocket]',
 });
@@ -69,7 +70,6 @@ serve(
         port: config.wsPort,
     },
     (address) => {
-        // biome-ignore lint/suspicious/noConsole: <explanation>
-        console.log(`Listening to ${address.port}`);
+        logger.info(`Listening to ${address.port}`);
     },
 );
