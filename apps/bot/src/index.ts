@@ -35,6 +35,11 @@ const client = new Client({
 client.ws = new WsManager();
 client.api = new ApiManager();
 
+client.setServices({
+    cache: {
+        disabledCache: true,
+    },
+});
 await client.start({}, false);
 await client.uploadCommands({
     cachePath: join(process.cwd(), '_seyfert_cache.json'),
