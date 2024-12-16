@@ -1,3 +1,4 @@
+import { shuffleArray } from '../../utils/functions.js';
 import { TicTacToePiece } from './constants.js';
 
 export class TicTacToe {
@@ -20,11 +21,7 @@ export class TicTacToe {
     draw?: boolean;
 
     constructor(users: [string, string]) {
-        const randomUser = users[Math.floor(Math.random() * users.length)];
-        this.users = [
-            randomUser === users[0] ? users[1] : users[0],
-            randomUser === users[1] ? users[1] : users[0],
-        ];
+        this.users = shuffleArray(users);
     }
 
     get turn() {
