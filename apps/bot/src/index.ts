@@ -5,6 +5,7 @@ import type { GatewayDispatchPayload } from 'seyfert/lib/types/index.js';
 import { WebSocketServer } from 'ws';
 import { ApiManager } from './api/apiManager.js';
 import { WsManager } from './api/wsManager.js';
+import { GameManager } from './manager/game.js';
 
 const client = new Client({
     getRC() {
@@ -34,6 +35,7 @@ const client = new Client({
 }) as unknown as UsingClient & Client;
 client.ws = new WsManager();
 client.api = new ApiManager();
+client.games = new GameManager();
 
 client.setServices({
     cache: {
@@ -69,5 +71,6 @@ declare module 'seyfert' {
     interface UsingClient extends ParseClient<Client<true>> {
         ws: WsManager;
         api: ApiManager;
+        games: GameManager;
     }
 }
