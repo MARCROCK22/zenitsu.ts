@@ -36,7 +36,7 @@ export class TicTacToe {
         return this.users[this.turn];
     }
 
-    get move() {
+    get piece() {
         return this.turn === 1 ? TicTacToePiece.X : TicTacToePiece.O;
     }
 
@@ -48,7 +48,7 @@ export class TicTacToe {
         if (!this.canPlay(played, userID)) {
             throw new Error(`Can't play ${played}.`);
         }
-        this.map[played] = this.move;
+        this.map[played] = this.piece;
 
         if (
             TicTacToe.winnablePositions.find((p) =>
