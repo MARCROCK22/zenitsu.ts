@@ -67,10 +67,7 @@ export class TicTacToe {
 
     canPlay(played: number, userID: string) {
         return (
-            userID === this.user &&
-            this.map.at(played) === TicTacToePiece.None &&
-            played >= 0 &&
-            played < 9
+            userID === this.user && this.map.at(played) === TicTacToePiece.None
         );
     }
 }
