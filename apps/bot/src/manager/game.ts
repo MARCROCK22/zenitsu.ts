@@ -16,15 +16,19 @@ interface TicTacToeGame {
     game: TicTacToe;
 }
 
-type GenericGame = TicTacToeGame;
+export type GenericGameDB = {
+    type: TicTacToeGame['type'];
+    game: Pick<TicTacToe, 'map' | 'lastTurn' | 'users'>;
+};
+export type GenericGame = TicTacToeGame;
 
 export class GameManager {
-    games = new Map<UUID, GenericGame>();
+    values = new Map<UUID, GenericGame>();
     relationships = new Map<string, UUID>();
 
     generateUUID() {
         let uuid = randomUUID();
-        while (this.games.has(uuid)) {
+        while (this.values.has(uuid)) {
             uuid = randomUUID();
         }
         return uuid;
@@ -35,7 +39,7 @@ export class GameManager {
         for (const user of users) {
             this.relationships.set(user, uuid);
         }
-        this.games.set(uuid, game);
+        this.values.set(uuid, game);
         return uuid;
     }
 
@@ -43,15 +47,15 @@ export class GameManager {
         return users.filter((user) => this.relationships.has(user));
     }
 
-    getGame(userID: string) {
+    getGameFromUsers(userID: string) {
         const uuid = this.relationships.get(userID);
         if (!uuid) {
             return;
         }
-        return { uuid, game: this.games.get(uuid) };
+        return { uuid, game: this.values.get(uuid) };
     }
 
-    deleteGame(users: string[]) {
+    deleteUserGames(users: string[]) {
         for (const user of users) {
             if (!this.relationships.has(user)) {
                 continue;
@@ -60,10 +64,10 @@ export class GameManager {
             if (!relation) {
                 continue;
             }
-            if (!this.games.has(relation)) {
+            if (!this.values.has(relation)) {
                 continue;
             }
-            this.games.delete(relation);
+            this.values.delete(relation);
         }
     }
 
@@ -117,14 +121,14 @@ export class GameManager {
 
         const accept = new Button()
             .setLabel('Accept')
-            .setStyle(ButtonStyle.Primary)
+            .setStyle(ButtonStyle.Success)
             .setCustomId(
                 `accept_${options.game}_${ctx.author.id}_${member.id}_${uuid}`,
             );
 
         const deny = new Button()
             .setLabel('Deny')
-            .setStyle(ButtonStyle.Primary)
+            .setStyle(ButtonStyle.Danger)
             .setCustomId(
                 `deny_${options.game}_${ctx.author.id}_${member.id}_${uuid}`,
             );
@@ -183,20 +187,5 @@ export class GameManager {
                   : `<@${game.user}>'s turn.`,
             components,
         };
-    }
-
-    async initialTicTacToeMessage(ctx: ComponentContext, userID: string) {
-        const rawGame = this.getGame(ctx.author.id);
-        if (!rawGame || rawGame.game?.type !== 'tictactoe') {
-            throw new Error('Unexpected');
-        }
-        const {
-            game: { game },
-            uuid,
-        } = rawGame;
-
-        const body = this.getTicTacToeMessage(game, ctx, userID, uuid);
-
-        await ctx.editOrReply(body);
     }
 }

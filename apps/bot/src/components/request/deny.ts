@@ -18,7 +18,7 @@ export default class Deny extends ComponentCommand {
         const userID = customIdSplit[3];
         const uuid = customIdSplit[4] as UUID;
 
-        if (!ctx.client.games.games.has(uuid)) {
+        if (!ctx.client.games.values.has(uuid)) {
             return ctx.update({
                 content: 'Game does not exists',
                 components: [],

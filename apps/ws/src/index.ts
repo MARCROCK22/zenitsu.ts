@@ -36,7 +36,6 @@ const app = new Hono();
 
 app.get('/info', async (c) => {
     if (c.req.header('authorization') !== ws.options.token) {
-        logger.warn('Invalid auth', c.req.header('authorization'));
         c.status(418);
         return c.text('Invalid authorization');
     }

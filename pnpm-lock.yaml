@@ -64,6 +64,9 @@ importers:
       ajv-ts:
         specifier: ^0.9.0
         version: 0.9.0(typescript@5.7.2)
+      meowdb:
+        specifier: ^2.2.3
+        version: 2.2.3
       seyfert:
         specifier: 2.1.1-dev-12341742427.0
         version: 2.1.1-dev-12341742427.0
@@ -303,6 +306,9 @@ packages:
 
   memory-pager@1.5.0:
     resolution: {integrity: sha512-ZS4Bp4r/Zoeq6+NLJpP+0Zzm0pR8whtGPf1XExKLJBAczGMnSi3It14OiNCStjQjM6NU1okjQGSxgEZN8eBYKg==}
+
+  meowdb@2.2.3:
+    resolution: {integrity: sha512-D2Arz1yZtJ40vWFmUblMKPyuvzXbdKJ5DTMmsnWNRBR0AeFd7eI/oqDXD5tsyHSH7W2jm1i1Y39bD6eTKrdMAA==}
 
   mongodb-connection-string-url@3.0.1:
     resolution: {integrity: sha512-XqMGwRX0Lgn05TDB4PyG2h2kKO/FfWJyCzYQbIhXUxz7ETt0I/FqHjUeqj37irJ+Dl1ZtU82uYyj14u2XsZKfg==}
@@ -606,6 +612,8 @@ snapshots:
   map-stream@0.1.0: {}
 
   memory-pager@1.5.0: {}
+
+  meowdb@2.2.3: {}
 
   mongodb-connection-string-url@3.0.1:
     dependencies:

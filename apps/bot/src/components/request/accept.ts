@@ -12,21 +12,25 @@ export default class Accept extends ComponentCommand {
         return !!ctx.customId.match(regex);
     }
 
-    async run(ctx: ComponentContext<typeof this.componentType>) {
+    run(ctx: ComponentContext<typeof this.componentType>) {
         const customIdSplit = ctx.customId.split('_');
         const gameType = customIdSplit[1];
         const authorID = customIdSplit[2];
         const userID = customIdSplit[3];
         const uuid = customIdSplit[4] as UUID;
+        const rawGame = ctx.client.games.values.get(uuid);
 
-        if (!ctx.client.games.games.has(uuid)) {
+        if (!rawGame) {
             return ctx.update({
                 content: 'Game does not exists',
                 components: [],
             });
         }
 
-        if (ctx.client.games.hasGame([authorID, userID]).length !== 2) {
+        if (
+            rawGame.type !== gameType ||
+            ctx.client.games.hasGame([authorID, userID]).length !== 2
+        ) {
             return ctx.update({
                 content: 'Something went wrong...?',
                 components: [],
@@ -40,13 +44,20 @@ export default class Accept extends ComponentCommand {
             });
         }
 
-        switch (gameType) {
-            case 'tictactoe':
-                await ctx.client.games.initialTicTacToeMessage(ctx, userID);
-                break;
+        switch (rawGame.type) {
+            case 'tictactoe': {
+                const message = ctx.client.games.getTicTacToeMessage(
+                    rawGame.game,
+                    ctx,
+                    userID,
+                    uuid,
+                );
+                return ctx.update(message);
+            }
             default:
                 return ctx.update({
-                    content: authorID,
+                    content: 'Unexpected',
+                    components: [],
                 });
         }
     }

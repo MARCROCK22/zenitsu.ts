@@ -18,7 +18,7 @@ export default class MoveTicTacToe extends ComponentCommand {
         const userID = customIdSplit[4];
         const uuid = customIdSplit[5] as UUID;
 
-        if (!ctx.client.games.games.has(uuid)) {
+        if (!ctx.client.games.values.has(uuid)) {
             return ctx.update({
                 content: 'Game does not exists',
                 components: [],
@@ -32,7 +32,7 @@ export default class MoveTicTacToe extends ComponentCommand {
             });
         }
 
-        const rawGame = ctx.client.games.games.get(uuid);
+        const rawGame = ctx.client.games.values.get(uuid);
         if (!rawGame) {
             throw new Error('Unexpected');
         }
@@ -43,7 +43,7 @@ export default class MoveTicTacToe extends ComponentCommand {
         rawGame.game.play(move, ctx.author.id);
 
         if (rawGame.game.finished) {
-            ctx.client.games.deleteGame([authorID, userID]);
+            ctx.client.games.deleteUserGames([authorID, userID]);
         }
 
         return ctx.update(

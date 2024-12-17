@@ -1,11 +1,23 @@
+import type { UUID } from 'node:crypto';
 import { join } from 'node:path';
 import { config } from '@repo/config';
-import { Client, type ParseClient, type UsingClient } from 'seyfert';
-import type { GatewayDispatchPayload } from 'seyfert/lib/types/index.js';
+import MeowDB from 'meowdb';
+import {
+    Client,
+    type ParseClient,
+    type ParseMiddlewares,
+    type UsingClient,
+} from 'seyfert';
+import {
+    type GatewayDispatchPayload,
+    MessageFlags,
+} from 'seyfert/lib/types/index.js';
 import { WebSocketServer } from 'ws';
 import { ApiManager } from './api/apiManager.js';
 import { WsManager } from './api/wsManager.js';
-import { GameManager } from './manager/game.js';
+import { TicTacToe } from './games/tictactoe/index.js';
+import { GameManager, type GenericGameDB } from './manager/game.js';
+import { allMiddlewares } from './middlewares.js';
 
 const client = new Client({
     getRC() {
@@ -30,17 +42,55 @@ const client = new Client({
                     content,
                 });
             },
+            onMiddlewaresError(ctx, error) {
+                return ctx.editOrReply({
+                    content: error,
+                    flags: MessageFlags.Ephemeral,
+                });
+            },
         },
     },
+    globalMiddlewares: ['checkIfRestarting'],
 }) as unknown as UsingClient & Client;
 client.ws = new WsManager();
 client.api = new ApiManager();
 client.games = new GameManager();
+client.meowdb = new MeowDB<'raw'>({
+    dir: join(process.cwd(), 'cache'),
+    name: 'games',
+    raw: true,
+});
+
+for (const [uuid, rawGame] of Object.entries(client.meowdb.all()) as [
+    UUID,
+    GenericGameDB,
+][]) {
+    switch (rawGame.type) {
+        case 'tictactoe':
+            {
+                const temporalGame = new TicTacToe(['1', '1']);
+                temporalGame.users = rawGame.game.users;
+                temporalGame.lastTurn = rawGame.game.lastTurn;
+                temporalGame.map = rawGame.game.map;
+                client.games.values.set(uuid, {
+                    type: rawGame.type,
+                    game: temporalGame,
+                });
+                for (const i of rawGame.game.users) {
+                    client.games.relationships.set(i, uuid);
+                }
+            }
+            break;
+        default:
+            throw new Error('Unexpected');
+    }
+}
 
 client.setServices({
     cache: {
         disabledCache: true,
     },
+    middlewares: allMiddlewares,
 });
 await client.start({}, false);
 await client.uploadCommands({
@@ -72,5 +122,10 @@ declare module 'seyfert' {
         ws: WsManager;
         api: ApiManager;
         games: GameManager;
+        restarting?: true;
+        meowdb: MeowDB;
     }
+
+    interface RegisteredMiddlewares
+        extends ParseMiddlewares<typeof allMiddlewares> {}
 }
