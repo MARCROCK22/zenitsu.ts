@@ -68,7 +68,7 @@ server.on('connection', (socket) => {
 });
 
 declare module 'seyfert' {
-    interface UsingClient extends ParseClient<Client<true>> {
+    interface UsingClient extends ParseClient<Client<false>> {
         ws: WsManager;
         api: ApiManager;
         games: GameManager;

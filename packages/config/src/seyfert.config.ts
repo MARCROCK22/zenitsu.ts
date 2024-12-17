@@ -15,6 +15,7 @@ export const runtimeConfig: InternalRuntimeConfig = config.bot({
         base: 'src',
         output: 'dist',
         commands: 'commands',
+        components: 'components',
     },
     token: TOKEN,
     intents: ['GuildMessages'],

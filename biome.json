@@ -34,6 +34,9 @@
             },
             "suspicious": {
                 "noConsoleLog": "off"
+            },
+            "complexity": {
+                "noExcessiveCognitiveComplexity": "off"
             }
         }
     },
