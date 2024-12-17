@@ -48,10 +48,10 @@ export class TicTacToe {
         this.map[played] = this.piece;
 
         if (
-            TicTacToe.winnablePositions.find((p) =>
+            TicTacToe.winnablePositions.some((p) =>
                 p.every((x) => this.map[x] === TicTacToePiece.X),
             ) ||
-            TicTacToe.winnablePositions.find((p) =>
+            TicTacToe.winnablePositions.some((p) =>
                 p.every((x) => this.map[x] === TicTacToePiece.O),
             )
         ) {
