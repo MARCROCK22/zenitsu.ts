@@ -1,4 +1,5 @@
 import type { UUID } from 'node:crypto';
+import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { config } from '@repo/config';
 import MeowDB from 'meowdb';
@@ -85,6 +86,8 @@ for (const [uuid, rawGame] of Object.entries(client.meowdb.all()) as [
             throw new Error('Unexpected');
     }
 }
+
+await writeFile(join(process.cwd(), 'cache', 'games.json'), '{}');
 
 client.setServices({
     cache: {

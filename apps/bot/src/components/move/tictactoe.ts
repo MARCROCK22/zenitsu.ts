@@ -44,11 +44,6 @@ export default class MoveTicTacToe extends ComponentCommand {
 
         if (rawGame.game.finished) {
             ctx.client.games.deleteUserGames([authorID, userID]);
-            try {
-                ctx.client.meowdb.delete(uuid);
-            } catch {
-                //
-            }
         }
 
         return ctx.update(
