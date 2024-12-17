@@ -1,6 +1,7 @@
 import { serve } from '@hono/node-server';
 import { config } from '@repo/config';
 import { Hono } from 'hono';
+import { HTTPException } from 'hono/http-exception';
 import { Logger } from 'seyfert';
 import { drawTicTacToe } from './drawTicTacToe.js';
 
@@ -9,15 +10,15 @@ const logger = new Logger({
     name: '[Z_API]',
 });
 
-// app.use((c, next) => {
-//     const auth = c.req.header('Authorization');
-//     if (auth === config.auth.api) {
-//         return next();
-//     }
-//     throw new HTTPException(418, {
-//         message: 'Invalid authorization header',
-//     });
-// });
+app.use((c, next) => {
+    const auth = c.req.header('Authorization');
+    if (auth === config.auth.api) {
+        return next();
+    }
+    throw new HTTPException(418, {
+        message: 'Invalid authorization header',
+    });
+});
 
 app.get('/stats', (c) =>
     c.json({
