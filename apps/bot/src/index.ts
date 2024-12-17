@@ -52,7 +52,7 @@ const client = new Client({
 }) as unknown as UsingClient & Client;
 client.ws = new WsManager();
 client.api = new ApiManager();
-client.games = new GameManager();
+client.games = new GameManager(client);
 client.meowdb = new MeowDB<'raw'>({
     dir: join(process.cwd(), 'cache'),
     name: 'games',
@@ -65,7 +65,7 @@ client.setServices({
     },
     middlewares: allMiddlewares,
 });
-await client.games.syncFromCache(client);
+await client.games.syncFromCache();
 await client.start({}, false);
 await client.uploadCommands({
     cachePath: join(process.cwd(), '_seyfert_cache.json'),

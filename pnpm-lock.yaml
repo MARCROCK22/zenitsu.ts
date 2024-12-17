@@ -72,7 +72,7 @@ importers:
         version: 2.1.1-dev-12341742427.0
       ws:
         specifier: ^8.18.0
-        version: 8.18.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+        version: 8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.5)
     devDependencies:
       '@types/node':
         specifier: ^22.10.2
@@ -106,10 +106,10 @@ importers:
         version: 2.1.1-dev-12341742427.0
       utf-8-validate:
         specifier: ^5.0.2
-        version: 5.0.10
+        version: 6.0.5
       ws:
         specifier: ^8.18.0
-        version: 8.18.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+        version: 8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.5)
     devDependencies:
       '@types/node':
         specifier: ^22.10.2
@@ -460,8 +460,8 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
-  utf-8-validate@5.0.10:
-    resolution: {integrity: sha512-Z6czzLq4u8fPOyx7TU6X3dvUZVvoJmxSQ+IcrlmagKhilxlhZgxPK6C5Jqbkw1IDUmFTM+cz9QDnnLTwDz/2gQ==}
+  utf-8-validate@6.0.5:
+    resolution: {integrity: sha512-EYZR+OpIXp9Y1eG1iueg8KRsY8TuT8VNgnanZ0uA3STqhHQTLwbl+WX76/9X5OY12yQubymBpaBSmMPkSTQcKA==}
     engines: {node: '>=6.14.2'}
 
   webidl-conversions@7.0.0:
@@ -721,7 +721,7 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  utf-8-validate@5.0.10:
+  utf-8-validate@6.0.5:
     dependencies:
       node-gyp-build: 4.8.4
 
@@ -736,7 +736,7 @@ snapshots:
     dependencies:
       isexe: 2.0.0
 
-  ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@5.0.10):
+  ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.5):
     optionalDependencies:
       bufferutil: 4.0.8
-      utf-8-validate: 5.0.10
+      utf-8-validate: 6.0.5

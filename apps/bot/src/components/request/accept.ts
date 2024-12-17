@@ -12,7 +12,7 @@ export default class Accept extends ComponentCommand {
         return !!ctx.customId.match(regex);
     }
 
-    run(ctx: ComponentContext<typeof this.componentType>) {
+    async run(ctx: ComponentContext<typeof this.componentType>) {
         const customIdSplit = ctx.customId.split('_');
         const gameType = customIdSplit[1];
         const authorID = customIdSplit[2];
@@ -46,7 +46,7 @@ export default class Accept extends ComponentCommand {
 
         switch (rawGame.type) {
             case 'tictactoe': {
-                const message = ctx.client.games.getTicTacToeMessage(
+                const message = await ctx.client.games.getTicTacToeMessage(
                     rawGame.game,
                     ctx,
                     userID,

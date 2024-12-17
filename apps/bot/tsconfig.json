@@ -4,7 +4,6 @@
         "target": "ESNext",
         "lib": ["ESNext", "WebWorker"],
         "moduleResolution": "node",
-        "declaration": false,
         "sourceMap": false,
         "strict": true,
         "esModuleInterop": true,

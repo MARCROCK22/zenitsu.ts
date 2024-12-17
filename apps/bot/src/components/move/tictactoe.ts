@@ -11,7 +11,7 @@ export default class MoveTicTacToe extends ComponentCommand {
         return !!ctx.customId.match(regex);
     }
 
-    run(ctx: ComponentContext<typeof this.componentType>) {
+    async run(ctx: ComponentContext<typeof this.componentType>) {
         const customIdSplit = ctx.customId.split('_');
         const move = Number(customIdSplit[2]);
         const authorID = customIdSplit[3];
@@ -46,8 +46,8 @@ export default class MoveTicTacToe extends ComponentCommand {
             ctx.client.games.deleteUserGames([authorID, userID]);
         }
 
-        return ctx.update(
-            ctx.client.games.getTicTacToeMessage(
+        await ctx.update(
+            await ctx.client.games.getTicTacToeMessage(
                 rawGame.game,
                 ctx,
                 userID,

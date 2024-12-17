@@ -29,7 +29,7 @@ export class WsManager {
     async shardsInfo() {
         const response = await fetch(`${this.baseURL}/info`, {
             headers: {
-                authorization: config.rc.token,
+                authorization: config.auth.ws,
             },
         });
         const result = await response.json();
@@ -39,7 +39,7 @@ export class WsManager {
     async stats() {
         const response = await fetch(`${this.baseURL}/stats`, {
             headers: {
-                authorization: config.rc.token,
+                authorization: config.auth.ws,
             },
         });
         const result = await response.json();

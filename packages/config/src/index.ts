@@ -24,6 +24,12 @@ if (!API_PORT) {
     throw new Error('Cannot start process without API_PORT');
 }
 
+const API_AUTH = process.env.API_AUTH;
+
+if (!API_AUTH) {
+    throw new Error('Cannot start process without API_AUTH');
+}
+
 const config = {
     rc: runtimeConfig,
     port: {
@@ -33,6 +39,7 @@ const config = {
     },
     auth: {
         ws: WS_AUTH,
+        api: API_AUTH,
     },
 } as const;
 

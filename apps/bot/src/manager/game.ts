@@ -6,7 +6,7 @@ import {
     Button,
     type CommandContext,
     type ComponentContext,
-    type InteractionGuildMemberStructure,
+    type UserStructure,
     type UsingClient,
 } from 'seyfert';
 import type { ComponentInteractionMessageUpdate } from 'seyfert/lib/common/index.js';
@@ -28,12 +28,15 @@ export type GenericGame = TicTacToeGame;
 export class GameManager {
     values = new Map<UUID, GenericGame>();
     relationships = new Map<string, UUID>();
+    client: UsingClient;
+    constructor(client: UsingClient) {
+        this.client = client;
+    }
 
-    async syncFromCache(client: UsingClient) {
-        for (const [uuid, rawGame] of Object.entries(client.meowdb.all()) as [
-            UUID,
-            GenericGameDB,
-        ][]) {
+    async syncFromCache() {
+        for (const [uuid, rawGame] of Object.entries(
+            this.client.meowdb.all(),
+        ) as [UUID, GenericGameDB][]) {
             switch (rawGame.type) {
                 case 'tictactoe':
                     {
@@ -41,12 +44,12 @@ export class GameManager {
                         temporalGame.users = rawGame.game.users;
                         temporalGame.lastTurn = rawGame.game.lastTurn;
                         temporalGame.map = rawGame.game.map;
-                        client.games.values.set(uuid, {
+                        this.client.games.values.set(uuid, {
                             type: rawGame.type,
                             game: temporalGame,
                         });
                         for (const i of rawGame.game.users) {
-                            client.games.relationships.set(i, uuid);
+                            this.client.games.relationships.set(i, uuid);
                         }
                     }
                     break;
@@ -96,6 +99,7 @@ export class GameManager {
             if (!relation) {
                 continue;
             }
+            this.relationships.delete(user);
             if (!this.values.has(relation)) {
                 continue;
             }
@@ -117,7 +121,7 @@ export class GameManager {
 
     async requestPlay(
         ctx: CommandContext,
-        member: InteractionGuildMemberStructure,
+        member: UserStructure,
         options: {
             wanna_play: string;
             game: GenericGame['type'];
@@ -171,12 +175,12 @@ export class GameManager {
         });
     }
 
-    getTicTacToeMessage(
+    async getTicTacToeMessage(
         game: TicTacToe,
         ctx: ComponentContext,
         userID: string,
         uuid: UUID,
-    ): ComponentInteractionMessageUpdate {
+    ): Promise<ComponentInteractionMessageUpdate> {
         const components: ActionRow<Button>[] = [];
 
         for (let y = 0; y < 3; y++) {
@@ -216,8 +220,14 @@ export class GameManager {
                 ? `<@${game.winner}> won the game.`
                 : game.draw
                   ? `Draw between ${game.users.map((user) => `<@${user}>`).join(', ')}`
-                  : `<@${game.user}>'s turn.`,
+                  : `[${game.piece === TicTacToePiece.O ? 'O' : 'X'}] <@${game.user}>'s turn.`,
             components,
+            files: [
+                {
+                    data: await this.client.api.drawTicTacToe(game),
+                    filename: 'game.png',
+                },
+            ],
         };
     }
 }

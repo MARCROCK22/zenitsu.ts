@@ -1,6 +1,7 @@
 import { serve } from '@hono/node-server';
 import { config } from '@repo/config';
 import { Hono } from 'hono';
+import { HTTPException } from 'hono/http-exception';
 import { ApiHandler, Logger, ShardManager } from 'seyfert';
 import { PotoSocket } from './socket.js';
 
@@ -34,12 +35,17 @@ const logger = new Logger({
 
 const app = new Hono();
 
-app.get('/info', async (c) => {
-    if (c.req.header('authorization') !== ws.options.token) {
-        c.status(418);
-        return c.text('Invalid authorization');
+app.use((c, next) => {
+    const auth = c.req.header('Authorization');
+    if (auth === config.auth.ws) {
+        return next();
     }
+    throw new HTTPException(418, {
+        message: 'Invalid authorization header',
+    });
+});
 
+app.get('/info', async (c) => {
     return c.json({
         latency: ws.latency,
         shards: [...ws.values()].map((shard) => ({
