@@ -1,10 +1,13 @@
 import { type UUID, randomUUID } from 'node:crypto';
+import { writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import {
     ActionRow,
     Button,
     type CommandContext,
     type ComponentContext,
     type InteractionGuildMemberStructure,
+    type UsingClient,
 } from 'seyfert';
 import type { ComponentInteractionMessageUpdate } from 'seyfert/lib/common/index.js';
 import { ButtonStyle } from 'seyfert/lib/types/index.js';
@@ -25,6 +28,35 @@ export type GenericGame = TicTacToeGame;
 export class GameManager {
     values = new Map<UUID, GenericGame>();
     relationships = new Map<string, UUID>();
+
+    async syncFromCache(client: UsingClient) {
+        for (const [uuid, rawGame] of Object.entries(client.meowdb.all()) as [
+            UUID,
+            GenericGameDB,
+        ][]) {
+            switch (rawGame.type) {
+                case 'tictactoe':
+                    {
+                        const temporalGame = new TicTacToe(['1', '1']);
+                        temporalGame.users = rawGame.game.users;
+                        temporalGame.lastTurn = rawGame.game.lastTurn;
+                        temporalGame.map = rawGame.game.map;
+                        client.games.values.set(uuid, {
+                            type: rawGame.type,
+                            game: temporalGame,
+                        });
+                        for (const i of rawGame.game.users) {
+                            client.games.relationships.set(i, uuid);
+                        }
+                    }
+                    break;
+                default:
+                    throw new Error('Unexpected');
+            }
+        }
+
+        await writeFile(join(process.cwd(), 'cache', 'games.json'), '{}');
+    }
 
     generateUUID() {
         let uuid = randomUUID();

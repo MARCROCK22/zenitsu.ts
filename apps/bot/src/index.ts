@@ -1,5 +1,3 @@
-import type { UUID } from 'node:crypto';
-import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { config } from '@repo/config';
 import MeowDB from 'meowdb';
@@ -16,8 +14,7 @@ import {
 import { WebSocketServer } from 'ws';
 import { ApiManager } from './api/apiManager.js';
 import { WsManager } from './api/wsManager.js';
-import { TicTacToe } from './games/tictactoe/index.js';
-import { GameManager, type GenericGameDB } from './manager/game.js';
+import { GameManager } from './manager/game.js';
 import { allMiddlewares } from './middlewares.js';
 
 const client = new Client({
@@ -62,39 +59,13 @@ client.meowdb = new MeowDB<'raw'>({
     raw: true,
 });
 
-for (const [uuid, rawGame] of Object.entries(client.meowdb.all()) as [
-    UUID,
-    GenericGameDB,
-][]) {
-    switch (rawGame.type) {
-        case 'tictactoe':
-            {
-                const temporalGame = new TicTacToe(['1', '1']);
-                temporalGame.users = rawGame.game.users;
-                temporalGame.lastTurn = rawGame.game.lastTurn;
-                temporalGame.map = rawGame.game.map;
-                client.games.values.set(uuid, {
-                    type: rawGame.type,
-                    game: temporalGame,
-                });
-                for (const i of rawGame.game.users) {
-                    client.games.relationships.set(i, uuid);
-                }
-            }
-            break;
-        default:
-            throw new Error('Unexpected');
-    }
-}
-
-await writeFile(join(process.cwd(), 'cache', 'games.json'), '{}');
-
 client.setServices({
     cache: {
         disabledCache: true,
     },
     middlewares: allMiddlewares,
 });
+await client.games.syncFromCache(client);
 await client.start({}, false);
 await client.uploadCommands({
     cachePath: join(process.cwd(), '_seyfert_cache.json'),
