@@ -4,6 +4,7 @@ import MeowDB from 'meowdb';
 import {
     Client,
     type ParseClient,
+    type ParseLocales,
     type ParseMiddlewares,
     type UsingClient,
 } from 'seyfert';
@@ -14,6 +15,7 @@ import {
 import { WebSocketServer } from 'ws';
 import { ApiManager } from './api/apiManager.js';
 import { WsManager } from './api/wsManager.js';
+import type DefaultLang from './locales/en.js';
 import { GameManager } from './manager/game.js';
 import { allMiddlewares } from './middlewares.js';
 
@@ -64,6 +66,13 @@ client.setServices({
         disabledCache: true,
     },
     middlewares: allMiddlewares,
+    langs: {
+        default: 'en',
+        aliases: {
+            en: ['en-GB', 'en-US'],
+            es: ['es-419', 'es-ES'],
+        },
+    },
 });
 await client.games.syncFromCache();
 await client.start({}, false);
@@ -102,4 +111,6 @@ declare module 'seyfert' {
 
     interface RegisteredMiddlewares
         extends ParseMiddlewares<typeof allMiddlewares> {}
+
+    interface DefaultLocale extends ParseLocales<typeof DefaultLang> {}
 }
