@@ -29,7 +29,10 @@ app.get('/stats', (c) =>
 
 app.get('/tictactoe/display', async (c) => {
     const table = (c.req.query('table') ?? '').split(',').map(Number);
+    const timeStart = performance.now();
     const result = (await drawTicTacToe(table)) as unknown as ArrayBuffer;
+    const timeEnd = performance.now();
+    logger.debug(`Took ${timeEnd - timeStart}ms to draw the tictactoe board`);
     return c.body(result);
 });
 
