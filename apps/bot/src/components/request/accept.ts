@@ -3,7 +3,7 @@ import { ComponentCommand, type ComponentContext } from 'seyfert';
 import { MessageFlags } from 'seyfert/lib/types/index.js';
 
 const regex =
-    /accept_(tictactoe)_[0-9]{17,19}_[0-9]{17,19}_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/;
+    /accept_(tictactoe|connect4)_[0-9]{17,19}_[0-9]{17,19}_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/;
 
 export default class Accept extends ComponentCommand {
     componentType = 'Button' as const;
@@ -47,6 +47,18 @@ export default class Accept extends ComponentCommand {
         switch (rawGame.type) {
             case 'tictactoe': {
                 const message = await ctx.client.games.getTicTacToeMessage(
+                    rawGame.game,
+                    authorId,
+                    userId,
+                    uuid,
+                );
+                return ctx.update({
+                    ...message.body,
+                    files: message.files,
+                });
+            }
+            case 'connect4': {
+                const message = await ctx.client.games.getConnect4Message(
                     rawGame.game,
                     authorId,
                     userId,

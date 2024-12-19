@@ -16,6 +16,10 @@ const options = {
                 name: 'tictactoe',
                 value: 'tictactoe',
             },
+            {
+                name: 'connect4',
+                value: 'connect4',
+            },
         ] as const,
         required: true,
     }),

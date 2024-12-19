@@ -55,6 +55,9 @@ importers:
       '@fabricio-191/ms':
         specifier: ^1.5.1
         version: 1.5.1
+      '@lil_marcrock22/connect4-ai':
+        specifier: ^0.0.17
+        version: 0.0.17
       '@repo/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -106,10 +109,10 @@ importers:
         version: 2.1.1-dev-12418439067.0
       utf-8-validate:
         specifier: ^5.0.2
-        version: 6.0.5
+        version: 5.0.10
       ws:
         specifier: ^8.18.0
-        version: 8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.5)
+        version: 8.18.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
     devDependencies:
       '@types/node':
         specifier: ^22.10.2
@@ -225,6 +228,9 @@ packages:
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
+
+  '@lil_marcrock22/connect4-ai@0.0.17':
+    resolution: {integrity: sha512-Al61udGZZAc0iwTRAYUfkUwmNZk3luc77c+8hAYvvWHw3OMD7TMLS4+RcT2RgJLvi3Thqz91LkMWxkt+YFngMw==}
 
   '@mongodb-js/saslprep@1.1.9':
     resolution: {integrity: sha512-tVkljjeEaAhCqTzajSdgbQ6gE6f3oneVwa3iXR6csiEwXXOFsiC6Uh9iAjAhXPtqa/XMDHWjjeNH/77m/Yq2dw==}
@@ -460,6 +466,10 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
+  utf-8-validate@5.0.10:
+    resolution: {integrity: sha512-Z6czzLq4u8fPOyx7TU6X3dvUZVvoJmxSQ+IcrlmagKhilxlhZgxPK6C5Jqbkw1IDUmFTM+cz9QDnnLTwDz/2gQ==}
+    engines: {node: '>=6.14.2'}
+
   utf-8-validate@6.0.5:
     resolution: {integrity: sha512-EYZR+OpIXp9Y1eG1iueg8KRsY8TuT8VNgnanZ0uA3STqhHQTLwbl+WX76/9X5OY12yQubymBpaBSmMPkSTQcKA==}
     engines: {node: '>=6.14.2'}
@@ -531,6 +541,8 @@ snapshots:
   '@hono/node-server@1.13.7(hono@4.6.14)':
     dependencies:
       hono: 4.6.14
+
+  '@lil_marcrock22/connect4-ai@0.0.17': {}
 
   '@mongodb-js/saslprep@1.1.9':
     dependencies:
@@ -721,9 +733,14 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
+  utf-8-validate@5.0.10:
+    dependencies:
+      node-gyp-build: 4.8.4
+
   utf-8-validate@6.0.5:
     dependencies:
       node-gyp-build: 4.8.4
+    optional: true
 
   webidl-conversions@7.0.0: {}
 
@@ -735,6 +752,11 @@ snapshots:
   which@2.0.2:
     dependencies:
       isexe: 2.0.0
+
+  ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@5.0.10):
+    optionalDependencies:
+      bufferutil: 4.0.8
+      utf-8-validate: 5.0.10
 
   ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.5):
     optionalDependencies:

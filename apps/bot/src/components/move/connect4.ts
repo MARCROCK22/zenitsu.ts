@@ -2,9 +2,9 @@ import type { UUID } from 'node:crypto';
 import { ComponentCommand, type ComponentContext } from 'seyfert';
 
 const regex =
-    /move_tictactoe_[0-8]{1,1}_[0-9]{17,19}_[0-9]{17,19}_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/;
+    /move_connect4_[0-9]{1,1}_[0-9]{17,19}_[0-9]{17,19}_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/;
 
-export default class MoveTicTacToe extends ComponentCommand {
+export default class MoveConnect4 extends ComponentCommand {
     componentType = 'Button' as const;
 
     filter(ctx: ComponentContext<typeof this.componentType>) {
@@ -33,20 +33,23 @@ export default class MoveTicTacToe extends ComponentCommand {
         }
 
         const rawGame = ctx.client.games.values.get(uuid);
-        if (!rawGame || rawGame.type !== 'tictactoe') {
+        if (!rawGame || rawGame.type !== 'connect4') {
             throw new Error('Unexpected');
         }
 
-        if (!rawGame.game.canPlay(move, ctx.author.id)) {
+        if (
+            !rawGame.game.canPlay(move) ||
+            rawGame.game.players[rawGame.game.turn - 1] !== ctx.author.id
+        ) {
             return ctx.deferUpdate();
         }
-        rawGame.game.play(move, ctx.author.id);
+        rawGame.game.play(move);
 
         if (rawGame.game.finished) {
             ctx.client.games.deleteUserGames([authorId, userId]);
         }
 
-        const message = await ctx.client.games.getTicTacToeMessage(
+        const message = await ctx.client.games.getConnect4Message(
             rawGame.game,
             authorId,
             userId,

@@ -17,6 +17,7 @@
     "license": "ISC",
     "dependencies": {
         "@fabricio-191/ms": "^1.5.1",
+        "@lil_marcrock22/connect4-ai": "^0.0.17",
         "@repo/config": "workspace:*",
         "@repo/db": "workspace:*",
         "ajv-ts": "^0.9.0",

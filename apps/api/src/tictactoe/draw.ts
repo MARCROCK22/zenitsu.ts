@@ -1,19 +1,15 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { decodeImage } from './utils/image.js';
+import { decodeImage } from '../utils/image.js';
 
 const assets = (...path: string[]) =>
-    join(process.cwd(), '..', '..', 'assets', ...path);
+    join(process.cwd(), '..', '..', 'assets', 'tictactoe', ...path);
 
 const background = await decodeImage(
-    await readFile(assets('tictactoe', 'default', 'background.png')),
+    await readFile(assets('default', 'background.png')),
 );
-const xImage = await decodeImage(
-    await readFile(assets('tictactoe', 'default', 'x.png')),
-);
-const oImage = await decodeImage(
-    await readFile(assets('tictactoe', 'default', 'o.png')),
-);
+const xImage = await decodeImage(await readFile(assets('default', 'x.png')));
+const oImage = await decodeImage(await readFile(assets('default', 'o.png')));
 
 export function drawTicTacToe(table: number[]) {
     if (table.length !== 9) {

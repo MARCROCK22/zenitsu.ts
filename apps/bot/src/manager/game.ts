@@ -1,4 +1,5 @@
 import { type UUID, randomUUID } from 'node:crypto';
+import ModuleConnect4 from '@lil_marcrock22/connect4-ai';
 import {
     ActionRow,
     Button,
@@ -10,6 +11,7 @@ import {
 import { ButtonStyle } from 'seyfert/lib/types/index.js';
 import { TicTacToePiece } from '../games/tictactoe/constants.js';
 import { TicTacToe } from '../games/tictactoe/index.js';
+import { chunk } from '../utils/functions.js';
 
 interface Recipient {
     userId: string;
@@ -23,11 +25,13 @@ interface TicTacToeGame {
     recipients: Recipient[];
 }
 
-export type GenericGameDB = {
-    type: TicTacToeGame['type'];
-    game: Pick<TicTacToe, 'map' | 'lastTurn' | 'users'>;
-};
-export type GenericGame = TicTacToeGame;
+interface Connect4Game {
+    type: 'connect4';
+    game: ModuleConnect4.Connect4<string>;
+    recipients: Recipient[];
+}
+
+export type GenericGame = TicTacToeGame | Connect4Game;
 
 export class GameManager {
     values = new Map<UUID, GenericGame>();
@@ -129,6 +133,32 @@ export class GameManager {
         };
     }
 
+    createConnect4Game(users: [string, string], recipients: Recipient[]) {
+        const hasGame = this.hasGame(users);
+        if (hasGame.length > 0) {
+            throw new Error(`${hasGame.join(', ')} has a game in progress`);
+        }
+
+        const game = new ModuleConnect4.Connect4<string>(
+            {
+                lengthArr: 6,
+                columns: 7,
+                necessaryToWin: 4,
+            },
+            users,
+        );
+        game.createBoard();
+
+        return {
+            game,
+            uuid: this.syncGame(users, {
+                type: 'connect4',
+                game,
+                recipients,
+            }),
+        };
+    }
+
     async requestPlay(
         ctx: CommandContext,
         user: UserStructure,
@@ -162,6 +192,18 @@ export class GameManager {
         switch (options.game) {
             case 'tictactoe':
                 uuid = this.createTicTacToeGame(
+                    [ctx.author.id, user.id],
+                    [
+                        {
+                            channelId: ctx.channelId,
+                            messageId: message.id,
+                            userId: ctx.author.id,
+                        },
+                    ],
+                ).uuid;
+                break;
+            case 'connect4':
+                uuid = this.createConnect4Game(
                     [ctx.author.id, user.id],
                     [
                         {
@@ -235,7 +277,6 @@ export class GameManager {
             }
             components.push(row);
         }
-
         return {
             body: {
                 content: game.winner
@@ -248,6 +289,52 @@ export class GameManager {
             files: [
                 {
                     data: await this.client.api.drawTicTacToe(game),
+                    filename: 'game.png',
+                },
+            ] satisfies RawFile[],
+        };
+    }
+
+    async getConnect4Message(
+        game: ModuleConnect4.Connect4<string>,
+        authorId: string,
+        userId: string,
+        uuid: UUID,
+    ) {
+        const buttons: Button[] = [];
+
+        for (let i = 0; i < game.columns; i++) {
+            buttons.push(
+                new Button()
+                    .setCustomId(
+                        `move_connect4_${i}_${authorId}_${userId}_${uuid}`,
+                    )
+                    .setLabel(`${i + 1}`)
+                    .setStyle(ButtonStyle.Secondary)
+                    .setDisabled(
+                        game.finished || game.map[i].at(-1)?.key !== 0,
+                    ),
+            );
+        }
+
+        const components: ActionRow<Button>[] = [];
+        const buttonChunks = chunk(buttons, 5);
+        for (const chunk of buttonChunks) {
+            components.push(new ActionRow<Button>().addComponents(...chunk));
+        }
+
+        return {
+            body: {
+                content: game.winner
+                    ? `<@${game.players[game.winner - 1]}> won the game.`
+                    : game.tie
+                      ? `Draw between ${game.players.map((user) => `<@${user}>`).join(', ')}`
+                      : `[${game.turn === 1 ? 'RED' : 'YELLOW'}] <@${game.players[game.turn - 1]}>'s turn.`,
+                components: components.map((row) => row.toJSON()),
+            },
+            files: [
+                {
+                    data: await this.client.api.drawConnect4(game),
                     filename: 'game.png',
                 },
             ] satisfies RawFile[],

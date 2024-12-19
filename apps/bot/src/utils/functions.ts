@@ -5,3 +5,17 @@ export function shuffleArray<T extends unknown[]>(array: T): T {
     }
     return array;
 }
+export function chunk<T extends unknown[]>(array: T, chunks: number) {
+    let index = 0;
+    let resIndex = 0;
+    const result: T[] = new Array(Math.ceil(array.length / chunks));
+
+    while (index < array.length) {
+        const end = index + chunks;
+        result[resIndex] = array.slice(index, end) as T;
+        index = end;
+        resIndex++;
+    }
+
+    return result;
+}

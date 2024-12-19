@@ -3,7 +3,7 @@ import { ComponentCommand, type ComponentContext } from 'seyfert';
 import { MessageFlags } from 'seyfert/lib/types/index.js';
 
 const regex =
-    /deny_(tictactoe)_[0-9]{17,19}_[0-9]{17,19}_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/;
+    /deny_(tictactoe|connect4)_[0-9]{17,19}_[0-9]{17,19}_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/;
 
 export default class Deny extends ComponentCommand {
     componentType = 'Button' as const;
