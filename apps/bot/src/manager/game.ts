@@ -121,25 +121,25 @@ export class GameManager {
 
     async requestPlay(
         ctx: CommandContext,
-        member: UserStructure,
+        user: UserStructure,
         options: {
             wanna_play: string;
             game: GenericGame['type'];
         },
     ) {
-        if (this.hasGame([ctx.author.id, member.id]).length > 0) {
+        if (this.hasGame([ctx.author.id, user.id]).length > 0) {
             return ctx.write({
                 content: '?xd',
             });
         }
 
-        if (ctx.author.id === member.id) {
+        if (ctx.author.id === user.id) {
             return ctx.write({
                 content: 'You win.',
             });
         }
 
-        if (member.bot) {
+        if (user.bot) {
             return ctx.write({
                 content: '"beep boop"',
             });
@@ -149,7 +149,7 @@ export class GameManager {
 
         switch (options.game) {
             case 'tictactoe':
-                uuid = this.createTicTacToeGame([ctx.author.id, member.id]);
+                uuid = this.createTicTacToeGame([ctx.author.id, user.id]);
                 break;
             default:
                 throw new Error('Unexpected');
@@ -159,14 +159,14 @@ export class GameManager {
             .setLabel('Accept')
             .setStyle(ButtonStyle.Success)
             .setCustomId(
-                `accept_${options.game}_${ctx.author.id}_${member.id}_${uuid}`,
+                `accept_${options.game}_${ctx.author.id}_${user.id}_${uuid}`,
             );
 
         const deny = new Button()
             .setLabel('Deny')
             .setStyle(ButtonStyle.Danger)
             .setCustomId(
-                `deny_${options.game}_${ctx.author.id}_${member.id}_${uuid}`,
+                `deny_${options.game}_${ctx.author.id}_${user.id}_${uuid}`,
             );
 
         await ctx.write({
