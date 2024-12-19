@@ -17,6 +17,7 @@ import { ApiManager } from './api/apiManager.js';
 import { WsManager } from './api/wsManager.js';
 import type DefaultLang from './locales/en.js';
 import { GameManager } from './manager/game.js';
+import { QueueManager } from './manager/queue.js';
 import { allMiddlewares } from './middlewares.js';
 
 const client = new Client({
@@ -55,6 +56,7 @@ const client = new Client({
 client.ws = new WsManager();
 client.api = new ApiManager();
 client.games = new GameManager(client);
+client.queue = new QueueManager(client);
 client.meowdb = new MeowDB<'raw'>({
     dir: join(process.cwd(), 'cache'),
     name: 'games',
@@ -74,7 +76,8 @@ client.setServices({
         },
     },
 });
-await client.games.syncFromCache();
+client.queue.start();
+// await client.games.syncFromCache();
 await client.start({}, false);
 await client.uploadCommands({
     cachePath: join(process.cwd(), '_seyfert_cache.json'),
@@ -105,6 +108,7 @@ declare module 'seyfert' {
         ws: WsManager;
         api: ApiManager;
         games: GameManager;
+        queue: QueueManager;
         restarting?: true;
         meowdb: MeowDB;
     }

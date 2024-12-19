@@ -46,13 +46,28 @@ export default class MoveTicTacToe extends ComponentCommand {
             ctx.client.games.deleteUserGames([authorID, userID]);
         }
 
-        await ctx.update(
-            await ctx.client.games.getTicTacToeMessage(
-                rawGame.game,
-                ctx,
-                userID,
-                uuid,
-            ),
+        const message = await ctx.client.games.getTicTacToeMessage(
+            rawGame.game,
+            authorID,
+            userID,
+            uuid,
         );
+
+        for (const i of rawGame.recipients) {
+            if (i.messageId === ctx.interaction.message.id) {
+                continue;
+            }
+
+            await ctx.client.proxy
+                .channels(i.channelId)
+                .messages(i.messageId)
+                .patch(message);
+        }
+
+        await ctx.update({
+            content: message.body.content,
+            components: message.body.components,
+            files: message.files,
+        });
     }
 }

@@ -15,8 +15,8 @@ export default class Accept extends ComponentCommand {
     async run(ctx: ComponentContext<typeof this.componentType>) {
         const customIdSplit = ctx.customId.split('_');
         const gameType = customIdSplit[1];
-        const authorID = customIdSplit[2];
-        const userID = customIdSplit[3];
+        const authorId = customIdSplit[2];
+        const userId = customIdSplit[3];
         const uuid = customIdSplit[4] as UUID;
         const rawGame = ctx.client.games.values.get(uuid);
 
@@ -29,7 +29,7 @@ export default class Accept extends ComponentCommand {
 
         if (
             rawGame.type !== gameType ||
-            ctx.client.games.hasGame([authorID, userID]).length !== 2
+            ctx.client.games.hasGame([authorId, userId]).length !== 2
         ) {
             return ctx.update({
                 content: 'Something went wrong...?',
@@ -37,7 +37,7 @@ export default class Accept extends ComponentCommand {
             });
         }
 
-        if (userID !== ctx.author.id) {
+        if (userId !== ctx.author.id) {
             return ctx.write({
                 content: '?',
                 flags: MessageFlags.Ephemeral,
@@ -48,11 +48,15 @@ export default class Accept extends ComponentCommand {
             case 'tictactoe': {
                 const message = await ctx.client.games.getTicTacToeMessage(
                     rawGame.game,
-                    ctx,
-                    userID,
+                    authorId,
+                    userId,
                     uuid,
                 );
-                return ctx.update(message);
+                return ctx.update({
+                    content: message.body.content,
+                    components: message.body.components,
+                    files: message.files,
+                });
             }
             default:
                 return ctx.update({
