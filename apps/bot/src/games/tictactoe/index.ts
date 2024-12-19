@@ -41,8 +41,8 @@ export class TicTacToe {
         return this.draw || this.winner !== undefined;
     }
 
-    play(played: number, userID: string) {
-        if (!this.canPlay(played, userID)) {
+    play(played: number, userId: string) {
+        if (!this.canPlay(played, userId)) {
             throw new Error(`Can't play ${played}.`);
         }
         this.map[played] = this.piece;
@@ -65,9 +65,9 @@ export class TicTacToe {
         this.lastTurn = this.turn;
     }
 
-    canPlay(played: number, userID: string) {
+    canPlay(played: number, userId: string) {
         return (
-            userID === this.user && this.map.at(played) === TicTacToePiece.None
+            userId === this.user && this.map.at(played) === TicTacToePiece.None
         );
     }
 }

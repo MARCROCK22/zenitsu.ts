@@ -86,8 +86,8 @@ export class GameManager {
         return users.filter((user) => this.relationships.has(user));
     }
 
-    getGameFromUsers(userID: string) {
-        const uuid = this.relationships.get(userID);
+    getGameFromUsers(userId: string) {
+        const uuid = this.relationships.get(userId);
         if (!uuid) {
             return;
         }

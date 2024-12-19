@@ -14,8 +14,8 @@ export default class Deny extends ComponentCommand {
 
     run(ctx: ComponentContext<typeof this.componentType>) {
         const customIdSplit = ctx.customId.split('_');
-        const authorID = customIdSplit[2];
-        const userID = customIdSplit[3];
+        const authorId = customIdSplit[2];
+        const userId = customIdSplit[3];
         const uuid = customIdSplit[4] as UUID;
 
         if (!ctx.client.games.values.has(uuid)) {
@@ -25,14 +25,14 @@ export default class Deny extends ComponentCommand {
             });
         }
 
-        if (ctx.client.games.hasGame([authorID, userID]).length !== 2) {
+        if (ctx.client.games.hasGame([authorId, userId]).length !== 2) {
             return ctx.update({
                 content: 'Something went wrong...?',
                 components: [],
             });
         }
 
-        if (userID !== ctx.author.id) {
+        if (userId !== ctx.author.id) {
             return ctx.write({
                 content: '?',
                 flags: MessageFlags.Ephemeral,

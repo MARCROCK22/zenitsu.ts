@@ -14,8 +14,8 @@ export default class MoveTicTacToe extends ComponentCommand {
     async run(ctx: ComponentContext<typeof this.componentType>) {
         const customIdSplit = ctx.customId.split('_');
         const move = Number(customIdSplit[2]);
-        const authorID = customIdSplit[3];
-        const userID = customIdSplit[4];
+        const authorId = customIdSplit[3];
+        const userId = customIdSplit[4];
         const uuid = customIdSplit[5] as UUID;
 
         if (!ctx.client.games.values.has(uuid)) {
@@ -25,7 +25,7 @@ export default class MoveTicTacToe extends ComponentCommand {
             });
         }
 
-        if (ctx.client.games.hasGame([authorID, userID]).length !== 2) {
+        if (ctx.client.games.hasGame([authorId, userId]).length !== 2) {
             return ctx.update({
                 content: 'Something went wrong...?',
                 components: [],
@@ -43,13 +43,13 @@ export default class MoveTicTacToe extends ComponentCommand {
         rawGame.game.play(move, ctx.author.id);
 
         if (rawGame.game.finished) {
-            ctx.client.games.deleteUserGames([authorID, userID]);
+            ctx.client.games.deleteUserGames([authorId, userId]);
         }
 
         const message = await ctx.client.games.getTicTacToeMessage(
             rawGame.game,
-            authorID,
-            userID,
+            authorId,
+            userId,
             uuid,
         );
 
