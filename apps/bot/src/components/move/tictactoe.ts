@@ -53,6 +53,12 @@ export default class MoveTicTacToe extends ComponentCommand {
             uuid,
         );
 
+        await ctx.update({
+            content: message.body.content,
+            components: message.body.components,
+            files: message.files,
+        });
+
         for (const i of rawGame.recipients) {
             if (i.messageId === ctx.interaction.message.id) {
                 continue;
@@ -63,11 +69,5 @@ export default class MoveTicTacToe extends ComponentCommand {
                 .messages(i.messageId)
                 .patch(message);
         }
-
-        await ctx.update({
-            content: message.body.content,
-            components: message.body.components,
-            files: message.files,
-        });
     }
 }
