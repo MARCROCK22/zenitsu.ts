@@ -21,7 +21,7 @@
         "@repo/db": "workspace:*",
         "ajv-ts": "^0.9.0",
         "meowdb": "^2.2.3",
-        "seyfert": "2.1.1-dev-12341742427.0",
+        "seyfert": "2.1.1-dev-12418439067.0",
         "ws": "^8.18.0"
     },
     "devDependencies": {

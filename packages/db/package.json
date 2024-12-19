@@ -23,6 +23,6 @@
     "dependencies": {
         "mongodb": "^6.12.0",
         "papr": "^15.2.2",
-        "seyfert": "2.1.1-dev-12341742427.0"
+        "seyfert": "2.1.1-dev-12418439067.0"
     }
 }

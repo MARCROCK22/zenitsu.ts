@@ -2,26 +2,28 @@ import { config } from '@repo/config';
 import s from 'ajv-ts';
 import { statsResult } from './_.js';
 
-const shardsInfoResult = s.object({
-    latency: s.number(),
-    shards: s.array(
-        s.object({
-            data: s.object({
-                resume_seq: s.number().nullable(),
-                resume_gateway_url: s.string().optional(),
-                session_id: s.string().optional(),
+const workersInfoResult = s.array(
+    s.object({
+        shards: s.array(
+            s.object({
+                data: s.object({
+                    resume_seq: s.number().nullable(),
+                    resume_gateway_url: s.string().optional(),
+                    session_id: s.string().optional(),
+                }),
+                heart: s.object({
+                    ack: s.boolean(),
+                    interval: s.number(),
+                    lastAck: s.number().optional(),
+                    lastBeat: s.number().optional(),
+                }),
+                latency: s.number().nullable(),
+                id: s.number(),
             }),
-            heart: s.object({
-                ack: s.boolean(),
-                interval: s.number(),
-                lastAck: s.number().optional(),
-                lastBeat: s.number().optional(),
-            }),
-            latency: s.number(),
-            id: s.number(),
-        }),
-    ),
-});
+        ),
+        workerId: s.number(),
+    }),
+);
 
 export class WsManager {
     private baseURL = `http://localhost:${config.port.ws}`;
@@ -33,7 +35,7 @@ export class WsManager {
             },
         });
         const result = await response.json();
-        return shardsInfoResult.parse(result);
+        return workersInfoResult.parse(result);
     }
 
     async stats() {

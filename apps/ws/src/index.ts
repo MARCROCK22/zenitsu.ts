@@ -1,33 +1,22 @@
+import { join } from 'node:path';
 import { serve } from '@hono/node-server';
 import { config } from '@repo/config';
 import { Hono } from 'hono';
 import { HTTPException } from 'hono/http-exception';
-import { ApiHandler, Logger, ShardManager } from 'seyfert';
-import { PotoSocket } from './socket.js';
+import { Logger, WorkerManager } from 'seyfert';
 
-const rest = new ApiHandler({
-    token: config.rc.token,
-});
-
-const socket = new PotoSocket(
-    new Logger({
-        name: '[WS_0]',
-    }),
-    config.port.bot,
-);
-
-const ws = new ShardManager({
-    info: await rest.proxy.gateway.bot.get(),
-    handlePayload(shardId, packet) {
-        return socket.send(shardId, packet);
-    },
+const manager = new WorkerManager({
+    mode: 'clusters',
+    path: join(process.cwd(), 'dist', 'worker.js'),
     token: config.rc.token,
     intents: config.rc.intents,
     debug: config.rc.debug,
+    getRC() {
+        return config.rc;
+    },
 });
 
-socket.connect();
-await ws.spawnShards();
+await manager.start();
 
 const logger = new Logger({
     name: '[APIWebSocket]',
@@ -46,20 +35,24 @@ app.use((c, next) => {
 });
 
 app.get('/info', async (c) => {
-    return c.json({
-        latency: ws.latency,
-        shards: [...ws.values()].map((shard) => ({
-            data: shard.data,
-            heart: {
-                ack: shard.heart.ack,
-                interval: shard.heart.interval,
-                lastAck: shard.heart.lastAck,
-                lastBeat: shard.heart.lastBeat,
-            },
-            latency: shard.latency,
-            id: shard.id,
-        })),
-    });
+    const workersInfo = await manager.tellWorkers((client) => {
+        return {
+            shards: [...client.shards.values()].map((shard) => ({
+                data: shard.data,
+                heart: {
+                    ack: shard.heart.ack,
+                    interval: shard.heart.interval,
+                    lastAck: shard.heart.lastAck,
+                    lastBeat: shard.heart.lastBeat,
+                },
+                latency: shard.latency,
+                id: shard.id,
+            })),
+            workerId: client.workerId,
+        };
+    }, {});
+
+    return c.json(workersInfo);
 });
 
 app.get('/stats', (c) =>

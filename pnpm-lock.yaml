@@ -37,8 +37,8 @@ importers:
         specifier: github:matmen/imagescript
         version: https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b
       seyfert:
-        specifier: 2.1.1-dev-12341742427.0
-        version: 2.1.1-dev-12341742427.0
+        specifier: 2.1.1-dev-12418439067.0
+        version: 2.1.1-dev-12418439067.0
     devDependencies:
       '@types/node':
         specifier: ^22.10.2
@@ -68,8 +68,8 @@ importers:
         specifier: ^2.2.3
         version: 2.2.3
       seyfert:
-        specifier: 2.1.1-dev-12341742427.0
-        version: 2.1.1-dev-12341742427.0
+        specifier: 2.1.1-dev-12418439067.0
+        version: 2.1.1-dev-12418439067.0
       ws:
         specifier: ^8.18.0
         version: 8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.5)
@@ -102,8 +102,8 @@ importers:
         specifier: ^4.6.14
         version: 4.6.14
       seyfert:
-        specifier: 2.1.1-dev-12341742427.0
-        version: 2.1.1-dev-12341742427.0
+        specifier: 2.1.1-dev-12418439067.0
+        version: 2.1.1-dev-12418439067.0
       utf-8-validate:
         specifier: ^5.0.2
         version: 6.0.5
@@ -127,8 +127,8 @@ importers:
   packages/config:
     dependencies:
       seyfert:
-        specifier: 2.1.1-dev-12341742427.0
-        version: 2.1.1-dev-12341742427.0
+        specifier: 2.1.1-dev-12418439067.0
+        version: 2.1.1-dev-12418439067.0
     devDependencies:
       '@types/node':
         specifier: ^22.10.2
@@ -149,8 +149,8 @@ importers:
         specifier: ^15.2.2
         version: 15.2.2(mongodb@6.12.0)
       seyfert:
-        specifier: 2.1.1-dev-12341742427.0
-        version: 2.1.1-dev-12341742427.0
+        specifier: 2.1.1-dev-12418439067.0
+        version: 2.1.1-dev-12418439067.0
     devDependencies:
       '@types/node':
         specifier: ^22.10.2
@@ -373,8 +373,8 @@ packages:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
 
-  seyfert@2.1.1-dev-12341742427.0:
-    resolution: {integrity: sha512-x1XgKJiGSFgcEfeu0kAKz2UjJmyq+FCaE3b8O0SjnoPUv4RnQ1lDdqO7m/WZ4ffYpJ/EMXeXbcx8Ub/OAHlxbw==}
+  seyfert@2.1.1-dev-12418439067.0:
+    resolution: {integrity: sha512-0n0K8q+u8S7GxOy6Ph9WmzpJihR7skkT6oTWo/Sa4PtiH03Gx4M7u9+d1uRK0hRuXLiPR0yeP/8bPlKhs3jOUA==}
 
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -648,7 +648,7 @@ snapshots:
 
   require-from-string@2.0.2: {}
 
-  seyfert@2.1.1-dev-12341742427.0: {}
+  seyfert@2.1.1-dev-12418439067.0: {}
 
   shebang-command@2.0.0:
     dependencies:
