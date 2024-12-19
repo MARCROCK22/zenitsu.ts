@@ -53,8 +53,7 @@ export default class Accept extends ComponentCommand {
                     uuid,
                 );
                 return ctx.update({
-                    content: message.body.content,
-                    components: message.body.components,
+                    ...message.body,
                     files: message.files,
                 });
             }

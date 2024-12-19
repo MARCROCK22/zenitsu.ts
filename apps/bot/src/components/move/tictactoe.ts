@@ -54,8 +54,7 @@ export default class MoveTicTacToe extends ComponentCommand {
         );
 
         await ctx.update({
-            content: message.body.content,
-            components: message.body.components,
+            ...message.body,
             files: message.files,
         });
 
