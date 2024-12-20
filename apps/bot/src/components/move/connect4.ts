@@ -2,7 +2,7 @@ import type { UUID } from 'node:crypto';
 import { ComponentCommand, type ComponentContext } from 'seyfert';
 
 const regex =
-    /move_connect4_[0-9]{1,1}_[0-9]{17,19}_[0-9]{17,19}_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/;
+    /move_connect4_[0-9]{1,2}_[0-9]{17,19}_[0-9]{17,19}_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/;
 
 export default class MoveConnect4 extends ComponentCommand {
     componentType = 'Button' as const;
