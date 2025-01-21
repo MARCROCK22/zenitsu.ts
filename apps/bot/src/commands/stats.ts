@@ -1,20 +1,21 @@
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
-import ms from '@fabricio-191/ms';
 import type { Infer } from 'ajv-ts';
+
 import {
-    Command,
     type CommandContext,
-    Declare,
     createStringOption,
+    Command,
+    Declare
 } from 'seyfert';
+import { readFile } from 'node:fs/promises';
+import ms from '@fabricio-191/ms';
 import { Options } from 'seyfert';
+import { join } from 'node:path';
+
 import type { statsResult } from '../api/_.js';
 const {
-    dependencies: { seyfert: seyfertVersion },
-} = (await readFile(join(process.cwd(), 'package.json')).then((x) =>
-    JSON.parse(x.toString()),
-)) as { dependencies: Record<string, string> };
+    dependencies: { seyfert: seyfertVersion }
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+} = (await readFile(join(process.cwd(), 'package.json')).then((x) => JSON.parse(x.toString()))) as { dependencies: Record<string, string> };
 
 const options = {
     app: createStringOption({
@@ -22,23 +23,23 @@ const options = {
         choices: [
             {
                 name: 'Bot',
-                value: 'bot',
+                value: 'bot'
             },
             {
                 name: 'API',
-                value: 'api',
+                value: 'api'
             },
             {
                 name: 'WebSocket api',
-                value: 'ws',
-            },
-        ] as const,
-    }),
+                value: 'ws'
+            }
+        ] as const
+    })
 };
 
 @Declare({
     name: 'stats',
-    description: 'See bot stats',
+    description: 'See bot stats'
 })
 @Options(options)
 export default class StatsCommand extends Command {
@@ -56,7 +57,7 @@ export default class StatsCommand extends Command {
             case 'bot':
                 stats = {
                     memoryUsage: process.memoryUsage(),
-                    uptime: process.uptime(),
+                    uptime: process.uptime()
                 };
                 break;
             default:
@@ -70,24 +71,22 @@ export default class StatsCommand extends Command {
             'heapUsed',
             'heapTotal',
             'external',
-            'arrayBuffers',
+            'arrayBuffers'
         ] as const) {
-            data[i] = `${(stats.memoryUsage[i] / 1024 ** 2).toFixed(3)} mb`;
+            data[i] = `${(stats.memoryUsage[i] / 1_024 ** 2).toFixed(3)} mb`;
         }
 
         data.uptime = ms(stats.uptime * 1e3, {
             long: true,
-            format: 'YMoDHMSMs',
+            format: 'YMoDHMSMs'
         });
 
         data['Seyfert version'] = seyfertVersion;
 
         await ctx.editOrReply({
             content: Object.entries(data)
-                .map(([key, value]) => {
-                    return `**${key}**: ${value}`;
-                })
-                .join('\n'),
+                .map(([key, value]) => `**${key}**: ${value}`)
+                .join('\n')
         });
     }
 }

@@ -1,5 +1,6 @@
 import type { UUID } from 'node:crypto';
-import { ComponentCommand, type ComponentContext } from 'seyfert';
+
+import { type ComponentContext, ComponentCommand } from 'seyfert';
 import { MessageFlags } from 'seyfert/lib/types/index.js';
 
 const regex =
@@ -7,10 +8,6 @@ const regex =
 
 export default class Deny extends ComponentCommand {
     componentType = 'Button' as const;
-
-    filter(ctx: ComponentContext<typeof this.componentType>) {
-        return !!ctx.customId.match(regex);
-    }
 
     run(ctx: ComponentContext<typeof this.componentType>) {
         const customIdSplit = ctx.customId.split('_');
@@ -21,27 +18,31 @@ export default class Deny extends ComponentCommand {
         if (!ctx.client.games.values.has(uuid)) {
             return ctx.update({
                 content: 'Game does not exists',
-                components: [],
+                components: []
             });
         }
 
         if (ctx.client.games.hasGame([authorId, userId]).length !== 2) {
             return ctx.update({
                 content: 'Something went wrong...?',
-                components: [],
+                components: []
             });
         }
 
         if (userId !== ctx.author.id) {
             return ctx.write({
                 content: '?',
-                flags: MessageFlags.Ephemeral,
+                flags: MessageFlags.Ephemeral
             });
         }
 
         return ctx.update({
             content: 'when te rechazan',
-            components: [],
+            components: []
         });
+    }
+
+    filter(ctx: ComponentContext<typeof this.componentType>) {
+        return Boolean(regex.exec(ctx.customId));
     }
 }

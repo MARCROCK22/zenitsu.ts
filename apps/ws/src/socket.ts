@@ -1,12 +1,15 @@
-import { config } from '@repo/config';
-import type { Logger } from 'seyfert';
 import type { GatewayDispatchPayload } from 'seyfert/lib/types';
+import type { Logger } from 'seyfert';
+
+import { config } from '@repo/config';
 import { WebSocket } from 'ws';
 
 export class PotoSocket {
     socket?: WebSocket;
-    port: number;
+
     logger: Logger;
+
+    port: number;
 
     constructor(logger: Logger, port: number) {
         this.port = port;
@@ -40,8 +43,8 @@ export class PotoSocket {
             JSON.stringify({
                 shardId,
                 packet,
-                key: config.auth.ws,
-            }),
+                key: config.auth.ws
+            })
         );
     }
 }

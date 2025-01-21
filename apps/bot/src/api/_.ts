@@ -7,6 +7,6 @@ export const statsResult = s.object({
         external: s.number(),
         heapTotal: s.number(),
         heapUsed: s.number(),
-        rss: s.number(),
-    }),
+        rss: s.number()
+    })
 });

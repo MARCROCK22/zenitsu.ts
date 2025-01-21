@@ -10,35 +10,42 @@ export class TicTacToe {
         [1, 4, 7],
         [2, 5, 8],
         [0, 4, 8],
-        [2, 4, 6],
+        [2, 4, 6]
     ];
 
-    users: [string, string];
     map = Array.from({ length: 9 }, () => TicTacToePiece.None);
-    lastTurn = 0;
+
+    users: [string, string];
 
     winner?: string;
+
     draw?: boolean;
 
-    constructor(users: [string, string]) {
-        this.users = shuffleArray(users);
-    }
+    lastTurn = 0;
 
     get turn() {
         // Math.abs(this.__lastTurn - 1)
-        return this.lastTurn === 0 ? 1 : 0;
+        return this.lastTurn === 0
+            ? 1
+            : 0;
+    }
+
+    get piece() {
+        return this.turn === 1
+            ? TicTacToePiece.X
+            : TicTacToePiece.O;
+    }
+
+    get finished() {
+        return this.draw || this.winner !== undefined;
     }
 
     get user() {
         return this.users[this.turn];
     }
 
-    get piece() {
-        return this.turn === 1 ? TicTacToePiece.X : TicTacToePiece.O;
-    }
-
-    get finished() {
-        return this.draw || this.winner !== undefined;
+    constructor(users: [string, string]) {
+        this.users = shuffleArray(users);
     }
 
     play(played: number, userId: string) {
@@ -48,12 +55,8 @@ export class TicTacToe {
         this.map[played] = this.piece;
 
         if (
-            TicTacToe.winnablePositions.some((p) =>
-                p.every((x) => this.map[x] === TicTacToePiece.X),
-            ) ||
-            TicTacToe.winnablePositions.some((p) =>
-                p.every((x) => this.map[x] === TicTacToePiece.O),
-            )
+            TicTacToe.winnablePositions.some((p) => p.every((x) => this.map[x] === TicTacToePiece.X)) ||
+            TicTacToe.winnablePositions.some((p) => p.every((x) => this.map[x] === TicTacToePiece.O))
         ) {
             this.winner = this.user;
             return;

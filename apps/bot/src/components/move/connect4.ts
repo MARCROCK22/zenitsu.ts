@@ -1,15 +1,12 @@
 import type { UUID } from 'node:crypto';
-import { ComponentCommand, type ComponentContext } from 'seyfert';
+
+import { type ComponentContext, ComponentCommand } from 'seyfert';
 
 const regex =
     /move_connect4_[0-9]{1,2}_[0-9]{17,19}_[0-9]{17,19}_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/;
 
 export default class MoveConnect4 extends ComponentCommand {
     componentType = 'Button' as const;
-
-    filter(ctx: ComponentContext<typeof this.componentType>) {
-        return !!ctx.customId.match(regex);
-    }
 
     async run(ctx: ComponentContext<typeof this.componentType>) {
         const customIdSplit = ctx.customId.split('_');
@@ -21,14 +18,14 @@ export default class MoveConnect4 extends ComponentCommand {
         if (!ctx.client.games.values.has(uuid)) {
             return ctx.update({
                 content: 'Game does not exists',
-                components: [],
+                components: []
             });
         }
 
         if (ctx.client.games.hasGame([authorId, userId]).length !== 2) {
             return ctx.update({
                 content: 'Something went wrong...?',
-                components: [],
+                components: []
             });
         }
 
@@ -53,12 +50,12 @@ export default class MoveConnect4 extends ComponentCommand {
             rawGame.game,
             authorId,
             userId,
-            uuid,
+            uuid
         );
 
         await ctx.update({
             ...message.body,
-            files: message.files,
+            files: message.files
         });
 
         for (const i of rawGame.recipients) {
@@ -71,5 +68,9 @@ export default class MoveConnect4 extends ComponentCommand {
                 .messages(i.messageId)
                 .patch(message);
         }
+    }
+
+    filter(ctx: ComponentContext<typeof this.componentType>) {
+        return Boolean(regex.exec(ctx.customId));
     }
 }

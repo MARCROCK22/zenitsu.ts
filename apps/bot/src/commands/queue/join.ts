@@ -1,10 +1,10 @@
 import {
-    AutoLoad,
     type CommandContext,
-    Declare,
-    Options,
-    SubCommand,
     createStringOption,
+    SubCommand,
+    AutoLoad,
+    Declare,
+    Options
 } from 'seyfert';
 import { MessageFlags } from 'seyfert/lib/types/index.js';
 
@@ -14,29 +14,29 @@ const options = {
         choices: [
             {
                 name: 'tictactoe',
-                value: 'tictactoe',
+                value: 'tictactoe'
             },
             {
                 name: 'connect4',
-                value: 'connect4',
-            },
+                value: 'connect4'
+            }
         ] as const,
-        required: true,
-    }),
+        required: true
+    })
 };
 
 @Declare({
     name: 'join',
-    description: 'a command',
+    description: 'a command'
 })
-@AutoLoad()
 @Options(options)
+@AutoLoad()
 export default class Join extends SubCommand {
     async run(ctx: CommandContext<typeof options>) {
         if (ctx.client.queue.has(ctx.author.id)) {
             return ctx.write({
                 content: 'You are already in the queue.',
-                flags: MessageFlags.Ephemeral,
+                flags: MessageFlags.Ephemeral
             });
         }
 
@@ -46,11 +46,11 @@ export default class Join extends SubCommand {
             id: ctx.author.id,
             type: ctx.options.game,
             messageId: response.id,
-            channelId: ctx.channelId,
+            channelId: ctx.channelId
         });
 
         return ctx.editResponse({
-            content: `You have joined the queue for ${ctx.options.game}.`,
+            content: `You have joined the queue for ${ctx.options.game}.`
         });
     }
 }

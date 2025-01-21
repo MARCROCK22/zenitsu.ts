@@ -1,8 +1,8 @@
-import { Command, type CommandContext, Declare } from 'seyfert';
+import { type CommandContext, Command, Declare } from 'seyfert';
 
 @Declare({
     name: 'ping',
-    description: 'pong',
+    description: 'pong'
 })
 export default class PingCommand extends Command {
     async run(ctx: CommandContext) {
@@ -14,14 +14,14 @@ export default class PingCommand extends Command {
         for (const i of info) {
             content.push(
                 `WorkerId: ${i.workerId}\n  Shards:\n    ${i.shards
-                    .map((shard) => {
-                        return `#${shard.id} ${shard.latency !== null ? `${shard.latency}ms` : 'Connecting'}`;
-                    })
-                    .join(', ')}`,
+                    .map((shard) => `#${shard.id} ${shard.latency
+                        ? `${shard.latency}ms`
+                        : 'Connecting'}`)
+                    .join(', ')}`
             );
         }
         await ctx.editOrReply({
-            content: `\`\`\`${content.join('\n')}\`\`\`\n-# ShardId: ${ctx.shardId}`,
+            content: `\`\`\`${content.join('\n')}\`\`\`\n-# ShardId: ${ctx.shardId}`
         });
     }
 }

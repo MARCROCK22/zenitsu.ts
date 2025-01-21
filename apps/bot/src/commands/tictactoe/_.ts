@@ -2,7 +2,7 @@ import { AutoLoad, Command, Declare } from 'seyfert';
 
 @Declare({
     name: 'tictactoe',
-    description: 'a command',
+    description: 'a command'
 })
 @AutoLoad()
-export default class TicTacToe extends Command {}
+export default class TicTacToe extends Command { }

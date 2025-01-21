@@ -1,32 +1,13 @@
 import type ModuleConnect4 from '@lil_marcrock22/connect4-ai/index.js';
+
 import { config } from '@repo/config';
+
 import type { TicTacToe } from '../games/tictactoe/index.js';
+
 import { statsResult } from './_.js';
 
 export class ApiManager {
     private baseURL = `http://localhost:${config.port.api}`;
-
-    async stats() {
-        const response = await fetch(`${this.baseURL}/stats`, {
-            headers: {
-                authorization: config.auth.api,
-            },
-        });
-        const result = await response.json();
-        return statsResult.parse(result);
-    }
-
-    async drawTicTacToe(game: TicTacToe) {
-        const response = await fetch(
-            `${this.baseURL}/tictactoe/display?table=${game.map.join(',')}`,
-            {
-                headers: {
-                    authorization: config.auth.api,
-                },
-            },
-        );
-        return response.arrayBuffer();
-    }
 
     async drawConnect4(game: ModuleConnect4.Connect4<string>) {
         const map: number[][] = [];
@@ -44,10 +25,32 @@ export class ApiManager {
             `${this.baseURL}/connect4/display?table=${map.map((row) => row.join(',')).join('|')}`,
             {
                 headers: {
-                    authorization: config.auth.api,
-                },
-            },
+                    authorization: config.auth.api
+                }
+            }
         );
         return response.arrayBuffer();
+    }
+
+    async drawTicTacToe(game: TicTacToe) {
+        const response = await fetch(
+            `${this.baseURL}/tictactoe/display?table=${game.map.join(',')}`,
+            {
+                headers: {
+                    authorization: config.auth.api
+                }
+            }
+        );
+        return response.arrayBuffer();
+    }
+
+    async stats() {
+        const response = await fetch(`${this.baseURL}/stats`, {
+            headers: {
+                authorization: config.auth.api
+            }
+        });
+        const result = await response.json();
+        return statsResult.parse(result);
     }
 }

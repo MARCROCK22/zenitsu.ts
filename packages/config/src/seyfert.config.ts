@@ -1,6 +1,7 @@
+import type { InternalRuntimeConfig } from 'seyfert/lib/client/base';
+
 import { join } from 'node:path';
 import { config } from 'seyfert';
-import type { InternalRuntimeConfig } from 'seyfert/lib/client/base';
 
 process.loadEnvFile(join(process.cwd(), '..', '..', '.env'));
 
@@ -12,13 +13,12 @@ if (!TOKEN) {
 
 export const runtimeConfig: InternalRuntimeConfig = config.bot({
     locations: {
-        base: 'src',
-        output: 'dist',
+        base: 'dist',
         commands: 'commands',
         components: 'components',
-        langs: 'locales',
+        langs: 'locales'
     },
     token: TOKEN,
     intents: ['GuildMessages'],
-    debug: false,
+    debug: false
 });

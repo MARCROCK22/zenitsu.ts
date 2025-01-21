@@ -1,12 +1,12 @@
 import {
-    AutoLoad,
     type CommandContext,
-    Declare,
-    type OKFunction,
-    Options,
-    SubCommand,
-    User,
     createUserOption,
+    type OKFunction,
+    SubCommand,
+    AutoLoad,
+    Declare,
+    Options,
+    User
 } from 'seyfert';
 
 const options = {
@@ -15,26 +15,29 @@ const options = {
         required: true,
         value({ value, context }, ok: OKFunction<User>, fail) {
             if (value instanceof User) {
-                return context.guildId
-                    ? fail('User must be a member of this guild')
-                    : ok(value);
+                if (context.guildId) {
+                    fail('User must be a member of this guild');
+                } else {
+                    ok(value);
+                }
+                return;
             }
             ok(value.user);
-        },
-    }),
+        }
+    })
 };
 
 @Declare({
     name: 'play',
-    description: 'a command',
+    description: 'a command'
 })
-@AutoLoad()
 @Options(options)
+@AutoLoad()
 export default class Play extends SubCommand {
     async run(ctx: CommandContext<typeof options>) {
         await ctx.client.games.requestPlay(ctx, ctx.options.user, {
             game: 'tictactoe',
-            wanna_play: `Wanna play tictactoe? ${ctx.options.user.username}`,
+            wanna_play: `Wanna play tictactoe? ${ctx.options.user.username}`
         });
     }
 }

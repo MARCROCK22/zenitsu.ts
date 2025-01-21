@@ -35,12 +35,12 @@ const config = {
     port: {
         bot: BOT_PORT,
         ws: WS_PORT,
-        api: API_PORT,
+        api: API_PORT
     },
     auth: {
         ws: WS_AUTH,
-        api: API_AUTH,
-    },
+        api: API_AUTH
+    }
 } as const;
 
 export { config };

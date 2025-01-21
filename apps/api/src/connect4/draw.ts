@@ -1,7 +1,7 @@
 import { Image } from 'imagescript';
 
-// const assets = (...path: string[]) =>
-//     join(process.cwd(), '..', '..', 'assets', 'connect4', ...path);
+// Const assets = (...path: string[]) =>
+//     Join(process.cwd(), '..', '..', 'assets', 'connect4', ...path);
 
 export function drawConnect4(table: number[][]) {
     const radius = 50;
@@ -10,7 +10,7 @@ export function drawConnect4(table: number[][]) {
 
     const canvas = new Image(
         table[0].length * boxSize,
-        table.length * boxSize + boxSize / 2,
+        table.length * boxSize + boxSize / 2
     ).fill(0x4287f3ff);
 
     for (let y = 0; y < table.length; y++) {
@@ -21,14 +21,14 @@ export function drawConnect4(table: number[][]) {
                     x * boxSize + boxSize / 2,
                     y * boxSize + boxSize / 2,
                     radius,
-                    0xff0000ff,
+                    0xff0000ff
                 );
             } else if (color === 2) {
                 canvas.drawCircle(
                     x * boxSize + boxSize / 2,
                     y * boxSize + boxSize / 2,
                     radius,
-                    0xffff00ff,
+                    0xffff00ff
                 );
             }
         }

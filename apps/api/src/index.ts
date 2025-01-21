@@ -1,31 +1,30 @@
 import { serve } from '@hono/node-server';
 import { config } from '@repo/config';
-import { Hono } from 'hono';
 import { Logger } from 'seyfert';
-import { drawConnect4 } from './connect4/draw.js';
+import { Hono } from 'hono';
+
 import { drawTicTacToe } from './tictactoe/draw.js';
+import { drawConnect4 } from './connect4/draw.js';
 
 const app = new Hono();
 const logger = new Logger({
-    name: '[Z_API]',
+    name: '[Z_API]'
 });
 
-// app.use((c, next) => {
-//     const auth = c.req.header('Authorization');
-//     if (auth === config.auth.api) {
-//         return next();
+// App.use((c, next) => {
+//     Const auth = c.req.header('Authorization');
+//     If (auth === config.auth.api) {
+//         Return next();
 //     }
-//     throw new HTTPException(418, {
-//         message: 'Invalid authorization header',
+//     Throw new HTTPException(418, {
+//         Message: 'Invalid authorization header',
 //     });
 // });
 
-app.get('/stats', (c) =>
-    c.json({
-        memoryUsage: process.memoryUsage(),
-        uptime: process.uptime(),
-    }),
-);
+app.get('/stats', (c) => c.json({
+    memoryUsage: process.memoryUsage(),
+    uptime: process.uptime()
+}));
 
 app.get('/tictactoe/display', async (c) => {
     const table = (c.req.query('table') ?? '').split(',').map(Number);
@@ -50,9 +49,9 @@ app.get('/connect4/display', async (c) => {
 serve(
     {
         fetch: app.fetch,
-        port: config.port.api,
+        port: config.port.api
     },
     (address) => {
         logger.info(`Listening to ${address.port}`);
-    },
+    }
 );

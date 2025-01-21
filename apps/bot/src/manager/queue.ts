@@ -1,4 +1,5 @@
 import type { UsingClient } from 'seyfert';
+
 import type { GenericGame } from './game.js';
 
 export interface UserQueued {
@@ -10,31 +11,25 @@ export interface UserQueued {
 
 export class QueueManager {
     values = new Map<string, UserQueued>();
+
     client: UsingClient;
+
     constructor(client: UsingClient) {
         this.client = client;
-    }
-
-    join(user: UserQueued) {
-        this.values.set(user.id, user);
-    }
-
-    has(user: string) {
-        return this.values.has(user);
     }
 
     start() {
         setInterval(async () => {
             const usersMap = Map.groupBy(
                 Array.from(this.values.values()),
-                (u) => u.type,
+                (u) => u.type
             );
 
-            for (let [type, users] of usersMap) {
-                if (users.length < 2) {
+            for (const [type, rawUsers] of usersMap) {
+                if (rawUsers.length < 2) {
                     continue;
                 }
-                users = users.slice(0, 2);
+                const users = rawUsers.slice(0, 2);
 
                 switch (type) {
                     case 'tictactoe':
@@ -48,8 +43,8 @@ export class QueueManager {
                                     users.map((u) => ({
                                         channelId: u.channelId,
                                         messageId: u.messageId,
-                                        userId: u.id,
-                                    })),
+                                        userId: u.id
+                                    }))
                                 );
 
                             const { body, files } =
@@ -57,7 +52,7 @@ export class QueueManager {
                                     game,
                                     users[0].id,
                                     users[1].id,
-                                    uuid,
+                                    uuid
                                 );
 
                             for (const i of users) {
@@ -66,7 +61,7 @@ export class QueueManager {
                                     .messages(i.messageId)
                                     .patch({
                                         body,
-                                        files,
+                                        files
                                     });
                             }
                         }
@@ -82,8 +77,8 @@ export class QueueManager {
                                     users.map((u) => ({
                                         channelId: u.channelId,
                                         messageId: u.messageId,
-                                        userId: u.id,
-                                    })),
+                                        userId: u.id
+                                    }))
                                 );
 
                             const { body, files } =
@@ -91,7 +86,7 @@ export class QueueManager {
                                     game,
                                     users[0].id,
                                     users[1].id,
-                                    uuid,
+                                    uuid
                                 );
 
                             for (const i of users) {
@@ -100,7 +95,7 @@ export class QueueManager {
                                     .messages(i.messageId)
                                     .patch({
                                         body,
-                                        files,
+                                        files
                                     });
                             }
                         }
@@ -109,6 +104,14 @@ export class QueueManager {
                         throw new Error('Unexpected');
                 }
             }
-        }, 1000);
+        }, 1_000);
+    }
+
+    join(user: UserQueued) {
+        this.values.set(user.id, user);
+    }
+
+    has(user: string) {
+        return this.values.has(user);
     }
 }

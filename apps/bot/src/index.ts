@@ -1,24 +1,26 @@
-import { join } from 'node:path';
-import { config } from '@repo/config';
-import MeowDB from 'meowdb';
 import {
-    Client,
-    type ParseClient,
-    type ParseLocales,
     type ParseMiddlewares,
+    type ParseLocales,
+    type ParseClient,
     type UsingClient,
+    Client
 } from 'seyfert';
 import {
     type GatewayDispatchPayload,
-    MessageFlags,
+    MessageFlags
 } from 'seyfert/lib/types/index.js';
+import { config } from '@repo/config';
 import { WebSocketServer } from 'ws';
-import { ApiManager } from './api/apiManager.js';
-import { WsManager } from './api/wsManager.js';
+import { join } from 'node:path';
+import MeowDB from 'meowdb';
+
 import type DefaultLang from './locales/en.js';
-import { GameManager } from './manager/game.js';
+
 import { QueueManager } from './manager/queue.js';
 import { allMiddlewares } from './middlewares.js';
+import { ApiManager } from './api/apiManager.js';
+import { GameManager } from './manager/game.js';
+import { WsManager } from './api/wsManager.js';
 
 const client = new Client({
     getRC() {
@@ -31,27 +33,26 @@ const client = new Client({
                     ctx.author.id,
                     ctx.author.username,
                     ctx.fullCommandName,
-                    error,
+                    error
                 );
-                const content = `\`\`\`${
-                    error instanceof Error
-                        ? (error.stack ?? error.message)
-                        : `${error ?? 'Unknown error'}`
-                }\`\`\``;
+                const content = `\`\`\`${error instanceof Error
+                    ? error.stack ?? error.message
+                    : String(error) || 'Unknown error'
+                    }\`\`\``;
 
                 return ctx.editOrReply({
-                    content,
+                    content
                 });
             },
             onMiddlewaresError(ctx, error) {
                 return ctx.editOrReply({
                     content: error,
-                    flags: MessageFlags.Ephemeral,
+                    flags: MessageFlags.Ephemeral
                 });
-            },
-        },
+            }
+        }
     },
-    globalMiddlewares: ['checkIfRestarting'],
+    globalMiddlewares: ['checkIfRestarting']
 }) as unknown as UsingClient & Client;
 client.ws = new WsManager();
 client.api = new ApiManager();
@@ -60,43 +61,45 @@ client.queue = new QueueManager(client);
 client.meowdb = new MeowDB<'raw'>({
     dir: join(process.cwd(), 'cache'),
     name: 'games',
-    raw: true,
+    raw: true
 });
 
 client.setServices({
     cache: {
-        disabledCache: true,
+        disabledCache: true
     },
     middlewares: allMiddlewares,
     langs: {
         default: 'en',
         aliases: {
             en: ['en-GB', 'en-US'],
-            es: ['es-419', 'es-ES'],
-        },
-    },
+            es: ['es-419', 'es-ES']
+        }
+    }
 });
 client.queue.start();
-// await client.games.syncFromCache();
+// Await client.games.syncFromCache();
 await client.start({}, false);
 await client.uploadCommands({
-    cachePath: join(process.cwd(), '_seyfert_cache.json'),
+    cachePath: join(process.cwd(), '_seyfert_cache.json')
 });
 
 const server = new WebSocketServer({
-    port: config.port.bot,
+    port: config.port.bot
 });
 
 server.on('connection', (socket) => {
     socket.on('message', (raw) => {
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string
         const { shardId, packet, key } = JSON.parse(raw.toString()) as {
             shardId: number;
             packet: GatewayDispatchPayload;
             key: string;
         };
         if (key !== config.auth.ws) {
-            // xd?
-            return socket.close();
+            // Xd?
+            socket.close();
+            return;
         }
 
         return client.gateway.options.handlePayload(shardId, packet);
@@ -104,6 +107,7 @@ server.on('connection', (socket) => {
 });
 
 declare module 'seyfert' {
+    // eslint-disable-next-line no-shadow
     interface UsingClient extends ParseClient<Client<false>> {
         ws: WsManager;
         api: ApiManager;
@@ -114,7 +118,7 @@ declare module 'seyfert' {
     }
 
     interface RegisteredMiddlewares
-        extends ParseMiddlewares<typeof allMiddlewares> {}
+        extends ParseMiddlewares<typeof allMiddlewares> { }
 
-    interface DefaultLocale extends ParseLocales<typeof DefaultLang> {}
+    interface DefaultLocale extends ParseLocales<typeof DefaultLang> { }
 }
