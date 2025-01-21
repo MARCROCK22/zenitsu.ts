@@ -1,5 +1,3 @@
-import type { Infer } from 'ajv-ts';
-
 import {
     type CommandContext,
     createStringOption,
@@ -9,13 +7,17 @@ import {
 import { readFile } from 'node:fs/promises';
 import ms from '@fabricio-191/ms';
 import { Options } from 'seyfert';
+import s, { Infer } from 'ajv-ts';
 import { join } from 'node:path';
 
 import type { statsResult } from '../api/_.js';
 const {
     dependencies: { seyfert: seyfertVersion }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-} = (await readFile(join(process.cwd(), 'package.json')).then((x) => JSON.parse(x.toString()))) as { dependencies: Record<string, string> };
+} = await readFile(join(process.cwd(), 'package.json')).then((x) => s.object({
+    dependencies: s.object({
+        seyfert: s.string()
+    })
+}).parse(JSON.parse(x.toString())));
 
 const options = {
     app: createStringOption({

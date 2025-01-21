@@ -1,14 +1,15 @@
 import {
+    type UsingClient as NoShadowUsingClient,
     type ParseMiddlewares,
     type ParseLocales,
     type ParseClient,
-    type UsingClient,
     Client
 } from 'seyfert';
 import {
     type GatewayDispatchPayload,
     MessageFlags
 } from 'seyfert/lib/types/index.js';
+import { isAnyArrayBuffer } from 'node:util/types';
 import { config } from '@repo/config';
 import { WebSocketServer } from 'ws';
 import { join } from 'node:path';
@@ -53,7 +54,7 @@ const client = new Client({
         }
     },
     globalMiddlewares: ['checkIfRestarting']
-}) as unknown as UsingClient & Client;
+}) as unknown as NoShadowUsingClient & Client;
 client.ws = new WsManager();
 client.api = new ApiManager();
 client.games = new GameManager(client);
@@ -90,7 +91,9 @@ const server = new WebSocketServer({
 
 server.on('connection', (socket) => {
     socket.on('message', (raw) => {
-        // eslint-disable-next-line @typescript-eslint/no-base-to-string
+        if (isAnyArrayBuffer(raw)) {
+            throw new Error('Invalid data');
+        }
         const { shardId, packet, key } = JSON.parse(raw.toString()) as {
             shardId: number;
             packet: GatewayDispatchPayload;
@@ -107,7 +110,6 @@ server.on('connection', (socket) => {
 });
 
 declare module 'seyfert' {
-    // eslint-disable-next-line no-shadow
     interface UsingClient extends ParseClient<Client<false>> {
         ws: WsManager;
         api: ApiManager;
