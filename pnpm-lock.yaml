@@ -9,12 +9,9 @@ importers:
   .:
     dependencies:
       turbo:
-        specifier: ^2.3.3
-        version: 2.3.3
+        specifier: ^2.3.4
+        version: 2.3.4
     devDependencies:
-      '@biomejs/biome':
-        specifier: 1.9.4
-        version: 1.9.4
       '@marcrock22/eslint':
         specifier: github:marcrock22/eslintcf
         version: https://codeload.github.com/marcrock22/eslintcf/tar.gz/17f9610dd8b6e8c5d73ebf0941ac4afc3525dc92(@eslint/js@9.18.0)(@stylistic/eslint-plugin@2.13.0(eslint@9.18.0)(typescript@5.7.3))(@typescript-eslint/utils@8.21.0(eslint@9.18.0)(typescript@5.7.3))(eslint-plugin-perfectionist@4.7.0(eslint@9.18.0)(typescript@5.7.3))(eslint@9.18.0)(typescript-eslint@8.21.0(eslint@9.18.0)(typescript@5.7.3))
@@ -32,7 +29,7 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: ^1.13.7
-        version: 1.13.7(hono@4.6.17)
+        version: 1.13.7(hono@4.6.18)
       '@repo/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -40,21 +37,21 @@ importers:
         specifier: ^0.9.0
         version: 0.9.0(typescript@5.7.3)
       hono:
-        specifier: ^4.6.17
-        version: 4.6.17
+        specifier: ^4.6.18
+        version: 4.6.18
       imagescript:
         specifier: github:matmen/imagescript
         version: https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b
       seyfert:
-        specifier: 2.2.1-dev-12880137926.0
-        version: 2.2.1-dev-12880137926.0
+        specifier: 2.2.1-dev-12914461759.0
+        version: 2.2.1-dev-12914461759.0
     devDependencies:
       '@types/deno':
         specifier: ^2.0.0
         version: 2.0.0
       '@types/node':
-        specifier: ^22.10.7
-        version: 22.10.7
+        specifier: ^22.10.10
+        version: 22.10.10
       tsc-watch:
         specifier: ^6.2.1
         version: 6.2.1(typescript@5.7.3)
@@ -83,8 +80,8 @@ importers:
         specifier: ^2.2.3
         version: 2.2.3
       seyfert:
-        specifier: 2.2.1-dev-12880137926.0
-        version: 2.2.1-dev-12880137926.0
+        specifier: 2.2.1-dev-12914461759.0
+        version: 2.2.1-dev-12914461759.0
       ws:
         specifier: ^8.18.0
         version: 8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.5)
@@ -93,11 +90,11 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       '@types/node':
-        specifier: ^22.10.7
-        version: 22.10.7
+        specifier: ^22.10.10
+        version: 22.10.10
       '@types/ws':
-        specifier: ^8.5.13
-        version: 8.5.13
+        specifier: ^8.5.14
+        version: 8.5.14
       tsc-watch:
         specifier: ^6.2.1
         version: 6.2.1(typescript@5.7.3)
@@ -109,7 +106,7 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: ^1.13.7
-        version: 1.13.7(hono@4.6.17)
+        version: 1.13.7(hono@4.6.18)
       '@repo/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -117,11 +114,11 @@ importers:
         specifier: ^4.0.1
         version: 4.0.8
       hono:
-        specifier: ^4.6.17
-        version: 4.6.17
+        specifier: ^4.6.18
+        version: 4.6.18
       seyfert:
-        specifier: 2.2.1-dev-12880137926.0
-        version: 2.2.1-dev-12880137926.0
+        specifier: 2.2.1-dev-12914461759.0
+        version: 2.2.1-dev-12914461759.0
       utf-8-validate:
         specifier: ^5.0.2
         version: 6.0.5
@@ -133,11 +130,11 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       '@types/node':
-        specifier: ^22.10.7
-        version: 22.10.7
+        specifier: ^22.10.10
+        version: 22.10.10
       '@types/ws':
-        specifier: ^8.5.13
-        version: 8.5.13
+        specifier: ^8.5.14
+        version: 8.5.14
       tsc-watch:
         specifier: ^6.2.1
         version: 6.2.1(typescript@5.7.3)
@@ -148,15 +145,15 @@ importers:
   packages/config:
     dependencies:
       seyfert:
-        specifier: 2.2.1-dev-12880137926.0
-        version: 2.2.1-dev-12880137926.0
+        specifier: 2.2.1-dev-12914461759.0
+        version: 2.2.1-dev-12914461759.0
     devDependencies:
       '@types/deno':
         specifier: ^2.0.0
         version: 2.0.0
       '@types/node':
-        specifier: ^22.10.7
-        version: 22.10.7
+        specifier: ^22.10.10
+        version: 22.10.10
       tsc-watch:
         specifier: ^6.2.1
         version: 6.2.1(typescript@5.7.3)
@@ -173,15 +170,15 @@ importers:
         specifier: ^15.2.2
         version: 15.2.2(mongodb@6.12.0)
       seyfert:
-        specifier: 2.2.1-dev-12880137926.0
-        version: 2.2.1-dev-12880137926.0
+        specifier: 2.2.1-dev-12914461759.0
+        version: 2.2.1-dev-12914461759.0
     devDependencies:
       '@types/deno':
         specifier: ^2.0.0
         version: 2.0.0
       '@types/node':
-        specifier: ^22.10.7
-        version: 22.10.7
+        specifier: ^22.10.10
+        version: 22.10.10
       tsc-watch:
         specifier: ^6.2.1
         version: 6.2.1(typescript@5.7.3)
@@ -190,59 +187,6 @@ importers:
         version: 5.7.3
 
 packages:
-
-  '@biomejs/biome@1.9.4':
-    resolution: {integrity: sha512-1rkd7G70+o9KkTn5KLmDYXihGoTaIGO9PIIN2ZB7UJxFrWw04CZHPYiMRjYsaDvVV7hP1dYNRLxSANLaBFGpog==}
-    engines: {node: '>=14.21.3'}
-    hasBin: true
-
-  '@biomejs/cli-darwin-arm64@1.9.4':
-    resolution: {integrity: sha512-bFBsPWrNvkdKrNCYeAp+xo2HecOGPAy9WyNyB/jKnnedgzl4W4Hb9ZMzYNbf8dMCGmUdSavlYHiR01QaYR58cw==}
-    engines: {node: '>=14.21.3'}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@biomejs/cli-darwin-x64@1.9.4':
-    resolution: {integrity: sha512-ngYBh/+bEedqkSevPVhLP4QfVPCpb+4BBe2p7Xs32dBgs7rh9nY2AIYUL6BgLw1JVXV8GlpKmb/hNiuIxfPfZg==}
-    engines: {node: '>=14.21.3'}
-    cpu: [x64]
-    os: [darwin]
-
-  '@biomejs/cli-linux-arm64-musl@1.9.4':
-    resolution: {integrity: sha512-v665Ct9WCRjGa8+kTr0CzApU0+XXtRgwmzIf1SeKSGAv+2scAlW6JR5PMFo6FzqqZ64Po79cKODKf3/AAmECqA==}
-    engines: {node: '>=14.21.3'}
-    cpu: [arm64]
-    os: [linux]
-
-  '@biomejs/cli-linux-arm64@1.9.4':
-    resolution: {integrity: sha512-fJIW0+LYujdjUgJJuwesP4EjIBl/N/TcOX3IvIHJQNsAqvV2CHIogsmA94BPG6jZATS4Hi+xv4SkBBQSt1N4/g==}
-    engines: {node: '>=14.21.3'}
-    cpu: [arm64]
-    os: [linux]
-
-  '@biomejs/cli-linux-x64-musl@1.9.4':
-    resolution: {integrity: sha512-gEhi/jSBhZ2m6wjV530Yy8+fNqG8PAinM3oV7CyO+6c3CEh16Eizm21uHVsyVBEB6RIM8JHIl6AGYCv6Q6Q9Tg==}
-    engines: {node: '>=14.21.3'}
-    cpu: [x64]
-    os: [linux]
-
-  '@biomejs/cli-linux-x64@1.9.4':
-    resolution: {integrity: sha512-lRCJv/Vi3Vlwmbd6K+oQ0KhLHMAysN8lXoCI7XeHlxaajk06u7G+UsFSO01NAs5iYuWKmVZjmiOzJ0OJmGsMwg==}
-    engines: {node: '>=14.21.3'}
-    cpu: [x64]
-    os: [linux]
-
-  '@biomejs/cli-win32-arm64@1.9.4':
-    resolution: {integrity: sha512-tlbhLk+WXZmgwoIKwHIHEBZUwxml7bRJgk0X2sPyNR3S93cdRq6XulAZRQJ17FYGGzWne0fgrXBKpl7l4M87Hg==}
-    engines: {node: '>=14.21.3'}
-    cpu: [arm64]
-    os: [win32]
-
-  '@biomejs/cli-win32-x64@1.9.4':
-    resolution: {integrity: sha512-8Y5wMhVIPaWe6jw2H+KlEm4wP/f7EW3810ZLmDlrEEy5KvBsb9ECEfu/kMWD484ijfQ8+nIi0giMgu9g1UAuuA==}
-    engines: {node: '>=14.21.3'}
-    cpu: [x64]
-    os: [win32]
 
   '@eslint-community/eslint-utils@4.4.1':
     resolution: {integrity: sha512-s3O3waFUrMV8P/XaF/+ZTp1X9XBZW1a4B97ZnjQF2KYWaFD2A8KyFBsrsfSjEmjn3RGWAIuvlneuZm3CUK3jbA==}
@@ -351,8 +295,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@22.10.7':
-    resolution: {integrity: sha512-V09KvXxFiutGp6B7XkpaDXlNadZxrzajcY50EuoLIpQ6WWYCSvf19lVIazzfIzQvhUN2HjX12spLojTnhuKlGg==}
+  '@types/node@22.10.10':
+    resolution: {integrity: sha512-X47y/mPNzxviAGY5TcYPtYL8JsY3kAq2n8fMmKoRCxq/c4v4pyGNCzM2R6+M5/umG4ZfHuT+sgqDYqWc9rJ6ww==}
 
   '@types/webidl-conversions@7.0.3':
     resolution: {integrity: sha512-CiJJvcRtIgzadHCYXw7dqEnMNRjhGZlYK05Mj9OyktqV8uVT8fD2BFOB7S1uwBE3Kj2Z+4UyPmFw/Ixgw/LAlA==}
@@ -360,8 +304,8 @@ packages:
   '@types/whatwg-url@11.0.5':
     resolution: {integrity: sha512-coYR071JRaHa+xoEvvYqvnIHaVqaYrLPbsufM9BF63HkwI5Lgmy2QR8Q5K/lYDYo5AK82wOvSOS0UsLTpTG7uQ==}
 
-  '@types/ws@8.5.13':
-    resolution: {integrity: sha512-osM/gWBTPKgHV8XkTunnegTRIsvF6owmf5w+JtAfOw472dptdm0dlGv4xCt6GwQRcC2XVOvvRE/0bAoQcL2QkA==}
+  '@types/ws@8.5.14':
+    resolution: {integrity: sha512-bd/YFLW+URhBzMXurx7lWByOu+xzU9+kb3RboOteXYDfW+tr+JZa99OyNmPINEGB/ahzKrEuc8rcv4gnpJmxTw==}
 
   '@typescript-eslint/eslint-plugin@8.21.0':
     resolution: {integrity: sha512-eTH+UOR4I7WbdQnG4Z48ebIA6Bgi7WO8HvFEneeYBxG8qCOYgTOFPSg6ek9ITIDvGjDQzWHcoWHCDO2biByNzA==}
@@ -621,8 +565,8 @@ packages:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
 
-  hono@4.6.17:
-    resolution: {integrity: sha512-Kbh4M0so2RzLiIg6iP33DoTU68TdvP2O/kb1Hhhdwa37fazuf402ig8ZRfjkz2dqXwiWl2dAgh0f++TuKAdOtQ==}
+  hono@4.6.18:
+    resolution: {integrity: sha512-Fu7hEPvdwtPG8LqSAiPn8p8HjD+PDxrP/HVnwRBnwtVKOn5zDDKsw0ma2Xt58oq97Rlp3t/mRNADEV/Ym6cDng==}
     engines: {node: '>=16.9.0'}
 
   ignore@5.3.2:
@@ -835,8 +779,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  seyfert@2.2.1-dev-12880137926.0:
-    resolution: {integrity: sha512-t9ZMSw2vEy3C7TvpYSXj0nnHyq0mE5hroQgHhk0rlQM75fLQVjjxxX9qbUah4uns0DFUxxxTAPtRf9xD5KMPkA==}
+  seyfert@2.2.1-dev-12914461759.0:
+    resolution: {integrity: sha512-Ofzhy9lhbl3+wIC29q4CcbaJPb49YIzCrVITYVUxNR+av7a7ZvYWXeQbpztRHYnDkd8yoQCEYnJ6oOqJJheYPg==}
 
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -891,38 +835,38 @@ packages:
     peerDependencies:
       typescript: '*'
 
-  turbo-darwin-64@2.3.3:
-    resolution: {integrity: sha512-bxX82xe6du/3rPmm4aCC5RdEilIN99VUld4HkFQuw+mvFg6darNBuQxyWSHZTtc25XgYjQrjsV05888w1grpaA==}
+  turbo-darwin-64@2.3.4:
+    resolution: {integrity: sha512-uOi/cUIGQI7uakZygH+cZQ5D4w+aMLlVCN2KTGot+cmefatps2ZmRRufuHrEM0Rl63opdKD8/JIu+54s25qkfg==}
     cpu: [x64]
     os: [darwin]
 
-  turbo-darwin-arm64@2.3.3:
-    resolution: {integrity: sha512-DYbQwa3NsAuWkCUYVzfOUBbSUBVQzH5HWUFy2Kgi3fGjIWVZOFk86ss+xsWu//rlEAfYwEmopigsPYSmW4X15A==}
+  turbo-darwin-arm64@2.3.4:
+    resolution: {integrity: sha512-IIM1Lq5R+EGMtM1YFGl4x8Xkr0MWb4HvyU8N4LNoQ1Be5aycrOE+VVfH+cDg/Q4csn+8bxCOxhRp5KmUflrVTQ==}
     cpu: [arm64]
     os: [darwin]
 
-  turbo-linux-64@2.3.3:
-    resolution: {integrity: sha512-eHj9OIB0dFaP6BxB88jSuaCLsOQSYWBgmhy2ErCu6D2GG6xW3b6e2UWHl/1Ho9FsTg4uVgo4DB9wGsKa5erjUA==}
+  turbo-linux-64@2.3.4:
+    resolution: {integrity: sha512-1aD2EfR7NfjFXNH3mYU5gybLJEFi2IGOoKwoPLchAFRQ6OEJQj201/oNo9CDL75IIrQo64/NpEgVyZtoPlfhfA==}
     cpu: [x64]
     os: [linux]
 
-  turbo-linux-arm64@2.3.3:
-    resolution: {integrity: sha512-NmDE/NjZoDj1UWBhMtOPmqFLEBKhzGS61KObfrDEbXvU3lekwHeoPvAMfcovzswzch+kN2DrtbNIlz+/rp8OCg==}
+  turbo-linux-arm64@2.3.4:
+    resolution: {integrity: sha512-MxTpdKwxCaA5IlybPxgGLu54fT2svdqTIxRd0TQmpRJIjM0s4kbM+7YiLk0mOh6dGqlWPUsxz/A0Mkn8Xr5o7Q==}
     cpu: [arm64]
     os: [linux]
 
-  turbo-windows-64@2.3.3:
-    resolution: {integrity: sha512-O2+BS4QqjK3dOERscXqv7N2GXNcqHr9hXumkMxDj/oGx9oCatIwnnwx34UmzodloSnJpgSqjl8iRWiY65SmYoQ==}
+  turbo-windows-64@2.3.4:
+    resolution: {integrity: sha512-yyCrWqcRGu1AOOlrYzRnizEtdkqi+qKP0MW9dbk9OsMDXaOI5jlWtTY/AtWMkLw/czVJ7yS9Ex1vi9DB6YsFvw==}
     cpu: [x64]
     os: [win32]
 
-  turbo-windows-arm64@2.3.3:
-    resolution: {integrity: sha512-dW4ZK1r6XLPNYLIKjC4o87HxYidtRRcBeo/hZ9Wng2XM/MqqYkAyzJXJGgRMsc0MMEN9z4+ZIfnSNBrA0b08ag==}
+  turbo-windows-arm64@2.3.4:
+    resolution: {integrity: sha512-PggC3qH+njPfn1PDVwKrQvvQby8X09ufbqZ2Ha4uSu+5TvPorHHkAbZVHKYj2Y+tvVzxRzi4Sv6NdHXBS9Be5w==}
     cpu: [arm64]
     os: [win32]
 
-  turbo@2.3.3:
-    resolution: {integrity: sha512-DUHWQAcC8BTiUZDRzAYGvpSpGLiaOQPfYXlCieQbwUvmml/LRGIe3raKdrOPOoiX0DYlzxs2nH6BoWJoZrj8hA==}
+  turbo@2.3.4:
+    resolution: {integrity: sha512-1kiLO5C0Okh5ay1DbHsxkPsw9Sjsbjzm6cF85CpWjR0BIyBFNDbKqtUyqGADRS1dbbZoQanJZVj4MS5kk8J42Q==}
     hasBin: true
 
   type-check@0.4.0:
@@ -990,41 +934,6 @@ packages:
 
 snapshots:
 
-  '@biomejs/biome@1.9.4':
-    optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 1.9.4
-      '@biomejs/cli-darwin-x64': 1.9.4
-      '@biomejs/cli-linux-arm64': 1.9.4
-      '@biomejs/cli-linux-arm64-musl': 1.9.4
-      '@biomejs/cli-linux-x64': 1.9.4
-      '@biomejs/cli-linux-x64-musl': 1.9.4
-      '@biomejs/cli-win32-arm64': 1.9.4
-      '@biomejs/cli-win32-x64': 1.9.4
-
-  '@biomejs/cli-darwin-arm64@1.9.4':
-    optional: true
-
-  '@biomejs/cli-darwin-x64@1.9.4':
-    optional: true
-
-  '@biomejs/cli-linux-arm64-musl@1.9.4':
-    optional: true
-
-  '@biomejs/cli-linux-arm64@1.9.4':
-    optional: true
-
-  '@biomejs/cli-linux-x64-musl@1.9.4':
-    optional: true
-
-  '@biomejs/cli-linux-x64@1.9.4':
-    optional: true
-
-  '@biomejs/cli-win32-arm64@1.9.4':
-    optional: true
-
-  '@biomejs/cli-win32-x64@1.9.4':
-    optional: true
-
   '@eslint-community/eslint-utils@4.4.1(eslint@9.18.0)':
     dependencies:
       eslint: 9.18.0
@@ -1069,9 +978,9 @@ snapshots:
 
   '@fabricio-191/ms@1.5.1': {}
 
-  '@hono/node-server@1.13.7(hono@4.6.17)':
+  '@hono/node-server@1.13.7(hono@4.6.18)':
     dependencies:
-      hono: 4.6.17
+      hono: 4.6.18
 
   '@humanfs/core@0.19.1': {}
 
@@ -1131,7 +1040,7 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@22.10.7':
+  '@types/node@22.10.10':
     dependencies:
       undici-types: 6.20.0
 
@@ -1141,9 +1050,9 @@ snapshots:
     dependencies:
       '@types/webidl-conversions': 7.0.3
 
-  '@types/ws@8.5.13':
+  '@types/ws@8.5.14':
     dependencies:
-      '@types/node': 22.10.7
+      '@types/node': 22.10.10
 
   '@typescript-eslint/eslint-plugin@8.21.0(@typescript-eslint/parser@8.21.0(eslint@9.18.0)(typescript@5.7.3))(eslint@9.18.0)(typescript@5.7.3)':
     dependencies:
@@ -1456,7 +1365,7 @@ snapshots:
 
   has-flag@4.0.0: {}
 
-  hono@4.6.17: {}
+  hono@4.6.18: {}
 
   ignore@5.3.2: {}
 
@@ -1607,7 +1516,7 @@ snapshots:
 
   semver@7.6.3: {}
 
-  seyfert@2.2.1-dev-12880137926.0: {}
+  seyfert@2.2.1-dev-12914461759.0: {}
 
   shebang-command@2.0.0:
     dependencies:
@@ -1657,32 +1566,32 @@ snapshots:
       string-argv: 0.3.2
       typescript: 5.7.3
 
-  turbo-darwin-64@2.3.3:
+  turbo-darwin-64@2.3.4:
     optional: true
 
-  turbo-darwin-arm64@2.3.3:
+  turbo-darwin-arm64@2.3.4:
     optional: true
 
-  turbo-linux-64@2.3.3:
+  turbo-linux-64@2.3.4:
     optional: true
 
-  turbo-linux-arm64@2.3.3:
+  turbo-linux-arm64@2.3.4:
     optional: true
 
-  turbo-windows-64@2.3.3:
+  turbo-windows-64@2.3.4:
     optional: true
 
-  turbo-windows-arm64@2.3.3:
+  turbo-windows-arm64@2.3.4:
     optional: true
 
-  turbo@2.3.3:
+  turbo@2.3.4:
     optionalDependencies:
-      turbo-darwin-64: 2.3.3
-      turbo-darwin-arm64: 2.3.3
-      turbo-linux-64: 2.3.3
-      turbo-linux-arm64: 2.3.3
-      turbo-windows-64: 2.3.3
-      turbo-windows-arm64: 2.3.3
+      turbo-darwin-64: 2.3.4
+      turbo-darwin-arm64: 2.3.4
+      turbo-linux-64: 2.3.4
+      turbo-linux-arm64: 2.3.4
+      turbo-windows-64: 2.3.4
+      turbo-windows-arm64: 2.3.4
 
   type-check@0.4.0:
     dependencies:

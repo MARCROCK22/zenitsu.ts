@@ -18,14 +18,14 @@
     "dependencies": {
         "@hono/node-server": "^1.13.7",
         "@repo/config": "workspace:*",
-        "hono": "^4.6.17",
-        "seyfert": "2.2.1-dev-12880137926.0",
+        "hono": "^4.6.18",
+        "seyfert": "2.2.1-dev-12914461759.0",
         "ws": "^8.18.0"
     },
     "devDependencies": {
         "@types/deno": "^2.0.0",
-        "@types/node": "^22.10.7",
-        "@types/ws": "^8.5.13",
+        "@types/node": "^22.10.10",
+        "@types/ws": "^8.5.14",
         "tsc-watch": "^6.2.1",
         "typescript": "^5.7.3"
     }

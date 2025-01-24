@@ -17,13 +17,13 @@
     "license": "ISC",
     "devDependencies": {
         "@types/deno": "^2.0.0",
-        "@types/node": "^22.10.7",
+        "@types/node": "^22.10.10",
         "tsc-watch": "^6.2.1",
         "typescript": "^5.7.3"
     },
     "dependencies": {
         "mongodb": "^6.12.0",
         "papr": "^15.2.2",
-        "seyfert": "2.2.1-dev-12880137926.0"
+        "seyfert": "2.2.1-dev-12914461759.0"
     }
 }
