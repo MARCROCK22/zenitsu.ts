@@ -43,8 +43,8 @@ importers:
         specifier: github:matmen/imagescript
         version: https://codeload.github.com/matmen/imagescript/tar.gz/577ca4875a60d69e1407f154e1f36ca4ab22e86b
       seyfert:
-        specifier: 2.2.1-dev-12941890207.0
-        version: 2.2.1-dev-12941890207.0
+        specifier: 2.2.1-dev-12970267967.0
+        version: 2.2.1-dev-12970267967.0
     devDependencies:
       '@types/deno':
         specifier: ^2.0.0
@@ -80,8 +80,8 @@ importers:
         specifier: ^2.2.3
         version: 2.2.3
       seyfert:
-        specifier: 2.2.1-dev-12941890207.0
-        version: 2.2.1-dev-12941890207.0
+        specifier: 2.2.1-dev-12970267967.0
+        version: 2.2.1-dev-12970267967.0
       ws:
         specifier: ^8.18.0
         version: 8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.5)
@@ -117,8 +117,8 @@ importers:
         specifier: ^4.6.18
         version: 4.6.18
       seyfert:
-        specifier: 2.2.1-dev-12941890207.0
-        version: 2.2.1-dev-12941890207.0
+        specifier: 2.2.1-dev-12970267967.0
+        version: 2.2.1-dev-12970267967.0
       utf-8-validate:
         specifier: ^5.0.2
         version: 6.0.5
@@ -145,8 +145,8 @@ importers:
   packages/config:
     dependencies:
       seyfert:
-        specifier: 2.2.1-dev-12941890207.0
-        version: 2.2.1-dev-12941890207.0
+        specifier: 2.2.1-dev-12970267967.0
+        version: 2.2.1-dev-12970267967.0
     devDependencies:
       '@types/deno':
         specifier: ^2.0.0
@@ -170,8 +170,8 @@ importers:
         specifier: ^15.2.2
         version: 15.2.2(mongodb@6.12.0)
       seyfert:
-        specifier: 2.2.1-dev-12941890207.0
-        version: 2.2.1-dev-12941890207.0
+        specifier: 2.2.1-dev-12970267967.0
+        version: 2.2.1-dev-12970267967.0
     devDependencies:
       '@types/deno':
         specifier: ^2.0.0
@@ -779,8 +779,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  seyfert@2.2.1-dev-12941890207.0:
-    resolution: {integrity: sha512-GOXegghFqEXUuHOwuuo6wWmXLyS3aQfA98p72VSXM6eBkZIiGsUdrY0evHpZJbpMI7j29nwodtFWEcIXOIwkLg==}
+  seyfert@2.2.1-dev-12970267967.0:
+    resolution: {integrity: sha512-1dLaT2OwGwDBx5zSVax69ynhMP478JUK1qJe3a+8WbqCS6sjvWMZtuMIHeQTEmxkz0gv/cvdkxJw22bxh6V78g==}
 
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -1516,7 +1516,7 @@ snapshots:
 
   semver@7.6.3: {}
 
-  seyfert@2.2.1-dev-12941890207.0: {}
+  seyfert@2.2.1-dev-12970267967.0: {}
 
   shebang-command@2.0.0:
     dependencies:

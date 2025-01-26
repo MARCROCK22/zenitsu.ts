@@ -18,7 +18,7 @@
         "ajv-ts": "^0.9.0",
         "hono": "^4.6.18",
         "imagescript": "github:matmen/imagescript",
-        "seyfert": "2.2.1-dev-12941890207.0"
+        "seyfert": "2.2.1-dev-12970267967.0"
     },
     "devDependencies": {
         "@types/deno": "^2.0.0",

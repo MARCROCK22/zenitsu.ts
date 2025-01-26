@@ -19,6 +19,6 @@
         "typescript": "^5.7.3"
     },
     "dependencies": {
-        "seyfert": "2.2.1-dev-12941890207.0"
+        "seyfert": "2.2.1-dev-12970267967.0"
     }
 }

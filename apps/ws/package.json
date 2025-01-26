@@ -16,7 +16,7 @@
         "@hono/node-server": "^1.13.7",
         "@repo/config": "workspace:*",
         "hono": "^4.6.18",
-        "seyfert": "2.2.1-dev-12941890207.0",
+        "seyfert": "2.2.1-dev-12970267967.0",
         "ws": "^8.18.0"
     },
     "devDependencies": {
