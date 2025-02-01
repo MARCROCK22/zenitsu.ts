@@ -10,4 +10,9 @@ export default config(
             },
         },
     },
+    {
+        rules: {
+            '@stylistic/quotes': ['error', 'backtick']
+        }
+    }
 )

@@ -22,7 +22,7 @@ export class ApiManager {
         }
 
         const response = await fetch(
-            `${this.baseURL}/connect4/display?table=${map.map((row) => row.join(',')).join('|')}`,
+            `${this.baseURL}/connect4/display?table=${map.map((row) => row.join(`,`)).join(`|`)}`,
             {
                 headers: {
                     authorization: config.auth.api
@@ -34,7 +34,7 @@ export class ApiManager {
 
     async drawTicTacToe(game: TicTacToe) {
         const response = await fetch(
-            `${this.baseURL}/tictactoe/display?table=${game.map.join(',')}`,
+            `${this.baseURL}/tictactoe/display?table=${game.map.join(`,`)}`,
             {
                 headers: {
                     authorization: config.auth.api

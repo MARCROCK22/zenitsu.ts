@@ -20,14 +20,14 @@ export class PotoSocket {
         this.socket = new WebSocket(`ws://localhost:${this.port}`);
 
         this.socket.onclose = () => {
-            this.logger.info('Socket closed, reconnecting in 2s');
+            this.logger.info(`Socket closed, reconnecting in 2s`);
             setTimeout(() => {
                 this.connect();
             }, 2e3);
         };
 
         this.socket.onerror = (err) => {
-            this.logger.error('socket error', err);
+            this.logger.error(`socket error`, err);
         };
 
         this.socket.onopen = () => {

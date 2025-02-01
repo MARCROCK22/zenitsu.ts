@@ -10,15 +10,15 @@ import { MessageFlags } from 'seyfert/lib/types/index.js';
 
 const options = {
     game: createStringOption({
-        description: 'an option',
+        description: `an option`,
         choices: [
             {
-                name: 'tictactoe',
-                value: 'tictactoe'
+                name: `tictactoe`,
+                value: `tictactoe`
             },
             {
-                name: 'connect4',
-                value: 'connect4'
+                name: `connect4`,
+                value: `connect4`
             }
         ] as const,
         required: true
@@ -26,8 +26,8 @@ const options = {
 };
 
 @Declare({
-    name: 'join',
-    description: 'a command'
+    name: `join`,
+    description: `a command`
 })
 @Options(options)
 @AutoLoad()
@@ -35,7 +35,7 @@ export default class Join extends SubCommand {
     async run(ctx: CommandContext<typeof options>) {
         if (ctx.client.queue.has(ctx.author.id)) {
             return ctx.write({
-                content: 'You are already in the queue.',
+                content: `You are already in the queue.`,
                 flags: MessageFlags.Ephemeral
             });
         }

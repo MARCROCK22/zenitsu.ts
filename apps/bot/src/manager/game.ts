@@ -21,13 +21,13 @@ interface Recipient {
 }
 
 interface TicTacToeGame {
-    type: 'tictactoe';
+    type: `tictactoe`;
     game: TicTacToe;
     recipients: Recipient[];
 }
 
 interface Connect4Game {
-    type: 'connect4';
+    type: `connect4`;
     game: ModuleConnect4.Connect4<string>;
     recipients: Recipient[];
 }
@@ -78,24 +78,24 @@ export class GameManager {
         user: UserStructure,
         options: {
             wanna_play: string;
-            game: GenericGame['type'];
+            game: GenericGame[`type`];
         }
     ) {
         if (this.hasGame([ctx.author.id, user.id]).length > 0) {
             return ctx.write({
-                content: '?xd'
+                content: `?xd`
             });
         }
 
         if (ctx.author.id === user.id) {
             return ctx.write({
-                content: 'You win.'
+                content: `You win.`
             });
         }
 
         if (user.bot) {
             return ctx.write({
-                content: '"beep boop"'
+                content: `"beep boop"`
             });
         }
 
@@ -104,7 +104,7 @@ export class GameManager {
         const message = await ctx.deferReply(false, true);
 
         switch (options.game) {
-            case 'tictactoe':
+            case `tictactoe`:
                 uuid = this.createTicTacToeGame(
                     [ctx.author.id, user.id],
                     [
@@ -116,7 +116,7 @@ export class GameManager {
                     ]
                 ).uuid;
                 break;
-            case 'connect4':
+            case `connect4`:
                 uuid = this.createConnect4Game(
                     [ctx.author.id, user.id],
                     [
@@ -129,18 +129,18 @@ export class GameManager {
                 ).uuid;
                 break;
             default:
-                throw new Error('Unexpected');
+                throw new Error(`Unexpected`);
         }
 
         const accept = new Button()
-            .setLabel('Accept')
+            .setLabel(`Accept`)
             .setStyle(ButtonStyle.Success)
             .setCustomId(
                 `accept_${options.game}_${ctx.author.id}_${user.id}_${uuid}`
             );
 
         const deny = new Button()
-            .setLabel('Deny')
+            .setLabel(`Deny`)
             .setStyle(ButtonStyle.Danger)
             .setCustomId(
                 `deny_${options.game}_${ctx.author.id}_${user.id}_${uuid}`
@@ -172,10 +172,10 @@ export class GameManager {
                         )
                         .setLabel(
                             piece === TicTacToePiece.None
-                                ? '~'
+                                ? `~`
                                 : piece === TicTacToePiece.X
-                                    ? 'X'
-                                    : 'O'
+                                    ? `X`
+                                    : `O`
                         )
                         .setStyle(
                             piece === TicTacToePiece.None
@@ -196,16 +196,16 @@ export class GameManager {
                 content: game.winner
                     ? `<@${game.winner}> won the game.`
                     : game.draw
-                        ? `Draw between ${game.users.map((user) => `<@${user}>`).join(', ')}`
+                        ? `Draw between ${game.users.map((user) => `<@${user}>`).join(`, `)}`
                         : `[${game.piece === TicTacToePiece.O
-                            ? 'O'
-                            : 'X'}] <@${game.user}>'s turn.`,
+                            ? `O`
+                            : `X`}] <@${game.user}>'s turn.`,
                 components: components.map((row) => row.toJSON())
             },
             files: [
                 {
                     data: await this.client.api.drawTicTacToe(game),
-                    filename: 'game.png'
+                    filename: `game.png`
                 }
             ] satisfies RawFile[]
         };
@@ -244,16 +244,16 @@ export class GameManager {
                 content: game.winner
                     ? `<@${game.players[game.winner - 1]}> won the game.`
                     : game.tie
-                        ? `Draw between ${game.players.map((user) => `<@${user}>`).join(', ')}`
+                        ? `Draw between ${game.players.map((user) => `<@${user}>`).join(`, `)}`
                         : `[${game.turn === 1
-                            ? 'RED'
-                            : 'YELLOW'}] <@${game.players[game.turn - 1]}>'s turn.`,
+                            ? `RED`
+                            : `YELLOW`}] <@${game.players[game.turn - 1]}>'s turn.`,
                 components: components.map((row) => row.toJSON())
             },
             files: [
                 {
                     data: await this.client.api.drawConnect4(game),
-                    filename: 'game.png'
+                    filename: `game.png`
                 }
             ] satisfies RawFile[]
         };
@@ -262,7 +262,7 @@ export class GameManager {
     createConnect4Game(users: [string, string], recipients: Recipient[]) {
         const hasGame = this.hasGame(users);
         if (hasGame.length > 0) {
-            throw new Error(`${hasGame.join(', ')} has a game in progress`);
+            throw new Error(`${hasGame.join(`, `)} has a game in progress`);
         }
 
         const game = new ModuleConnect4.Connect4<string>(
@@ -278,7 +278,7 @@ export class GameManager {
         return {
             game,
             uuid: this.syncGame(users, {
-                type: 'connect4',
+                type: `connect4`,
                 game,
                 recipients
             })
@@ -305,7 +305,7 @@ export class GameManager {
     createTicTacToeGame(users: [string, string], recipients: Recipient[]) {
         const hasGame = this.hasGame(users);
         if (hasGame.length > 0) {
-            throw new Error(`${hasGame.join(', ')} has a game in progress`);
+            throw new Error(`${hasGame.join(`, `)} has a game in progress`);
         }
 
         const game = new TicTacToe(users);
@@ -313,7 +313,7 @@ export class GameManager {
         return {
             game,
             uuid: this.syncGame(users, {
-                type: 'tictactoe',
+                type: `tictactoe`,
                 game,
                 recipients
             })

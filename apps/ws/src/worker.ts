@@ -5,7 +5,7 @@ import { PotoSocket } from './socket.js';
 
 const socket = new PotoSocket(
     new Logger({
-        name: '[WS_0]'
+        name: `[WS_0]`
     }),
     config.port.bot
 );

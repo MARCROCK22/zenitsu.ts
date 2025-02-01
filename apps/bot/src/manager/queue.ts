@@ -6,7 +6,7 @@ export interface UserQueued {
     id: string;
     messageId: string;
     channelId: string;
-    type: GenericGame['type'];
+    type: GenericGame[`type`];
 }
 
 export class QueueManager {
@@ -32,7 +32,7 @@ export class QueueManager {
                 const users = rawUsers.slice(0, 2);
 
                 switch (type) {
-                    case 'tictactoe':
+                    case `tictactoe`:
                         {
                             for (const user of users) {
                                 this.values.delete(user.id);
@@ -66,7 +66,7 @@ export class QueueManager {
                             }
                         }
                         break;
-                    case 'connect4':
+                    case `connect4`:
                         {
                             for (const user of users) {
                                 this.values.delete(user.id);
@@ -101,7 +101,7 @@ export class QueueManager {
                         }
                         break;
                     default:
-                        throw new Error('Unexpected');
+                        throw new Error(`Unexpected`);
                 }
             }
         }, 1_000);

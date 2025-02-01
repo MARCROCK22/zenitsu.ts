@@ -6,8 +6,8 @@ import { join } from 'node:path';
 import { Hono } from 'hono';
 
 const manager = new WorkerManager({
-    mode: 'clusters',
-    path: join(process.cwd(), 'dist', 'worker.js'),
+    mode: `clusters`,
+    path: join(process.cwd(), `dist`, `worker.js`),
     token: config.rc.token,
     intents: config.rc.intents,
     debug: config.rc.debug,
@@ -19,22 +19,22 @@ const manager = new WorkerManager({
 await manager.start();
 
 const logger = new Logger({
-    name: '[APIWebSocket]'
+    name: `[APIWebSocket]`
 });
 
 const app = new Hono();
 
 app.use((c, next) => {
-    const auth = c.req.header('Authorization');
+    const auth = c.req.header(`Authorization`);
     if (auth === config.auth.ws) {
         return next();
     }
     throw new HTTPException(418, {
-        message: 'Invalid authorization header'
+        message: `Invalid authorization header`
     });
 });
 
-app.get('/info', async (c) => {
+app.get(`/info`, async (c) => {
     const workersInfo = await manager.tellWorkers((client) => ({
         shards: [...client.shards.values()].map((shard) => ({
             data: shard.data,
@@ -53,7 +53,7 @@ app.get('/info', async (c) => {
     return c.json(workersInfo);
 });
 
-app.get('/stats', (c) => c.json({
+app.get(`/stats`, (c) => c.json({
     memoryUsage: process.memoryUsage(),
     uptime: process.uptime()
 }));

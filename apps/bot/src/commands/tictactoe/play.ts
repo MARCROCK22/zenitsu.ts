@@ -11,12 +11,12 @@ import {
 
 const options = {
     user: createUserOption({
-        description: 'an option',
+        description: `an option`,
         required: true,
         value({ value, context }, ok: OKFunction<User>, fail) {
             if (value instanceof User) {
                 if (context.guildId) {
-                    fail('User must be a member of this guild');
+                    fail(`User must be a member of this guild`);
                 } else {
                     ok(value);
                 }
@@ -28,15 +28,15 @@ const options = {
 };
 
 @Declare({
-    name: 'play',
-    description: 'a command'
+    name: `play`,
+    description: `a command`
 })
 @Options(options)
 @AutoLoad()
 export default class Play extends SubCommand {
     async run(ctx: CommandContext<typeof options>) {
         await ctx.client.games.requestPlay(ctx, ctx.options.user, {
-            game: 'tictactoe',
+            game: `tictactoe`,
             wanna_play: `Wanna play tictactoe? ${ctx.options.user.username}`
         });
     }

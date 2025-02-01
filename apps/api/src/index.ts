@@ -8,7 +8,7 @@ import { drawConnect4 } from './connect4/draw.js';
 
 const app = new Hono();
 const logger = new Logger({
-    name: '[Z_API]'
+    name: `[Z_API]`
 });
 
 // App.use((c, next) => {
@@ -21,13 +21,13 @@ const logger = new Logger({
 //     });
 // });
 
-app.get('/stats', (c) => c.json({
+app.get(`/stats`, (c) => c.json({
     memoryUsage: process.memoryUsage(),
     uptime: process.uptime()
 }));
 
-app.get('/tictactoe/display', async (c) => {
-    const table = (c.req.query('table') ?? '').split(',').map(Number);
+app.get(`/tictactoe/display`, async (c) => {
+    const table = (c.req.query(`table`) ?? ``).split(`,`).map(Number);
     const timeStart = performance.now();
     const result = (await drawTicTacToe(table)) as unknown as ArrayBuffer;
     const timeEnd = performance.now();
@@ -35,10 +35,10 @@ app.get('/tictactoe/display', async (c) => {
     return c.body(result);
 });
 
-app.get('/connect4/display', async (c) => {
-    const table = (c.req.query('table') ?? '')
-        .split('|')
-        .map((x) => x.split(',').map(Number));
+app.get(`/connect4/display`, async (c) => {
+    const table = (c.req.query(`table`) ?? ``)
+        .split(`|`)
+        .map((x) => x.split(`,`).map(Number));
     const timeStart = performance.now();
     const result = (await drawConnect4(table)) as unknown as ArrayBuffer;
     const timeEnd = performance.now();

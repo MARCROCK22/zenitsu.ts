@@ -38,7 +38,7 @@ const client = new Client({
                 );
                 const content = `\`\`\`${error instanceof Error
                     ? error.stack ?? error.message
-                    : String(error) || 'Unknown error'
+                    : String(error) || `Unknown error`
                     }\`\`\``;
 
                 return ctx.editOrReply({
@@ -53,15 +53,15 @@ const client = new Client({
             }
         }
     },
-    globalMiddlewares: ['checkIfRestarting']
+    globalMiddlewares: [`checkIfRestarting`]
 }) as unknown as NoShadowUsingClient & Client;
 client.ws = new WsManager();
 client.api = new ApiManager();
 client.games = new GameManager(client);
 client.queue = new QueueManager(client);
-client.meowdb = new MeowDB<'raw'>({
-    dir: join(process.cwd(), 'cache'),
-    name: 'games',
+client.meowdb = new MeowDB<`raw`>({
+    dir: join(process.cwd(), `cache`),
+    name: `games`,
     raw: true
 });
 
@@ -71,10 +71,10 @@ client.setServices({
     },
     middlewares: allMiddlewares,
     langs: {
-        default: 'en',
+        default: `en`,
         aliases: {
-            en: ['en-GB', 'en-US'],
-            es: ['es-419', 'es-ES']
+            en: [`en-GB`, `en-US`],
+            es: [`es-419`, `es-ES`]
         }
     }
 });
@@ -82,17 +82,17 @@ client.queue.start();
 // Await client.games.syncFromCache();
 await client.start({}, false);
 await client.uploadCommands({
-    cachePath: join(process.cwd(), '_seyfert_cache.json')
+    cachePath: join(process.cwd(), `_seyfert_cache.json`)
 });
 
 const server = new WebSocketServer({
     port: config.port.bot
 });
 
-server.on('connection', (socket) => {
-    socket.on('message', (raw) => {
+server.on(`connection`, (socket) => {
+    socket.on(`message`, (raw) => {
         if (isAnyArrayBuffer(raw)) {
-            throw new Error('Invalid data');
+            throw new Error(`Invalid data`);
         }
         const { shardId, packet, key } = JSON.parse(raw.toString()) as {
             shardId: number;
