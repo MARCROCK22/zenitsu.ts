@@ -13,15 +13,19 @@ export class TicTacToe {
         [2, 4, 6]
     ];
 
-    map = Array.from({ length: 9 }, () => TicTacToePiece.None);
+    winner?: string;
 
     users: [string, string];
 
-    winner?: string;
+    map = Array.from({ length: 9 }, () => TicTacToePiece.None);
+
+    lastTurn = 0;
 
     draw?: boolean;
 
-    lastTurn = 0;
+    get user() {
+        return this.users[this.turn];
+    }
 
     get turn() {
         // Math.abs(this.__lastTurn - 1)
@@ -38,10 +42,6 @@ export class TicTacToe {
 
     get finished() {
         return this.draw || this.winner !== undefined;
-    }
-
-    get user() {
-        return this.users[this.turn];
     }
 
     constructor(users: [string, string]) {

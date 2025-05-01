@@ -6,8 +6,8 @@ import {
     ActionRow,
     Button
 } from 'seyfert';
+import { MessageFlags, ButtonStyle } from 'seyfert/lib/types/index.js';
 import ModuleConnect4 from '@lil_marcrock22/connect4-ai';
-import { ButtonStyle } from 'seyfert/lib/types/index.js';
 import { randomUUID, type UUID } from 'node:crypto';
 
 import { TicTacToePiece } from '../games/tictactoe/constants.js';
@@ -32,12 +32,13 @@ interface Connect4Game {
     recipients: Recipient[];
 }
 
+
 export type GenericGame = TicTacToeGame | Connect4Game;
 
 export class GameManager {
-    relationships = new Map<string, UUID>();
-
     values = new Map<UUID, GenericGame>();
+
+    relationships = new Map<string, UUID>();
 
     client: UsingClient;
 
@@ -72,6 +73,15 @@ export class GameManager {
 
     //     Await writeFile(join(process.cwd(), 'cache', 'games.json'), '{}');
     // }
+
+    syncGame(users: string[], game: GenericGame) {
+        const uuid = this.generateUUID();
+        for (const user of users) {
+            this.relationships.set(user, uuid);
+        }
+        this.values.set(uuid, game);
+        return uuid;
+    }
 
     async requestPlay(
         ctx: CommandContext,
@@ -152,6 +162,10 @@ export class GameManager {
         });
     }
 
+    hasGame(users: string[]) {
+        return users.filter((user) => this.relationships.has(user));
+    }
+
     async getTicTacToeMessage(
         game: TicTacToe,
         authorId: string,
@@ -211,6 +225,17 @@ export class GameManager {
         };
     }
 
+    getGameFromUsers(userId: string) {
+        const uuid = this.relationships.get(userId);
+        if (!uuid) {
+            return;
+        }
+        return {
+            uuid,
+            game: this.values.get(uuid)
+        };
+    }
+
     async getConnect4Message(
         game: ModuleConnect4.Connect4<string>,
         authorId: string,
@@ -248,7 +273,8 @@ export class GameManager {
                         : `[${game.turn === 1
                             ? `RED`
                             : `YELLOW`}] <@${game.players[game.turn - 1]}>'s turn.`,
-                components: components.map((row) => row.toJSON())
+                components: components.map((row) => row.toJSON()),
+                flags: MessageFlags.IsComponentsV2
             },
             files: [
                 {
@@ -259,30 +285,12 @@ export class GameManager {
         };
     }
 
-    createConnect4Game(users: [string, string], recipients: Recipient[]) {
-        const hasGame = this.hasGame(users);
-        if (hasGame.length > 0) {
-            throw new Error(`${hasGame.join(`, `)} has a game in progress`);
+    generateUUID() {
+        let uuid = randomUUID();
+        while (this.values.has(uuid)) {
+            uuid = randomUUID();
         }
-
-        const game = new ModuleConnect4.Connect4<string>(
-            {
-                lengthArr: 6,
-                columns: 7,
-                necessaryToWin: 4
-            },
-            users
-        );
-        game.createBoard();
-
-        return {
-            game,
-            uuid: this.syncGame(users, {
-                type: `connect4`,
-                game,
-                recipients
-            })
-        };
+        return uuid;
     }
 
     deleteUserGames(users: string[]) {
@@ -320,35 +328,29 @@ export class GameManager {
         };
     }
 
-    syncGame(users: string[], game: GenericGame) {
-        const uuid = this.generateUUID();
-        for (const user of users) {
-            this.relationships.set(user, uuid);
+    createConnect4Game(users: [string, string], recipients: Recipient[]) {
+        const hasGame = this.hasGame(users);
+        if (hasGame.length > 0) {
+            throw new Error(`${hasGame.join(`, `)} has a game in progress`);
         }
-        this.values.set(uuid, game);
-        return uuid;
-    }
 
-    getGameFromUsers(userId: string) {
-        const uuid = this.relationships.get(userId);
-        if (!uuid) {
-            return;
-        }
+        const game = new ModuleConnect4.Connect4<string>(
+            {
+                lengthArr: 6,
+                columns: 7,
+                necessaryToWin: 4
+            },
+            users
+        );
+        game.createBoard();
+
         return {
-            uuid,
-            game: this.values.get(uuid)
+            game,
+            uuid: this.syncGame(users, {
+                type: `connect4`,
+                game,
+                recipients
+            })
         };
-    }
-
-    generateUUID() {
-        let uuid = randomUUID();
-        while (this.values.has(uuid)) {
-            uuid = randomUUID();
-        }
-        return uuid;
-    }
-
-    hasGame(users: string[]) {
-        return users.filter((user) => this.relationships.has(user));
     }
 }

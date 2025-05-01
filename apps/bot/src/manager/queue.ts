@@ -100,8 +100,6 @@ export class QueueManager {
                             }
                         }
                         break;
-                    default:
-                        throw new Error(`Unexpected`);
                 }
             }
         }, 1_000);
